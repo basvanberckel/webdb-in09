@@ -1,0 +1,20 @@
+#thread {
+  margin: 20px;
+}
+
+.post {
+  overflow:hidden;
+  border-style:solid;
+  padding:10px 25px;
+  margin:10px 0px;
+}
+
+.post-content {
+  width:75%;
+  float:left;
+}
+
+.post-data {
+  width:15%;
+  float:right;
+}

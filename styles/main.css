@@ -1,0 +1,24 @@
+.forum-activity {
+  float:right;
+  width:15%;
+}
+
+.forum-data {
+  float:left;
+  width:75%;
+  height:75px;
+  padding-left:15px;
+  padding-bottom:10px;
+}
+
+.forum-data a {
+  float:top;
+  padding:10px 0px;
+}
+
+.forum {
+  border-style:solid;
+  overflow:hidden;
+  margin-left:15px;
+  margin-bottom:10px;
+}
