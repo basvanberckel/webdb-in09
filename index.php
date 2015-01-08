@@ -3,6 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <link rel="stylesheet" type="text/css" href="styles/all.css">
+  <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
   <?php
     if (isset($_GET['page'])) {
       $page = $_GET['page'];
