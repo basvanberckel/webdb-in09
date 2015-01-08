@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Profile Page</title>
+	</head>
+
+	<body>
+		<h1>Account Details</h1>
+
+		 <form action="file:///home/jason/profile.html" method="get">
+		 	
+		 	<fieldset>
+		 		<legend>Credentials</legend>
+		 		Username: <input readonly="readonly" type="text" value="John Doe" name="username"><br>
+  				Password: <input readonly="readonly" type="password" value="Password" name="password"><br>
+  				E-mail: <input readonly="readonly" type="email" value="john.doe@gmail.com" name="email"><br>
+  			</fieldset>
+  			
+  			<fieldset>
+  				<legend>Settings</legend>
+  				Date of birth: <input readonly="readonly" type="text" value="01-01-1970" name="birthdate"><br>
+  			</fieldset>
+
+		</form> 
+
+		<button onclick="edit()">Edit</button>
+		<button onclick="save()">Save</button>
+		
+		<script>
+			function edit() {
+				document.getElementsByTagName("INPUT")[0].removeAttribute("readonly");
+				document.getElementsByTagName("INPUT")[1].removeAttribute("readonly");
+				document.getElementsByTagName("INPUT")[2].removeAttribute("readonly");
+				document.getElementsByTagName("INPUT")[3].removeAttribute("readonly");
+			}
+
+			function save() {
+				document.getElementsByTagName("INPUT")[0].setAttribute("readonly", "readonly");
+				document.getElementsByTagName("INPUT")[1].setAttribute("readonly", "readonly");
+				document.getElementsByTagName("INPUT")[2].setAttribute("readonly", "readonly");
+				document.getElementsByTagName("INPUT")[3].setAttribute("readonly", "readonly");
+			}
+		</script>
+
+	</body>
+
+</html>
