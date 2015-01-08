@@ -1,5 +1,5 @@
 <div class='category'>
-  <h2>This is a category</h2> <hr />
+  <h2>This is a category</h2>
   <div class='forum'>
     <div class='forum-data'>
       <a href='#'><h3>Forum Title</h3></a>
@@ -22,7 +22,7 @@
   </div>
 </div>
 <div class='category'>
-  <h2>This is a category</h2> <hr />
+  <h2>This is a category</h2>
   <div class='forum'>
     <div class='forum-data'>
       <a href='#'><h3>Forum Title</h3></a>
