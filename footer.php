@@ -1,6 +1,6 @@
 
 <div id="footer">
-<div class="link"><a href="#">Link 1</a></div>
-<div class="link"><a href="#">Link 2</a></div>
-<div class="link"><a href="#">en nog een link..</a></div>
+<span class="link"><a href="#">Link 1</a></span>
+<span class="link"><a href="#">Link 2</a></span>
+<span class="link"><a href="#">en nog een link..</a></span>
 </div>
