@@ -23,6 +23,7 @@
     require($page.'.php');
     echo "</div>\n";    
     require('footer.php');
+    ?>
 </body>
 </html>
   
