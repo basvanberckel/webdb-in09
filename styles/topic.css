@@ -1,10 +1,22 @@
+#content {
+	  background-color: #222222;
+
+}
+
 #thread {
-  margin: 20px;
+  margin: 15px;
+  padding: 15px;
+  background-color: #111111;
+}
+
+#title {
+	color: #FFAA00;
 }
 
 .post {
   overflow:hidden;
-  border-style:solid;
+  background-color: #333333;
+  /*border-style:solid;*/
   padding:10px 25px;
   margin:10px 0px;
 }
@@ -17,4 +29,5 @@
 .post-data {
   width:15%;
   float:right;
+  color: #000000;
 }

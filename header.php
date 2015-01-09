@@ -2,7 +2,7 @@
 <div id="header">
 
 <div id="logo">
-Hier komt een logo..
+<a href="/" alt="Homepage"><img src="images/logo.gif"></a>
 </div>
 
 <div id="login">
