@@ -32,6 +32,14 @@
   color: #555555;
 }
 
+.forum-data h3 {
+  color: #FFAA00;
+ }
+ 
+.forum-data h3:hover {
+  color: #FFCC00;
+ }
+
 .forum-data a {
   float:top;
 }

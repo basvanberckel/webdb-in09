@@ -2,7 +2,11 @@
 html {
 	font-family: 'Slabo 27px', serif;
 	color: #AAAAAA;
+<<<<<<< HEAD
 
+=======
+  background-color:#222222;
+>>>>>>> f14df18f88b0ea34dbfa859ac2344a8622c92fe8
 }
 
 a {
@@ -34,10 +38,16 @@ hr {
 	background-color: #000000;
 }
 
+<<<<<<< HEAD
 #logo {
 	width: 400px;
 	height: 100%;
 	background: #555555;
+=======
+#logo img {
+	width: 619px;
+	height: 150px;
+>>>>>>> f14df18f88b0ea34dbfa859ac2344a8622c92fe8
 	float: left;
 }
 
