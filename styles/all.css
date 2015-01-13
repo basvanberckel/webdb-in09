@@ -2,7 +2,12 @@
 html {
 	font-family: 'Slabo 27px', serif;
 	color: #AAAAAA;
+  	background-color:#222222;
+}
 
+body {
+	margin: 0;
+	padding: 0;
 }
 
 a {
@@ -27,6 +32,7 @@ hr {
 	background-color: #FF0000;
 	height: 0px;
 }
+
 /* header */
 #header {
 	width: 100%;
@@ -37,7 +43,10 @@ hr {
 #logo {
 	width: 400px;
 	height: 100%;
-	background: #555555;
+	float: left;
+}
+
+#logo img {
 	float: left;
 }
 

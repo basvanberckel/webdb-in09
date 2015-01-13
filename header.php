@@ -2,7 +2,7 @@
 <div id="header">
 
 <div id="logo">
-Hier komt een logo..
+<a href="/" alt="The Duke's Herald"><img src="images/logo.png"></a>
 </div>
 
 <div id="login">
