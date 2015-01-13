@@ -1,5 +1,16 @@
-<div id="adminheader">
-	<span class="link"><a href="../index.php">Back</a></span>
-	<span class="link"><a href="forum_creation.php">Forum Creation</a></span>
-	<span class="link"><a href="moderation.php">Moderation Queue</a></span>
+<div id="admin-header">
+	<div class="buttons">
+		<form action="adminpanel.php">
+			<a href="../index.php" id="back">
+				<img src="return.png" height="16" width="16" alt="" />
+				Back to forums
+			</a>
+			<button type="sumbit" name="page" class="creation" value="forum_creation">
+				Forum Creation
+			</button>
+			<button type="submit" name="page" class="moderation" value="moderation">
+				Moderation Queue
+			</button>
+    	</form>
+	</div>
 </div>
