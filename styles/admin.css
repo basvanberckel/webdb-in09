@@ -59,6 +59,10 @@ html {
     padding:5px 10px 6px 7px;
 }
 
+button:focus {
+	outline:0 !important;
+}
+
 /* STANDARD */button:hover, .buttons a:hover{
 	background-color: #393939;
     color:#FFCC00;

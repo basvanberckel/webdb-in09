@@ -7,7 +7,7 @@
     if (isset($_GET['page'])) {
       $page = $_GET['page'];
     } else {
-      $page = 'forum_creation';
+      $page = 'creation';
     }
     if (!is_file($page.'.php') || !is_readable($page.'.php')) {
       $page = '../404';
@@ -23,4 +23,3 @@
   ?>
 </body>
 </html>
-  

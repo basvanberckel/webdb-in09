@@ -5,8 +5,11 @@
 				<img src="../images/return.gif" height="16" width="16" alt="" />
 				Back to forums
 			</a>
-			<button type="sumbit" name="page" class="creation" value="forum_creation">
+			<button type="sumbit" name="page" class="creation" value="creation">
 				Forum Creation
+			</button>
+			<button type="sumbit" name="page" class="creation" value="management">
+				Forum Management
 			</button>
 			<button type="submit" name="page" class="moderation" value="moderation">
 				Moderation Queue
