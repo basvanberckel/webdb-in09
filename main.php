@@ -24,6 +24,7 @@
     </div>
   </div>
   </a>
+</div>
 <div class='category'>
   <h2>This is a category</h2>
   <a href='#'>
