@@ -1,8 +1,8 @@
 <div id="admin-header">
 	<div class="buttons">
-		<form action="adminpanel.php">
+		<form action="panel.php">
 			<a href="../index.php" id="back">
-				<img src="return.png" height="16" width="16" alt="" />
+				<img src="../images/return.gif" height="16" width="16" alt="" />
 				Back to forums
 			</a>
 			<button type="sumbit" name="page" class="creation" value="forum_creation">
