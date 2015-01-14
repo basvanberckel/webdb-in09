@@ -1,12 +1,40 @@
 <h1>Account Details</h1>
+<?php 
+    include 'dbconfig.php';
+    dbconnect();
+    dbquery("SELECT uid, username, email, password, dob FROM users");
+    
 
- <form method="get">
+    print '<table border="1"';
+    while($row = $results->fetch_array()) {
+        print '<tr>';
+        print '<td>'.$row["uid"].'</td>';
+        print '<td>'.$row["username"].'</td>';
+        print '<td>'.$row["email"].'</td>';
+        print '<td>'.$row["password"].'</td>';
+        print '<td>'.$row["dob"].'</td>';
+        print '</tr>';
+
+    }  
+print '</table>';
+
+// Frees the memory associated with a result
+$results->free();
+// close connection
+$mysqli->close();
+?>
+
+>
+<form method="get">
 
 	<fieldset>
 		<legend>Credentials</legend>
-		<div>Username:</div> <input readonly="readonly" type="text" value="John Doe" name="username"><br>
-		<div>Password:</div> <input readonly="readonly" type="password" value="Password" name="password"><br>
-		<div>E-mail:</div> <input readonly="readonly" type="email" value="john.doe@gmail.com" name="email"><br>
+		<div>Username:</div> 
+        <input readonly="readonly" type="text" value="John Doe" name="username"><br>
+		<div>Password:</div> 
+        <input readonly="readonly" type="password" value="Password" name="password"><br>
+		<div>E-mail:</div> 
+        <input readonly="readonly" type="email" value="john.doe@gmail.com" name="email"><br>
 	</fieldset>
 
 	<fieldset>
