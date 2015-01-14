@@ -17,7 +17,7 @@
       $title = $frow['title'];
       $desc = $frow['description'];
       echo "
-      <a href='/?page=forum&fid=$fid'>
+      <a href='?page=forum&fid=$fid'>
         <div class='forum'>
           <div class='forum-data'>
             <h3>$title</h3>

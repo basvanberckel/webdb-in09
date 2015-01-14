@@ -44,7 +44,7 @@
     $title = $thread['title'];
     $tid = $thread['tid'];
     echo "
-    <a href='/?page=thread&tid=$tid'>
+    <a href='?page=thread&tid=$tid'>
       <div class='thread'>
         <div class='thread-data'>
           <h3>$title</h3>
