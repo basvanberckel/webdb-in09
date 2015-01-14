@@ -1,5 +1,5 @@
 <?php
-define('DBHOST', 'localhost:3306');
+define('DBHOST', 'localhost');
 define('DBNAME', 'forum');
 define('DBUSER', 'forum');
 define('DBPASS', 'yNZfG3ufzuyyZLd6');
