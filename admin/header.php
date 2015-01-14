@@ -1,6 +1,6 @@
 <div id="admin-header">
 	<div class="buttons">
-		<form action="panel.php">
+		<form action="">
 			<a href="../index.php" id="back">
 				<img src="../images/return.gif" height="16" width="16" alt="" />
 				Back to forums
