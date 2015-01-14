@@ -1,6 +1,6 @@
 <?php
   dbconnect();
-  $res = dbquery("SELECT * FROM categories ORDER BY pos;");
+  $res = dbquery("SELECT * FROM categories ORDER BY position;");
   for ($row_no = 0; $row_no < $res->num_rows; $row_no++) {
     $res->data_seek($row_no);
     $row = $res->fetch_assoc();
@@ -9,7 +9,7 @@
     <div class='category'>
       <h2>$title</h2> <hr />
     ";
-    $forumres = dbquery("SELECT * FROM forums WHERE cid=$row_no ORDER BY pos;");
+    $forumres = dbquery("SELECT * FROM forums WHERE cid=$row_no ORDER BY position;");
     for ($frow_no = 0; $frow_no < $forumres->num_rows; $frow_no++) {
       $fres->data_seek($frow_no);
       $frow = $fres->fetch_assoc();
