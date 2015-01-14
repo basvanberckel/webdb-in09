@@ -125,12 +125,7 @@ form div label {
 }
 
 /* Buttons */
-.buttons {
-	height: 33px;
-}
-.buttons #back {
-	border-top-left-radius: 10px;
-}
+
 .buttons a, .buttons button {
     margin:0 3px 0 0;
     background-color: #333333;
