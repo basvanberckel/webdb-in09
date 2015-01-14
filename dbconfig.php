@@ -1,8 +1,8 @@
 <?php
 define('DBHOST', 'in09.webdb.fnwi.uva.nl');
 define('DBNAME', 'forum');
-define('DBUSER', 'forum');
-define('DBPASS', 'yNZfG3ufzuyyZLd6');
+define('DBUSER', 'bas');
+define('DBPASS', 'No-Risk1994');
 
 function dbconnect() {
  global $conn;
