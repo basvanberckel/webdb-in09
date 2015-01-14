@@ -17,8 +17,8 @@
 <body>
   <?php
 	echo '<div id="main">';
-	include('header.php');
-    include($page.'.php');
+	require('header.php');
+    require($page.'.php');
     echo '<br /></div>';    
   ?>
 </body>
