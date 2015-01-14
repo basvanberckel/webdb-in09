@@ -1,12 +1,12 @@
 <?php
-define('DBHOST', 'in09.webdb.fnwi.uva.nl');
+define('DBHOST', 'localhost');
 define('DBNAME', 'forum');
-define('DBUSER', 'bas');
-define('DBPASS', 'No-Risk1994');
+define('DBUSER', 'forum');
+define('DBPASS', 'yNZfG3ufzuyyZLd6');
 
 function dbconnect() {
  global $conn;
- $conn = new mysqli(DBHOST, DBNAME, DBUSER, DBPASS);
+ $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
  if ($conn->connect_errno) {
     echo "Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error;
   }
