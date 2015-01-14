@@ -141,6 +141,11 @@ form div label {
     padding:5px 10px 6px 7px;
 }
 
+#login .buttons button {
+	font-size: 80%;
+	padding: 4px 4px 4px 4px;
+}
+
 button:focus {
 	outline:0 !important;
 }
