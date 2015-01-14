@@ -1,13 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title>New Discussion</title>
-    <link rel="stylesheet" type="text/css" href="styles/all.css" />
-</head>
-
-<body>
-
-    
 	<h1>New Discussion</h1>
 		
 	<!-- Temporary link to profile, should link to thread page -->
@@ -15,12 +5,8 @@
          <fieldset>
              
              <div>Discussion Title:</div> <input placeholder="Title" type="text" name="title"><br>
-             <div>Comment:</div> <textarea placeholder="Comment" type="text" name="comment"></textarea>
+             <div>Comment:</div> <textarea placeholder="Comment" type="text" name="comment" cols=50 rows=10></textarea>
              <div><input type="submit" value="Post Discussion"></div>
 	  			
          </fieldset>
     </form>
-     
-</body>
-
-</html>
