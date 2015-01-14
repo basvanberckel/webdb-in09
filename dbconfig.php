@@ -14,10 +14,11 @@ function dbconnect() {
 
 function dbquery($query) {
   global $conn;
-  $conn->query($query);
-  if (!$conn->query($query)) {
+  $res = $conn->query($query);
+  if (!$res) {
     echo "MySQL Query failed: {$conn->error}";
   }
+  return $res;
 } 
 ?>
 
