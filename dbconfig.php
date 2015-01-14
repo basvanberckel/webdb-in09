@@ -12,10 +12,10 @@ function dbconnect() {
   }
 }
 
-function dbquery($query) {
+function dbquery($query, $check=true) {
   global $conn;
   $res = $conn->query($query);
-  if (!$res) {
+  if ($check && !$res) {
     echo "MySQL Query failed: {$conn->error}";
   }
   return $res;
