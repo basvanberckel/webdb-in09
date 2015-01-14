@@ -1,10 +1,4 @@
-<?php
-    include 'header.php';
-?>
-
 <h1>Account Details</h1>
-    <link rel="stylesheet" type="text/css" href="styles/all.css">
-
 
  <form method="get">
 
@@ -40,7 +34,3 @@
 		document.getElementsByTagName("INPUT")[3].setAttribute("readonly", "readonly");
 	}
 </script>
-
-<?php
-    include 'footer.php';
-?>
