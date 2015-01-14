@@ -1,5 +1,5 @@
 <?php
-define('DBHOST', 'localhost');
+define('DBHOST', 'in09.webdb.fnwi.uva.nl');
 define('DBNAME', 'forum');
 define('DBUSER', 'forum');
 define('DBPASS', 'yNZfG3ufzuyyZLd6');
