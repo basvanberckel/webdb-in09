@@ -9,7 +9,7 @@
     <div class='category'>
       <h2>$title</h2> <hr />
     ";
-    $fres = dbquery("SELECT * FROM forums WHERE cid=$row_no ORDER BY position;");
+    $fres = dbquery("SELECT * FROM forums WHERE parent_id=$row_no AND main=1 ORDER BY position;");
     for ($frow_no = 0; $frow_no < $fres->num_rows; $frow_no++) {
       $fres->data_seek($frow_no);
       $frow = $fres->fetch_assoc();

@@ -1,12 +1,12 @@
 <?php
   dbconnect();
   if(!$_GET['fid']) {
+    echo "<div class='error-box'>This forum does not exist</div>";
     require('main.php');
     die;
   }
   $fid = $_GET['fid'];
-  $res = dbquery("IF EXISTS ( SELECT 1 FROM forums WHERE fid=$fid) 
-                    SELECT * FROM forums WHERE fid=$fid;", false);
+  $res = dbquery("SELECT * FROM forums WHERE parent_id=$fid AND main=0;", false);
   if($res) {
     echo "<h2>Subforums</h2>";
     for($row_no = 0; $row_no < $res->num_rows; $row_no++) {
