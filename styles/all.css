@@ -2,7 +2,12 @@
 html {
 	font-family: 'Slabo 27px', serif;
 	color: #AAAAAA;
-  background-color:#222222;
+  	background-color:#222222;
+}
+
+body {
+	margin: 0;
+	padding: 0;
 }
 
 a {
@@ -27,6 +32,7 @@ hr {
 	background-color: #FF0000;
 	height: 0px;
 }
+
 /* header */
 #header {
 	width: 100%;
@@ -34,9 +40,13 @@ hr {
 	background-color: #000000;
 }
 
+#logo {
+	width: 400px;
+	height: 100%;
+	float: left;
+}
+
 #logo img {
-	width: 619px;
-	height: 150px;
 	float: left;
 }
 
@@ -72,4 +82,73 @@ hr {
 #footer a {
 	margin-left: 50px;
 	margin-right: 50px;
+}
+
+.center {
+	width: 100%;
+	text-align: center;
+}
+
+/* information */
+#information {
+    width: 100%;
+    background-color: pink;
+}
+
+#information p, h2 {
+    padding: 5px;   
+}
+
+/* registration */
+input.txt {
+  color: #000000;
+  background-color: lightgrey;
+  border: 1px inset #000000;
+  width: 200px;
+}
+
+form div {
+  clear: left;
+  margin: 0;
+  padding: 0;
+  padding-top: 0.6em;
+}
+
+form div label {
+  float: left;
+  width: 25%;
+}
+
+/* registration and agreement */
+.submit-buttons {
+    text-align: center;
+}
+
+/* Buttons */
+
+.buttons a, .buttons button {
+    margin:0 3px 0 0;
+    background-color: #333333;
+	border: 0px solid #FFAA00;
+	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    font-size:100%;
+    line-height:130%;
+	text-align: center;
+    text-decoration:none;
+    font-weight:bold;
+    color:#FFAA00;
+    cursor:pointer;
+    padding:5px 10px 6px 7px;
+}
+
+button:focus {
+	outline:0 !important;
+}
+
+button:hover, .buttons a:hover{
+	background-color: #393939;
+    color:#FFCC00;
+}
+.buttons button:active, .buttons a:active {
+    color:#FFFFFF;
 }
