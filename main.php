@@ -21,7 +21,7 @@
         <div class='forum'>
           <div class='forum-data'>
             <h3>$title</h3>
-            <p>$description</p>
+            <p>$desc</p>
           </div>
           <div class='forum-activity'>
             <p>Posts:</p>
