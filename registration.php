@@ -46,10 +46,11 @@
 
 			<label for="captcha"><b>Confirmation code:</b></label>
 		</fieldset>
-
-		<fieldset class="submit-buttons">
-			<input type="submit" value="Submit">
-			<input type="reset" value="Reset">
-		</fieldset>
+	<div class="center">
+		<div class="buttons inner">
+			<button type="submit" value="Submit">Submit</button>
+			<button type="reset" value="Reset">Reset</button>
+		</div>
+	</div>
 	</form>
 </div>

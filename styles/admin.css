@@ -37,7 +37,6 @@ html {
 
 .buttons {
 	height: 33px;
-
 }
 .buttons #back {
 	border-top-left-radius: 10px;
@@ -63,7 +62,7 @@ button:focus {
 	outline:0 !important;
 }
 
-/* STANDARD */button:hover, .buttons a:hover{
+button:hover, .buttons a:hover{
 	background-color: #393939;
     color:#FFCC00;
 }
