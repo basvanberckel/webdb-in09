@@ -1,7 +1,7 @@
 <h1>Account Details</h1>
 <?php 
     include 'dbconfig.php';
-    dbconnect();
+    
     dbquery("SELECT uid, username, email, password, dob FROM users");
     
 
