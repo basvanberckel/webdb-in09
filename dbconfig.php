@@ -1,24 +1,35 @@
 <?php
-define('DBHOST', 'localhost');
+define('DBHOST', 'mysql:localhost');
 define('DBNAME', 'forum');
 define('DBUSER', 'forum');
 define('DBPASS', 'yNZfG3ufzuyyZLd6');
 
 function dbconnect() {
- global $conn;
- $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
- if ($conn->connect_errno) {
-    echo "Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error;
+  global $conn;
+  try {
+    $conn = new PDO(DBHOST.';'.DBNAME, DBUSER, DBPASS);
+  }
+  $conn = null;
+  catch(PDOException $e) {
+    echo "Failed to connect to MySQL: {$e->getMessage()}.";
   }
 }
 
-function dbquery($query, $check=true) {
+function dbquery($query, array $kwargs=array(), $exec=true) {
   global $conn;
-  $res = $conn->query($query);
-  if ($check && !$res) {
-    echo "MySQL Query failed: {$conn->error}";
+  try {
+    $stmt = $conn->prepare($query);
+    foreach($kwargs as $key => $value) {
+      $stmt->bindParam(':'.$key, $value);
+    }
+    if ($exec) {
+      $stmt->execute();
+    }
   }
-  return $res;
+  catch(PDOException $e) {
+    echo "MySQL Query failed: {$e->getMessage()}";
+  }
+  return $stmt;
 } 
 ?>
 

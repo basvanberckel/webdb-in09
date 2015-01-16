@@ -6,12 +6,17 @@
     die;
   }
   $fid = $_GET['fid'];
-  $res = dbquery("SELECT * FROM forums WHERE parent_id=$fid AND main=0;");
-  if($res->num_rows != 0) {
-    echo "<h2>Subforums</h2>";
-    for($row_no = 1; $row_no <= $res->num_rows; $row_no++) {
-      $res->data_seek($row_no);
-      $forum = $res->fetch_assoc();
+  $res = dbquery("SELECT * FROM forums WHERE fid=:fid", array('fid', $fid));
+  if($res->rowCount == 0) {
+    echo "<div class='error-box'>This forum does not exist</div>";
+    require('main.php');
+    die;
+  }
+  $res = dbquery("SELECT * FROM forums WHERE parent_id=:fid AND main=0;",
+                  array('fid', $fid));
+  if($res->rowCount != 0) {
+    echo "<div class='subforums'><h2>Subforums</h2>";
+    while($row = $res->fetch(FETCH_ASSOC)) {
       $fid = $forum['fid'];
       $title = $forum['title'];
       $desc = $forum['description'];
@@ -30,17 +35,16 @@
       </a>
       ";
     }
-    echo "<hr />";
+    echo "</div><hr />";
   }
-  echo "<h2>Threads</h2>";
-  $res = dbquery("SELECT * FROM threads WHERE fid=$fid ORDER BY lastpost_date;");
-  if($res->num_rows == 0) {
-    echo "<h1>No topics in this forum yet</h1>";
+  echo "<div class='threads'><h2>Threads</h2>";
+  $res = dbquery("SELECT * FROM threads WHERE fid=:fid ORDER BY lastpost_date;",
+                  array('fid', $fid);
+  if($res->rowCount == 0) {
+    echo "<h3>No topics in this forum yet</h3>";
     die();
   }
-  for($row_no = 1; $row_no <= $res->num_rows; $row_no++) {
-    $res->data_seek($row_no);
-    $thread = $res->fetch_assoc();
+  while($row = $res->fetch(FETCH_ASSOC)) {
     $title = $thread['title'];
     $tid = $thread['tid'];
     echo "
@@ -53,4 +57,5 @@
     </a>
     ";
   }
+  echo "</div>";
 ?>
