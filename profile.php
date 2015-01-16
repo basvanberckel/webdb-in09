@@ -2,11 +2,11 @@
 <?php 
     include 'dbconfig.php';
     dbconnect();
-    dbquery("SELECT uid, username, email, password, dob FROM users");
+    $res = dbquery("SELECT uid, username, email, password, dob FROM users");
     
 
     print '<table border="1"';
-    while($row = $results->fetch_array()) {
+    while($row = $res->fetch_array()) {
         print '<tr>';
         print '<td>'.$row["uid"].'</td>';
         print '<td>'.$row["username"].'</td>';
@@ -15,7 +15,7 @@
         print '<td>'.$row["dob"].'</td>';
         print '</tr>';
     }
-    
+
 print '</table>';
 
 // Frees the memory associated with a result
