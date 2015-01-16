@@ -19,7 +19,7 @@
 print '</table>';
 
 // Frees the memory associated with a result
-$results->free();
+$res->free();
 // close connection
 $mysqli->close();
 ?>
