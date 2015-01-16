@@ -1,7 +1,7 @@
 <h1>Account Details</h1>
 <?php 
     include 'dbconfig.php';
-    
+    dbconnect();
     dbquery("SELECT uid, username, email, password, dob FROM users");
     
 
@@ -14,8 +14,8 @@
         print '<td>'.$row["password"].'</td>';
         print '<td>'.$row["dob"].'</td>';
         print '</tr>';
-
-    }  
+    }
+    
 print '</table>';
 
 // Frees the memory associated with a result
