@@ -6,17 +6,29 @@
     die;
   }
   $fid = $_GET['fid'];
-  $res = dbquery("SELECT * FROM forums WHERE parent_id=$fid AND main=0;");
-  if($res->num_rows != 0) {
-    echo "<h2>Subforums</h2>";
-    for($row_no = 1; $row_no <= $res->num_rows; $row_no++) {
-      $res->data_seek($row_no);
-      $forum = $res->fetch_assoc();
-      $fid = $forum['fid'];
-      $title = $forum['title'];
-      $desc = $forum['description'];
+  $res = dbquery("SELECT COUNT(*) FROM forums 
+                  WHERE fid=:fid", 
+                  array('fid'=>$fid));
+  if($res->fetchColumn() == 0) {
+    echo "<div class='error-box'>This forum does not exist</div>";
+    require('main.php');
+    die;
+  }
+  $res = dbquery("SELECT COUNT(*) FROM forums 
+                  WHERE parent_id=:fid AND main=0;",
+                  array('fid'=>$fid));
+  if($res->fetchColumn() != 0) {
+    $res = dbquery("SELECT * FROM forums 
+                    WHERE parent_id=:fid AND main=0;",
+                    array('fid'=>$fid));
+                    
+    echo "<div class='subforums'><h2>Subforums</h2>";
+    while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+      $sfid = $row['fid'];
+      $title = $row['title'];
+      $desc = $row['description'];
       echo "
-      <a href='?page=forum&fid=$fid'>
+      <a href='?page=forum&fid=$sfid'>
         <div class='forum'>
           <div class='forum-data'>
             <h3>$title</h3>
@@ -30,19 +42,24 @@
       </a>
       ";
     }
-    echo "<hr />";
+    echo "</div><hr />";
   }
-  echo "<h2>Threads</h2>";
-  $res = dbquery("SELECT * FROM threads WHERE fid=$fid ORDER BY lastpost_date;");
-  if($res->num_rows == 0) {
-    echo "<h1>No topics in this forum yet</h1>";
+  echo "<div class='threads'><h2>Threads</h2>";
+  $res = dbquery("SELECT COUNT(*) FROM threads 
+                  WHERE fid=:fid 
+                  ORDER BY lastpost_date;",
+                  array('fid'=>$fid));
+  if($res->fetchColumn() == 0) {
+    echo "<h3>No topics in this forum yet</h3>";
     die();
   }
-  for($row_no = 1; $row_no <= $res->num_rows; $row_no++) {
-    $res->data_seek($row_no);
-    $thread = $res->fetch_assoc();
-    $title = $thread['title'];
-    $tid = $thread['tid'];
+  $res = dbquery("SELECT * FROM threads 
+                  WHERE fid=:fid 
+                  ORDER BY lastpost_date;",
+                  array('fid'=>$fid));
+  while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+    $title = $row['title'];
+    $tid = $row['tid'];
     echo "
     <a href='?page=thread&tid=$tid'>
       <div class='thread'>
@@ -53,4 +70,5 @@
     </a>
     ";
   }
+  echo "</div>";
 ?>
