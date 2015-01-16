@@ -6,10 +6,10 @@
     die;
   }
   $fid = $_GET['fid'];
-  $res = dbquery("SELECT * FROM forums WHERE parent_id=$fid AND main=0;", false);
-  if($res) {
+  $res = dbquery("SELECT * FROM forums WHERE parent_id=$fid AND main=0;");
+  if($res->num_rows != 0) {
     echo "<h2>Subforums</h2>";
-    for($row_no = 0; $row_no < $res->num_rows; $row_no++) {
+    for($row_no = 1; $row_no <= $res->num_rows; $row_no++) {
       $res->data_seek($row_no);
       $forum = $res->fetch_assoc();
       $fid = $forum['fid'];
@@ -34,11 +34,11 @@
   }
   echo "<h2>Threads</h2>";
   $res = dbquery("SELECT * FROM threads WHERE fid=$fid ORDER BY lastpost_date;");
-  if(!$res) {
+  if($res->num_rows == 0) {
     echo "<h1>No topics in this forum yet</h1>";
     die();
   }
-  for($row_no = 0; $row_no < $res->num_rows; $row_no++) {
+  for($row_no = 1; $row_no <= $res->num_rows; $row_no++) {
     $res->data_seek($row_no);
     $thread = $res->fetch_assoc();
     $title = $thread['title'];

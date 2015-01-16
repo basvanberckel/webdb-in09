@@ -8,7 +8,7 @@
     $cid = $row['cid'];
     echo "
     <div class='category'>
-      <h2>$title</h2> <hr />
+      <h2>$title</h2>
     ";
     $fres = dbquery("SELECT * FROM forums WHERE parent_id=$cid AND main=1 ORDER BY position;");
     for ($frow_no = 0; $frow_no < $fres->num_rows; $frow_no++) {
