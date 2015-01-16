@@ -16,10 +16,10 @@
                   array('fid', $fid));
   if($res->rowCount != 0) {
     echo "<div class='subforums'><h2>Subforums</h2>";
-    while($row = $res->fetch(FETCH_ASSOC)) {
-      $fid = $forum['fid'];
-      $title = $forum['title'];
-      $desc = $forum['description'];
+    while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+      $fid = $row['fid'];
+      $title = $row['title'];
+      $desc = $row['description'];
       echo "
       <a href='?page=forum&fid=$fid'>
         <div class='forum'>
@@ -44,9 +44,9 @@
     echo "<h3>No topics in this forum yet</h3>";
     die();
   }
-  while($row = $res->fetch(FETCH_ASSOC)) {
-    $title = $thread['title'];
-    $tid = $thread['tid'];
+  while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+    $title = $row['title'];
+    $tid = $row['tid'];
     echo "
     <a href='?page=thread&tid=$tid'>
       <div class='thread'>
