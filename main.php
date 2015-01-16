@@ -9,6 +9,7 @@
       <h2>$title</h2>
     ";
     $fres = dbquery("SELECT * FROM forums WHERE parent_id=$cid AND main=1 ORDER BY position;");
+    var_dump($fres);
     while($frow = $res->fetch(PDO::FETCH_ASSOC)) {
       $fid = $frow['fid'];
       $title = $frow['title'];

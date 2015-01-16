@@ -39,7 +39,7 @@
   }
   echo "<div class='threads'><h2>Threads</h2>";
   $res = dbquery("SELECT * FROM threads WHERE fid=:fid ORDER BY lastpost_date;",
-                  array('fid', $fid);
+                  array('fid', $fid));
   if($res->rowCount == 0) {
     echo "<h3>No topics in this forum yet</h3>";
     die();
