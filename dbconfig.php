@@ -9,7 +9,6 @@ function dbconnect() {
   try {
     $conn = new PDO(DBHOST.';'.DBNAME, DBUSER, DBPASS);
   }
-  $conn = null;
   catch(PDOException $e) {
     echo "Failed to connect to MySQL: {$e->getMessage()}.";
   }
