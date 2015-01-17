@@ -142,8 +142,8 @@ if(isset($_POST['username'])) {
 		</fieldset>
 	<div class="center">
 		<div class="buttons">
-			<button type="submit" value="Submit" >Submit</button>
-			<button type="reset" value="Reset">Reset</button>
+			<button type="submit" class="small" value="Submit" >Submit</button>
+			<button type="reset" class="small" value="Reset">Reset</button>
 		</div>
 	</div>
 	</form>
