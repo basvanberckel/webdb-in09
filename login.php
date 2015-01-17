@@ -10,7 +10,7 @@ if(isset($_GET['logout'])){
 }
 
 /* er is net ingelogd */
-if(isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])){
+if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])){
   dbconnect();
   $res = dbquery("SELECT * FROM users 
                   WHERE username=:username",
@@ -40,6 +40,7 @@ else { ?>
 <input type="password" name="password" /> <br />
 <a href="#">Forgot password?</a><br />
 <a href="index.php?page=registration">Register</a>
+<input type="hidden" name="login" value="1" />
 <div class="buttons">
 	<button type="submit" value="submit">Submit</button>
 </div>

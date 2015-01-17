@@ -20,7 +20,7 @@ function dbquery($query, array $kwargs=array(), $exec=true) {
   try {
     $stmt = $conn->prepare($query);
     foreach($kwargs as $key => $value) {
-      $stmt->bindParam(':'.$key, $value);
+      $stmt->bindValue(':'.$key, $value);
     }
     if ($exec) {
       $stmt->execute();
