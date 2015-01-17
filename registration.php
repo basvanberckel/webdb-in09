@@ -1,5 +1,27 @@
-<div id="regsitration">
-	<form>
+<?php
+if(isset($_POST['username'])) {
+  dbconnect();
+  $passwd = $_POST['password'];
+  $hash = password_hash($passwd, PASSWORD_DEFAULT);
+  var_dump(array('username'=>$_POST['username'],
+                        'email'=>$_POST['email'],
+                        'passwd'=>$hash));
+  $res = dbquery("INSERT INTO users (username, email, passwd)
+                  VALUES (:username, :email, :passwd);",
+                  array('username'=>$_POST['username'],
+                        'email'=>$_POST['email'],
+                        'passwd'=>$hash));
+  var_dump($res);
+  if($res) {
+    echo "registration successful!";
+  } else {
+    echo "registration failed!";
+  }
+  
+} else { ?>
+
+<div id="registration">
+	<form method="POST">
 		<fieldset>
 			<legend>Registration</legend>
 			<div>
@@ -48,9 +70,10 @@
 		</fieldset>
 	<div class="center">
 		<div class="buttons">
-			<button type="submit" value="Submit">Submit</button>
+			<button type="submit" value="Submit" >Submit</button>
 			<button type="reset" value="Reset">Reset</button>
 		</div>
 	</div>
 	</form>
 </div>
+<?php } ?>
