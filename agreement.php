@@ -15,8 +15,8 @@
 
         <div class="center">
             <div class="buttons">
-                <button type="button" class="agreement">I agree to these terms</button>
-                <button type="button" class="agreement">I do not agree to these terms</button>
+                <button type="button" class="agreement" onclick="location.href=''">I agree to these terms</button>
+                <button type="button" class="agreement" onclick="location.href=''">I do not agree to these terms</button>
             </div>
         </div>
     </form>
