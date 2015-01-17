@@ -167,7 +167,6 @@ select {
     color:#FFAA00;
     cursor:pointer;
     padding: 5px;
-    width: 80px;
 }
 
 #login .buttons button {
@@ -177,6 +176,10 @@ select {
 
 button:focus {
 	outline:0 !important;
+}
+
+.small {
+    width: 80px;   
 }
 
 .agreement {
