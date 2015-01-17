@@ -16,7 +16,6 @@ if(isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['user
                   WHERE username=:username",
                   array('username'=>$_POST['username']));
   $user = $res->fetchObject();
-  var_dump($user);
   if($user && password_verify($_POST['password'], $user->passwd)) {
     $_SESSION['user'] = $user;
   } else {
