@@ -101,22 +101,44 @@ hr {
 
 /* registration */
 input.txt {
-  color: #000000;
-  background-color: lightgrey;
-  border: 1px inset #000000;
-  width: 200px;
+    color: #000000;
+    background-color: lightgrey;
+    border: none;
+    width: 200px;
 }
 
 form div {
-  clear: left;
-  margin: 0;
-  padding: 0;
-  padding-top: 0.6em;
+    clear: left;
+    margin: 0;
+    padding: 0;
+    padding-top: 0.6em;
 }
 
 form div label {
-  float: left;
-  width: 25%;
+    float: left;
+    width: 25%;
+}
+
+fieldset {
+    border: none;
+    margin-bottom: 20px;
+}
+
+legend {
+    display: block;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    margin-left: -14px;
+    color: #FFAA00;
+    background-color: #111111;
+    padding: 5px;
+    padding-right: 23px;
+    width: 100%;
+}
+
+#registration {
+    background-color: #333333;
+    padding-bottom: 15px;
 }
 
 /* registration and agreement */
@@ -124,11 +146,17 @@ form div label {
     text-align: center;
 }
 
+select {
+    background-color: lightgrey;
+    width: auto;
+    border: none;
+}
+
 /* Buttons */
 
 .buttons a, .buttons button {
     margin:0 3px 0 0;
-    background-color: #333333;
+    background-color: #111111;
 	border: 0px solid #FFAA00;
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
     font-size:100%;
@@ -151,8 +179,8 @@ button:focus {
 }
 
 button:hover, .buttons a:hover{
-	background-color: #393939;
-    color:#FFCC00;
+	background-color: #222222;
+    color: #FFCC00;
 }
 .buttons button:active, .buttons a:active {
     color:#FFFFFF;
