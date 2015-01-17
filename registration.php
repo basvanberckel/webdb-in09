@@ -2,10 +2,7 @@
 if(isset($_POST['username'])) {
   dbconnect();
   $passwd = $_POST['password'];
-  $hash = password_hash($passwd, PASSWORD_DEFAULT);
-  var_dump(array('username'=>$_POST['username'],
-                        'email'=>$_POST['email'],
-                        'passwd'=>$hash));
+  $hash = password_hash($passwd, PASSWORD_DEFAULT)
   $res = dbquery("INSERT INTO users (username, email, passwd)
                   VALUES (:username, :email, :passwd);",
                   array('username'=>$_POST['username'],
