@@ -16,6 +16,7 @@
     }
 
 print '</table>';
+?>
 
 <form method="get">
 
