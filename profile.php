@@ -16,13 +16,6 @@
     }
 
 print '</table>';
-
-// Frees the memory associated with a result
-$res->free();
-// close connection
-$mysqli->close();
-?>
-
 >
 <form method="get">
 
