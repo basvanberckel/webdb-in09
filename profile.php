@@ -1,5 +1,6 @@
 <h1>Account Details</h1>
-<?php 
+<?php
+    dbconnect();
     $res = dbquery("SELECT uid, username, email, password, dob FROM users");
     
 
