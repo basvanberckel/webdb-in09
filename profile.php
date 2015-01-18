@@ -1,9 +1,8 @@
 <h1>Account Details</h1>
 <?php
     dbconnect();
-    $res = dbquery("SELECT uid, username, email, password, dob FROM users");
+    $res = dbquery("SELECT * FROM users");
     
-
     print '<table border="1"';
     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
         print '<tr>';
