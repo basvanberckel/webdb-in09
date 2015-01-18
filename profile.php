@@ -5,7 +5,7 @@
     
 
     print '<table border="1"';
-    while($row = $res->fetch_array()) {
+    while($row = $res->fetch(PDO::FETCH_ASSOC)) {
         print '<tr>';
         print '<td>'.$row["uid"].'</td>';
         print '<td>'.$row["username"].'</td>';
