@@ -3,7 +3,7 @@
     $res = dbquery("INSERT INTO `forum`.`posts` (title, comment)
                     VALUES (:title :comment)",
                     array('title'=>$_POST['title'],
-                        'comment'=>$_POST['comment']));
+                        'comment'=>$_POST['content']));
 
 ?>
 <h1>New Discussion</h1>
