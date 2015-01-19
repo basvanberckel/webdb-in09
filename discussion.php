@@ -9,7 +9,7 @@
 <h1>New Discussion</h1>
 
 <!-- Temporary link to profile, should link to thread page -->
-<form action="index.php" method="post">
+<form method="post">
 <fieldset>
              
     <div>Discussion Title:</div> <input type="text" name="title"><br>
