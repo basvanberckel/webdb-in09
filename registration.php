@@ -4,6 +4,7 @@ if(isset($_POST['username'])) {
     $passwd = $_POST['password'];
     $hash = password_hash($passwd, PASSWORD_DEFAULT);
     $email = $_POST['email'];
+    $username = $_POST['username'];
     $res = dbquery("INSERT INTO users (username, email, passwd)
         VALUES (:username, :email, :passwd);",
         array('username'=>$_POST['username'],
@@ -12,18 +13,12 @@ if(isset($_POST['username'])) {
     
     if($res) {
         echo "Thank you for registering. A verification e-mail has been sent to " . $email . ". If you haven't received an email within a few seconds, then please check your spam folder. Otherwise contact the admin for further assistance.";
-        userConfirmation($username, $email);
-    } 
-    else {
-        echo "Registration has failed, please try again.";
-    }
-    
-    function userConfirmation($username, $email) {
-        $subject = "Duke's Herald - E-mail verification";
         
+        $to = $email;
+        $subject = "Duke's Herald - E-mail verification";
+        $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "From: admin@dukesherald.com \r\n";
         $headers .= "Reply-To: admin@dukesherald.com \r\n";
-        $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";
         
         $message = "
@@ -43,9 +38,12 @@ if(isset($_POST['username'])) {
         ";
         
         mail($email, $subject, $message, $headers);
-    }
-  
-} else { ?>
+    } 
+    else {
+        echo "Registration has failed, please try again.";
+    }  
+} 
+else { ?>
 
 <div id="registration">
 	<form method="POST">
