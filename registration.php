@@ -37,7 +37,7 @@ if(isset($_POST['username'])) {
         </html>
         ";
         
-        mail($email, $subject, $message, $headers);
+        mail($to, $subject, $message, $headers);
     } 
     else {
         echo "Registration has failed, please try again.";
