@@ -1,4 +1,5 @@
 <?php
+    dbconnect();
     $res = dbquery("INSERT INTO posts (title, comment)
                     VALUES (:title :comment");
  
