@@ -1,19 +1,14 @@
 <?php
     dbconnect();
     $res = dbquery("INSERT INTO posts (title, comment)
-                    VALUES (:title :comment");
+                    VALUES (:title :comment)");
  
-    if($res) {
-        echo "post successful!";
-    } 
-    else {
-        echo "post failed!";
-    }
+
 ?>
 <h1>New Discussion</h1>
 
 <!-- Temporary link to profile, should link to thread page -->
-<form action="forum.php" method="post">
+<form action="index.php" method="post">
 <fieldset>
              
     <div>Discussion Title:</div> <input type="text" name="title"><br>
