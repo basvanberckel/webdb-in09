@@ -1,8 +1,9 @@
 <?php
     dbconnect();
-    $res = dbquery("INSERT INTO posts (title, comment)
-                    VALUES (:title :comment)");
- 
+    $res = dbquery("INSERT INTO `forum`.`posts` (title, comment)
+                    VALUES (:title :comment)",
+                    array('title'=>$_POST['title'],
+                        'comment'=>$_POST['comment']));
 
 ?>
 <h1>New Discussion</h1>
