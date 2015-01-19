@@ -29,6 +29,16 @@
 							SET closed = $closed, locked = $locked, moderated = $moderated
 							WHERE fid = $fid;");
 		}
+		elseif($submit == 'Delete') {
+			$res = dbquery("DELETE FROM forums
+							WHERE fid = $fid;");
+		}
+		elseif($submit == 'Move') {
+			$pos = $_POST['pos'];
+			$res = dbquery("UPDATE forums
+							SET position = $pos
+							WHERE fid = $fid;");
+		}
 	}
 	
 	$res = dbquery("SELECT * FROM categories 
