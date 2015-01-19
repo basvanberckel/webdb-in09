@@ -69,3 +69,17 @@ button:hover, .buttons a:hover{
 .buttons button:active, .buttons a:active {
     color:#FFFFFF;
 }
+
+/* Management */
+
+.subforum {
+	margin-left:10px;
+	border-top:1px solid #888888;
+	border-bottom:1px solid #888888;
+	border-left:1px solid #888888;
+}
+
+.mngbtns {
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
