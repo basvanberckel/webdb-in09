@@ -74,10 +74,7 @@ button:hover, .buttons a:hover{
 /* Management */
 
 .subforum {
-	margin-left:15px;
-	border-top:1px solid #888888;
-	border-bottom:1px solid #888888;
-	border-left:1px solid #888888;
+	margin-left: 3%;
 }
 
 .mngbtns {
@@ -87,9 +84,9 @@ button:hover, .buttons a:hover{
 
 .options {
 	word-spacing: 15px;
-	margin-left: 15px;
+	margin-left: 2%;
 }
 .suboptions {
+	margin-left: 5%;
 	word-spacing: 15px;
-	margin-left: 30px;
 }
