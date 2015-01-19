@@ -13,7 +13,7 @@ if ($_POST) {
 <fieldset>
              
     <div>Discussion Title:</div> <input type="text" name="title"><br>
-    <div>Comment:</div>div> <textarea type="text" name="comment" cols=50 rows=10></textarea>
+    <div>Comment:</div> <textarea type="text" name="comment" cols=50 rows=10></textarea>
     <div><input type="submit" value="Post Discussion"></div>
 	  			
 </fieldset>
