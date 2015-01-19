@@ -15,9 +15,9 @@
 
         <div class="center">
             <div class="buttons">
-                <button type="button" class="agreement" onclick="location.href=''">I agree to these terms</button>
-                <button type="button" class="agreement" onclick="location.href=''">I do not agree to these terms</button>
-            </div>
+                <button type="button" class="agreement" onclick="location.href='index.php?page=registration'">I agree to these terms</button>
+                <button type="button" class="agreement" onclick="location.href='index.php'">I do not agree to these terms</button>
+            </div> 
         </div>
     </form>
 </div>
