@@ -22,7 +22,8 @@ html {
 /*	border-top: 1px solid #454545;*/
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	padding-left: 5%;
+	padding-left: 4%;
+	padding-right: 4%;
 	padding-bottom: 2%;
 	padding-top: 2%;
 	margin-top: 1px;
@@ -74,7 +75,6 @@ button:hover, .buttons a:hover{
 
 .subforum {
 	margin-left:15px;
-	margin-bottom: 10px;
 	border-top:1px solid #888888;
 	border-bottom:1px solid #888888;
 	border-left:1px solid #888888;
@@ -83,4 +83,13 @@ button:hover, .buttons a:hover{
 .mngbtns {
 	margin-top: -10px;
 	margin-bottom: 5px;
+}
+
+.options {
+	word-spacing: 15px;
+	margin-left: 15px;
+}
+.suboptions {
+	word-spacing: 15px;
+	margin-left: 30px;
 }

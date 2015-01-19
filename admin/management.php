@@ -25,22 +25,17 @@
 			} else {
 				$moderated = 0;
 			}
+			$pos = $_POST['pos'];
 			$res = dbquery("UPDATE forums
-							SET closed = $closed, locked = $locked, moderated = $moderated
+							SET closed = $closed, locked = $locked, moderated = $moderated, position = $pos
 							WHERE fid = $fid;");
 		}
 		elseif($submit == 'Delete') {
 			$res = dbquery("DELETE FROM forums
 							WHERE fid = $fid;");
 		}
-		elseif($submit == 'Move') {
-			$pos = $_POST['pos'];
-			$res = dbquery("UPDATE forums
-							SET position = $pos
-							WHERE fid = $fid;");
-		}
 	}
-	
+
 	$res = dbquery("SELECT * FROM categories 
 					ORDER BY position;");
 	while($row = $res->fetch(PDO::FETCH_ASSOC)) {
@@ -81,24 +76,24 @@
 						</div>
 					</div>
 					<form method='post'>
-						<input type='hidden' name='fid' value=$fid />
-						Closed:<input type='checkbox' name='closed' value='Yes' $closed />
-						Locked:<input type='checkbox' name='locked' value='Yes' $locked />
-						Moderated:<input type='checkbox' name='moderated' value='Yes' $moderated />
-							
-						<div class='buttons mngbtns'>
-							
-							<button type='submit' name='submit' id='submit' value='Submit'>
-								Submit
-							</button>
-						
-							<button type='submit' name='submit' id='delete' value='Delete'>
-								Delete
-							</button>
-							<button type='submit' name='submit' id='move' value='Move'>
-								Move to position:
-							</button>
-							<input type='text' name='pos' id='pos' value=$pos />
+						<div class='options'>
+							<input type='hidden' name='fid' value=$fid />
+							Closed:<input type='checkbox' name='closed' value='Yes' $closed />
+							Locked:<input type='checkbox' name='locked' value='Yes' $locked />
+							Moderated:<input type='checkbox' name='moderated' value='Yes' $moderated />
+							Position: <input type='text' name='pos' id='pos' value=$pos />
+
+							<div class='buttons mngbtns'>
+
+								<button type='submit' name='submit' id='submit' value='Submit'>
+									Submit
+								</button>
+
+								<button type='submit' name='submit' id='delete' value='Delete'>
+									Delete
+								</button>
+
+							</div>
 						</div>
 					</form>
 				   ";
@@ -106,9 +101,22 @@
 							  WHERE parent_id=$fid AND main=0
 							  ORDER BY position;");
 			while($sfrow = $sfres->fetch(PDO::FETCH_ASSOC)) {
+				$closed = '';
+				$locked = '';
+				$moderated = '';
+				if($sfrow['closed'] == 1) {
+					$closed = 'checked';
+				}
+				if($sfrow['locked'] == 1) {
+					$locked = 'checked';
+				}
+				if($sfrow['moderated'] == 1) {
+					$moderated = 'checked';
+				}
 				$fid = $sfrow['fid'];
 				$title = $sfrow['title'];
 				$desc = $sfrow['description'];
+				$pos = $sfrow['position'];
 				echo   "<div class='forum subforum'>
 							<div class='forum-data'>
 								<h3>$title</h3>
@@ -119,6 +127,27 @@
 								<p>Topics:</p>
 							</div>
 						</div>
+						<form method='post'>
+							<div class='suboptions'>
+								<input type='hidden' name='fid' value=$fid />
+								Closed:<input type='checkbox' name='closed' value='Yes' $closed />
+								Locked:<input type='checkbox' name='locked' value='Yes' $locked />
+								Moderated:<input type='checkbox' name='moderated' value='Yes' $moderated />
+								Position: <input type='text' name='pos' id='pos' value=$pos />
+
+								<div class='buttons mngbtns'>
+
+									<button type='submit' name='submit' id='submit' value='Submit'>
+										Submit
+									</button>
+
+									<button type='submit' name='submit' id='delete' value='Delete'>
+										Delete
+									</button>
+
+								</div>
+							</div>
+						</form>
 					   ";
 
 			}
