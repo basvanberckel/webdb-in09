@@ -9,7 +9,6 @@
         print '<td>'.$row["uid"].'</td>';
         print '<td>'.$row["username"].'</td>';
         print '<td>'.$row["email"].'</td>';
-        print '<td>'.$row["password"].'</td>';
         print '<td>'.$row["dob"].'</td>';
         print '</tr>';
     }
