@@ -5,9 +5,10 @@ if ($_POST) {
     $content = $_POST['content'];
     $res = dbquery("INSERT INTO posts (pid, uid, title, content, date, tid, approved)
                     VALUES ( , , 'dbtest', 'blablabla', CURRENT_TIMESTAMP, , )");
-}
+
 if ($res) {
     print "Post succesful!";
+}
 }
 ?>
 <h1>New Discussion</h1>
