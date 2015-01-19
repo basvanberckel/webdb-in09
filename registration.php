@@ -1,18 +1,49 @@
 <?php
 if(isset($_POST['username'])) {
-  dbconnect();
-  $passwd = $_POST['password'];
-  $hash = password_hash($passwd, PASSWORD_DEFAULT);
-  $res = dbquery("INSERT INTO users (username, email, passwd)
-                  VALUES (:username, :email, :passwd);",
-                  array('username'=>$_POST['username'],
-                        'email'=>$_POST['email'],
-                        'passwd'=>$hash));
-  if($res) {
-    echo "registration successful!";
-  } else {
-    echo "registration failed!";
-  }
+    dbconnect();
+    $passwd = $_POST['password'];
+    $hash = password_hash($passwd, PASSWORD_DEFAULT);
+    $email = $_POST['email'];
+    $res = dbquery("INSERT INTO users (username, email, passwd)
+        VALUES (:username, :email, :passwd);",
+        array('username'=>$_POST['username'],
+                 'email'=>$_POST['email'],
+                'passwd'=>$hash));
+    
+    if($res) {
+        echo "Thank you for registering. A verification e-mail has been sent to " . $email . ". If you haven't received an email within a few seconds, then please check your spam folder. Otherwise contact the admin for further assistance.";
+        userConfirmation($username, $email);
+    } 
+    else {
+        echo "Registration has failed, please try again.";
+    }
+    
+    function userConfirmation($username, $email) {
+        $subject = "Duke's Herald - E-mail verification";
+        
+        $headers .= "From: admin@dukesherald.com \r\n";
+        $headers .= "Reply-To: admin@dukesherald.com \r\n";
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";
+        
+        $message = "
+        <html>
+        <head>
+        <title>E-mail verification></title>
+        </head>
+        <body>
+        <div>
+        <h1>E-mail verification</h1>
+        <div>
+        <p>Hello  . $username .  click <a href='#'>here</a> to verify your Duke's Herald account.</p>
+        </div>
+        </div>
+        </body>
+        </html>
+        ";
+        
+        mail($email, $subject, $message, $headers);
+    }
   
 } else { ?>
 
