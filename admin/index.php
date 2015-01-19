@@ -14,7 +14,7 @@
     }
     if (!is_file($page.'.php') || !is_readable($page.'.php')) {
       $page = '../404';
-    }
+    }	
    ?>
 </head>
 <body>

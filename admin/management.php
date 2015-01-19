@@ -5,7 +5,7 @@
 
 	if(isset($_POST['submit'])) {
 		$submit = $_POST['submit'];
-		$fid = $_POST['fid'];
+		$fid    = $_POST['fid'];
 		/* This sets the closed, locked, and moderated values to the ones that were
 		 * filled in
 		 */
@@ -40,7 +40,7 @@
 					ORDER BY position;");
 	while($row = $res->fetch(PDO::FETCH_ASSOC)) {
 		$title = $row['title'];
-		$cid = $row['cid'];
+		$cid   = $row['cid'];
 		echo "
 			<div class='category'>
 			<h2>$title</h2>
@@ -49,8 +49,8 @@
 						 WHERE parent_id=$cid AND main=1
 						 ORDER BY position;");
 		while($frow = $fres->fetch(PDO::FETCH_ASSOC)) {
-			$closed = '';
-			$locked = '';
+			$closed    = '';
+			$locked    = '';
 			$moderated = '';
 			if($frow['closed'] == 1) {
 				$closed = 'checked';
@@ -61,10 +61,10 @@
 			if($frow['moderated'] == 1) {
 				$moderated = 'checked';
 			}
-			$fid = $frow['fid'];
+			$fid   = $frow['fid'];
 			$title = $frow['title'];
-			$desc = $frow['description'];
-			$pos = $frow['position'];
+			$desc  = $frow['description'];
+			$pos   = $frow['position'];
 			echo   "<div class='forum'>
 						<div class='forum-data'>
 							<h3>$title</h3>
