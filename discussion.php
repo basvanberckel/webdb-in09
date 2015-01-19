@@ -8,6 +8,7 @@ if ($_POST) {
 }
 if ($res) {
     print "Post succesful!";
+}
 ?>
 <h1>New Discussion</h1>
 
