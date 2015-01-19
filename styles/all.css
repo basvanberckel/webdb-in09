@@ -194,3 +194,20 @@ button:hover, .buttons a:hover{
 .buttons button:active, .buttons a:active {
     color:#FFFFFF;
 }
+
+/* span shit in registration test */
+
+#registration .required { 
+    float: right;
+    font-size: 12px;
+    color: #FFAA00;
+}
+
+#registration .correct {
+    color: #FFAA00;
+    font-size: 12px;
+}
+
+#registration .error {
+    color: #FFAA00;   
+}
