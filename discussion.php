@@ -8,6 +8,7 @@ if(!($_SESSION['login'] && $_SESSION['user']->role > 0)) {
 $db = dbconnect();
   
 if ($_POST) {
+  $newThread = false;
   $tid = $_POST['tid'];
   $uid = $_SESSION['user']->uid;
   $title = strip_tags($_POST['title']);
@@ -19,23 +20,23 @@ if ($_POST) {
                   array("uid"=>$uid, "title"=>$title,
                         "content"=>$content, "date"=>$date, 
                         "tid"=>$tid, "approved"=>$approved));
-  var_dump($tid);
   $pid = $db->lastInsertId();
   
   if ($res && $tid == "" && array_key_exists('fid', $_POST)) {
+    $newThread = true;
     $fid = $_POST['fid'];
     $res = dbquery("INSERT INTO threads 
                     (uid, title, pid, date, fid, lastpost_uid, lastpost_date, approved, posts)
-                    VALUES (:uid, :title, :pid, :date, :fid, :uid, :date, :approved, 1);",
+                    VALUES (:uid, :title, :pid, :date, :fid, :uid, :date, :approved, 0);",
                     array("uid"=>$uid, "title"=>$title,
                           "pid"=>$pid, "date"=>$date,
                           "fid"=>$fid, "approved"=>$approved));
     $tid = $db->lastInsertId();
     dbquery("UPDATE posts SET tid=:tid WHERE pid=:pid;", array("tid"=>$tid,"pid"=>$pid));
   }
-  var_dump($tid);
   if ($res) {
-      echo "Post succesful! View your post <a href='?page=thread&tid=$tid#p$pid'>here</a>";
+      echo "Post successful! View your post <a href='?page=thread&tid=$tid#p$pid'>here</a>";
+      updateStats($tid, $uid, $date, $newThread);
   } else {
     echo "Something went wrong";
   }

@@ -29,7 +29,7 @@
       $title = $row['title'];
       $desc = $row['description'];
       $posts = $row['posts'];
-      $topics = $row['topics'];
+      $threads = $row['threads'];
       echo "
       <a href='?page=forum&fid=$sfid'>
         <div class='forum'>
@@ -39,7 +39,7 @@
           </div>
           <div class='forum-activity'>
             <p>Posts: $posts</p>
-            <p>Topics: $topics</p>
+            <p>Topics: $threads</p>
           </div>
         </div>
       </a>

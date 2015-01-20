@@ -25,6 +25,7 @@ function dbquery($query, array $kwargs=array(), $exec=true) {
     }
     if ($exec) {
       if (!$stmt->execute()) {
+        var_dump($stmt->errorInfo());
         return false;
       }
     }
