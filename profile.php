@@ -1,30 +1,21 @@
 <h1>Account Details</h1>
-<?php 
-    include 'dbconfig.php';
+<?php
     dbconnect();
-    $res = dbquery("SELECT uid, username, email, password, dob FROM users");
+    $res = dbquery("SELECT * FROM users");
     
-
     print '<table border="1"';
-    while($row = $res->fetch_array()) {
+    while($row = $res->fetch(PDO::FETCH_ASSOC)) {
         print '<tr>';
         print '<td>'.$row["uid"].'</td>';
         print '<td>'.$row["username"].'</td>';
         print '<td>'.$row["email"].'</td>';
-        print '<td>'.$row["password"].'</td>';
         print '<td>'.$row["dob"].'</td>';
         print '</tr>';
     }
 
 print '</table>';
-
-// Frees the memory associated with a result
-$res->free();
-// close connection
-$mysqli->close();
 ?>
 
->
 <form method="get">
 
 	<fieldset>

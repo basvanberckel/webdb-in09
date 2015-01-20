@@ -39,7 +39,7 @@ else { ?>
 <input type="text" name="username" /> <br />
 <input type="password" name="password" /> <br />
 <a href="#">Forgot password?</a><br />
-<a href="index.php?page=registration">Register</a>
+<a href="index.php?page=agreement">Register</a>
 <input type="hidden" name="login" value="1" />
 <div class="buttons">
 	<button type="submit" value="submit">Submit</button>

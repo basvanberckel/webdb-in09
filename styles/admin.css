@@ -22,7 +22,8 @@ html {
 /*	border-top: 1px solid #454545;*/
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	padding-left: 5%;
+	padding-left: 4%;
+	padding-right: 4%;
 	padding-bottom: 2%;
 	padding-top: 2%;
 	margin-top: 1px;
@@ -68,4 +69,24 @@ button:hover, .buttons a:hover{
 }
 .buttons button:active, .buttons a:active {
     color:#FFFFFF;
+}
+
+/* Management */
+
+.subforum {
+	margin-left: 3%;
+}
+
+.mngbtns {
+	margin-top: -10px;
+	margin-bottom: 5px;
+}
+
+.options {
+	word-spacing: 15px;
+	margin-left: 2%;
+}
+.suboptions {
+	margin-left: 5%;
+	word-spacing: 15px;
 }
