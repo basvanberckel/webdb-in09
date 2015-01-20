@@ -3,14 +3,16 @@
 <?php
 
 /* er is net uitgelogd */
-if(isset($_GET['logout'])){
+if(array_key_exists('logout', $_GET)){
 
 	session_destroy();
 	
 }
 
 /* er is net ingelogd */
-if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])){
+if(array_key_exists('login', $_POST) && array_key_exists('username', $_POST) && 
+   array_key_exists('password', $_POST) && 
+   !empty($_POST['username']) && !empty($_POST['password'])) {
   dbconnect();
   $res = dbquery("SELECT * FROM users 
                   WHERE username=:username",
@@ -18,20 +20,24 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
   $user = $res->fetchObject();
   if($user && password_verify($_POST['password'], $user->passwd)) {
     $_SESSION['user'] = $user;
+    $_SESSION['login'] = true;
   } else {
     echo "Wrong username or password.";
   }
 }
 
 /* er is ingelogd */
-if(isset($_SESSION['user'])){
+if(array_key_exists('user', $_SESSION) && $_SESSION['login']){
 
 	echo '<br /><br />Welcome <b>' . $_SESSION['user']->username . '</b>!<br /><br />';
 	echo '<a href="?logout=0">Log uit</a>';
 
 }
 /* er is niet ingelogd */
-else { ?>
+else { 
+
+$_SESSION['login'] = false;
+?>
 
 <br />
 <form method="post">

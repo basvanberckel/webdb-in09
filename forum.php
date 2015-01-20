@@ -3,7 +3,7 @@
   if(!$_GET['fid']) {
     echo "<div class='error-box'>This forum does not exist</div>";
     require('main.php');
-    die;
+    die();
   }
   $fid = $_GET['fid'];
   $res = dbquery("SELECT COUNT(*) FROM forums 
@@ -20,7 +20,7 @@
   if($res->fetchColumn() != 0) {
     $res = dbquery("SELECT * FROM forums 
                     WHERE parent_id=:fid AND main=0
-                    ORDER BY lastpost_date;",
+                    ORDER BY position;",
                     array('fid'=>$fid));
                     
     echo "<div class='subforums'><h2>Subforums</h2>";

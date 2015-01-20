@@ -13,3 +13,9 @@ function getTopicTitle($tid) {
   return $t['title'];
 }
 
+function getParent($tid) { 
+  $res = dbquery("SELECT fid FROM threads WHERE tid=:tid", array("tid"=>$tid));
+  $t = $res->fetch(PDO::FETCH_ASSOC);
+  return $t['fid'];
+}
+    

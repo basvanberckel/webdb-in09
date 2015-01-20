@@ -3,7 +3,7 @@
   if(!$_GET['tid']) {
     echo "<div class='error-box'>This topic does not exist</div>";
     require('main.php');
-    die;
+    die();
   }
   $tid = $_GET['tid'];
   $res = dbquery("SELECT COUNT(*) FROM threads 
@@ -17,7 +17,7 @@
   $title = getTopicTitle($tid);
   echo "<div id='thread'>
           <div id='title'>
-            <h1>$title</h1>
+            <a href='?page=thread&tid=$tid'><h1>$title</h1></a>
           </div>";
   if (isset($_SESSION['user']) && $_SESSION['user']->role = 10) {
     $res = dbquery("SELECT * FROM posts
@@ -40,7 +40,7 @@
     echo "  
     <div class='post'>
       <div class='post-content'>
-        <h2>$title</h2>
+        <a name='p$pid' href='?page=thread&tid=$tid#p$pid'><h2>$title</h2></a>
         <p>$content</p>
       </div>
       <div class='post-data'>
