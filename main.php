@@ -16,6 +16,8 @@
       $fid = $frow['fid'];
       $title = $frow['title'];
       $desc = $frow['description'];
+      $posts = $frow['posts'];
+      $topics = $frow['topics'];
       echo "<a href='?page=forum&fid=$fid'>
         <div class='forum'>
           <div class='forum-data'>
@@ -23,8 +25,8 @@
             <p>$desc</p>
           </div>
           <div class='forum-activity'>
-            <p>Posts:</p>
-            <p>Topics:</p>
+            <p>Posts: $posts</p>
+            <p>Topics: $topics</p>
           </div>
         </div>
       </a>
