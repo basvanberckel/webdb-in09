@@ -20,7 +20,6 @@
 .forum-activity {
   float:right;
   width:15%;
-  color: #000000;
 }
 
 .forum-data {
@@ -29,7 +28,7 @@
   height:75px;
   padding-left:15px;
   padding-bottom:10px;
-  color: #555555;
+  color: #D8D8D8;
 }
 
 .forum-data h3 {

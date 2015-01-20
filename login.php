@@ -26,7 +26,6 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
 /* er is ingelogd */
 if(isset($_SESSION['user'])){
 
-
 	echo '<br /><br />Welcome <b>' . $_SESSION['user']->username . '</b>!<br /><br />';
 	echo '<a href="?logout=0">Log uit</a>';
 

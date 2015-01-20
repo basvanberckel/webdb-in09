@@ -19,8 +19,8 @@
 
 .forum-activity {
   float:right;
-  width:15%;
-  color: #000000;
+  width:20%;
+  /*color: #000000;*/
 }
 
 .forum-data {
@@ -29,7 +29,7 @@
   height:75px;
   padding-left:15px;
   padding-bottom:10px;
-  color: #555555;
+  color: #D8D8D8;
 }
 
 .forum-data h3 {
@@ -88,11 +88,12 @@
   height:75px;
   padding-left:15px;
   padding-bottom:10px;
-  color: #555555;
+  color: #D8D8D8;
 }
 
 .thread-data h3 {
   color: #FFAA00;
+  margin-bottom:0;
  }
  
 .thread-data h3:hover {
@@ -101,6 +102,22 @@
 
 .thread-data a {
   float:top;
+}
+
+.thread-data p {
+  padding-top:10px;
+  color:#FFAA00;
+}
+
+.thread-activity {
+  width:20%;
+  float:right;
+}
+
+.thread-activity p, span {
+  margin:4px;
+  margin-top:6px;
+  color:#FFAA00;
 }
 
   
