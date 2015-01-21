@@ -7,6 +7,6 @@
 <span class="link"><a href="/admin">Admin panel</a></span>
 <?php } ?>
 
-<span class="link"><a href="about.php">About</a></span>
-<span class="link"><a href="contact.php">Contact</a></span>
+<span class="link"><a href="index.php?page=about">About</a></span>
+<span class="link"><a href="index.php?page=contact">Contact</a></span>
 </div>
