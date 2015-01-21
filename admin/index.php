@@ -3,7 +3,6 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <link rel="stylesheet" type="text/css" href="../styles/all.css">
-  <link rel="stylesheet" type="text/css" href="../styles/main.css">
   <link rel="stylesheet" type="text/css" href="../styles/admin.css">
   <?php
 	require('../dbconfig.php');
@@ -14,7 +13,13 @@
     }
     if (!is_file($page.'.php') || !is_readable($page.'.php')) {
       $page = '../404';
-    }	
+	}
+	elseif ($page == 'management') {
+		echo " <link rel='stylesheet' type='text/css' href='../styles/main.css'>";
+	}
+	elseif ($page == 'moderation') {
+		echo " <link rel='stylesheet' type='text/css' href='../styles/thread.css'>";
+	}
    ?>
 </head>
 <body>
