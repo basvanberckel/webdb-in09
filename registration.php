@@ -18,20 +18,6 @@ if(isset($_POST['username'])) {
     $userLength = strlen($username);
     $pswdLength = strlen($passwd);
     
-    if($userLength >= 6 && $userLength <= 24) {
-        $userError = "";   
-    }
-    else {
-        $userError = "Username is not between 6 and 24 characters.";
-    }
-    
-    if(pswdLength >= 6 && $pswdLEngth <= 40) {
-        $pswdError = "";   
-    }
-    else {
-        $pswdError = "Password is not between 6 and 24 characters.";   
-    }
-    
     if($res) {
         echo "Thank you for registering. A verification e-mail has been sent to " . $email . ". If you haven't received an email within a few seconds, then please check your spam folder. Otherwise contact the admin for further assistance.";
         
