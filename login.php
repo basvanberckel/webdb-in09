@@ -30,7 +30,7 @@ if(array_key_exists('login', $_POST) && array_key_exists('username', $_POST) &&
 /* er is ingelogd */
 if(array_key_exists('user', $_SESSION) && $_SESSION['login']){
 
-	echo '<br /><br />Welcome <b>' . $_SESSION['user']->username . '</b>!<br /><br />';
+	echo '<br /><br />Welcome <b><a href="?page=profile&uid=' . $_SESSION['user']->uid .'">' . $_SESSION['user']->username . '</a></b>!<br /><br />';
 	echo '<a href="?logout=0">Log uit</a>';
 
 }
