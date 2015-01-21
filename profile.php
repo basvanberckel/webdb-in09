@@ -15,7 +15,7 @@
 
 print '</table>';
 ?>
-
+<div>
 <form method="get">
 
 	<fieldset>
@@ -34,6 +34,7 @@ print '</table>';
 	</fieldset>
 
 </form> 
+</div>
 
 <button onclick="edit()">Edit</button>
 <button onclick="save()">Save</button>
