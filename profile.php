@@ -15,25 +15,44 @@
 
 //print '</table>';
 ?>
-<div>
-<form method="get">
+<div id="Account Details">
+	<form method="POST">
+		<fieldset>
+			<legend>Credentials</legend>
+			<div>
+				<label for="username"><b>Username:</b></label>
+				<input type="text" name="username" id="username" class="txt"/>
+			</div>
 
-	<fieldset>
-		<legend>Credentials</legend>
-		<div>Username:</div> 
-        <input readonly="readonly" type="text" value="John Doe" name="username"><br>
-		<div>Password:</div> 
-        <input readonly="readonly" type="password" value="Password" name="password"><br>
-		<div>E-mail:</div> 
-        <input readonly="readonly" type="email" value="john.doe@gmail.com" name="email"><br>
-	</fieldset>
+			<div>
+				<label for="email"><b>E-mail address:</b></label>
+				<input type="text" name="email" id="email" class="txt"/>
+			</div>
 
-	<fieldset>
-		<legend>Settings</legend>
-		<div>Date of birth:</div> <input readonly="readonly" type="text" value="01-01-1970" name="birthdate"><br>
-	</fieldset>
+			<div>
+				<label for="password"><b>Password:</b></label>
+				<input type="password" name="password" id="password" class="txt"/>
+			</div>
+                
+            <div>
+                <label for="dob"><b>Date of birth:</b></label>
+                <input type="date" name="dob" id="dob" max="2015-01-31" min="1900-01-01" class="txt"/>
+            </div>
 
-</form> 
+            <div>
+                <label for="sex"><b>Sex:</b></label>
+				<input type="radio" name="sex" value="man" checked>Male
+				<input type="radio" name="sex" value="vrouw" >Female
+            </div> 
+		</fieldset>
+
+	<div class="center">
+		<div class="buttons">
+			<button type="submit" class="small" value="Submit" >Submit</button>
+			<button type="reset" class="small" value="Reset">Reset</button>
+		</div>
+	</div>
+	</form>
 </div>
 
 <button onclick="edit()">Edit</button>
