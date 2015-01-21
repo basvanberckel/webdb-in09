@@ -3,19 +3,19 @@
     dbconnect();
     $res = dbquery("SELECT * FROM users");
     
-    print '<table border="1"';
-    while($row = $res->fetch(PDO::FETCH_ASSOC)) {
-        print '<tr>';
-        print '<td>'.$row["uid"].'</td>';
-        print '<td>'.$row["username"].'</td>';
-        print '<td>'.$row["email"].'</td>';
-        print '<td>'.$row["dob"].'</td>';
-        print '</tr>';
-    }
+    //print '<table border="1"';
+    //while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+    //    print '<tr>';
+    //    print '<td>'.$row["uid"].'</td>';
+    //    print '<td>'.$row["username"].'</td>';
+    //    print '<td>'.$row["email"].'</td>';
+    //    print '<td>'.$row["dob"].'</td>';
+    //    print '</tr>';
+    //}
 
-print '</table>';
+//print '</table>';
 ?>
-
+<div>
 <form method="get">
 
 	<fieldset>
@@ -34,6 +34,7 @@ print '</table>';
 	</fieldset>
 
 </form> 
+</div>
 
 <button onclick="edit()">Edit</button>
 <button onclick="save()">Save</button>
