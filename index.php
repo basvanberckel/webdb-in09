@@ -7,6 +7,7 @@
   <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
   <?php
     require('dbconfig.php');
+    require('functions.php');
     
     if (isset($_GET['page'])) {
       $page = $_GET['page'];

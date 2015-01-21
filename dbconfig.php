@@ -13,6 +13,7 @@ function dbconnect() {
   catch(PDOException $e) {
     echo "Failed to connect to MySQL: {$e->getMessage()}.";
   }
+  return $conn;
 }
 
 function dbquery($query, array $kwargs=array(), $exec=true) {
@@ -23,7 +24,10 @@ function dbquery($query, array $kwargs=array(), $exec=true) {
       $stmt->bindValue(':'.$key, $value);
     }
     if ($exec) {
-      $stmt->execute();
+      if (!$stmt->execute()) {
+        var_dump($stmt->errorInfo());
+        return false;
+      }
     }
   }
   catch(PDOException $e) {

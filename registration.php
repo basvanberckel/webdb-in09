@@ -15,6 +15,23 @@ if(isset($_POST['username'])) {
                    'dob'=>$_POST['dob'],
                    'sex'=>$_POST['sex']));
     
+    $userLength = strlen($username);
+    $pswdLength = strlen($passwd);
+    
+    if($userLength >= 6 && $userLength <= 24) {
+        $userError = "";   
+    }
+    else {
+        $userError = "Username is not between 6 and 24 characters.";
+    }
+    
+    if(pswdLength >= 6 && $pswdLEngth <= 40) {
+        $pswdError = "";   
+    }
+    else {
+        $pswdError = "Password is not between 6 and 24 characters.";   
+    }
+    
     if($res) {
         echo "Thank you for registering. A verification e-mail has been sent to " . $email . ". If you haven't received an email within a few seconds, then please check your spam folder. Otherwise contact the admin for further assistance.";
         
@@ -28,13 +45,13 @@ if(isset($_POST['username'])) {
         $message = "
         <html>
         <head>
-        <title>E-mail verification></title>
+        <title>E-mail Verification></title>
         </head>
         <body>
         <div>
-        <h1>E-mail verification</h1>
+        <h1>E-mail Verification</h1>
         <div>
-        <p>Hello  . $username .  click <a href='#'>here</a> to verify your Duke's Herald account.</p>
+        <p>Hello $username, thank you for registering! Click <a href='#'>here</a> to verify your Duke's Herald account.</p>
         </div>
         </div>
         </body>
