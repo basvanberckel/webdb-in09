@@ -43,7 +43,7 @@
 				</div>";
 		echo " <form method='post'>
 					<input type='hidden' name='pid' value=$pid>
-					<div class='buttons'>
+					<div class='buttons mngbtns options'>
 						<button type='submit' name='submit' id='approve' value='Approve'>
 							Approve
 						</button>
