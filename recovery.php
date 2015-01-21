@@ -15,7 +15,6 @@ if(isset($_POST['email'])) {
         return substr(str_shuffle($characters), 0, $length);
     }
     $password = newPassword(10);
-    echo $password;
     $to = $email;
     $subject = "Duke's Herald - Account Recovery";
     $headers = "MIME-Version: 1.0" . "\r\n";
@@ -32,8 +31,8 @@ if(isset($_POST['email'])) {
     <div>
     <h1>Account Recovery</h1>
     <div>
-    <p>Hello  $username, someone has requested the login info of your Duke's Herald account. <br /> <br />
-    Username: $username
+    <p>Hello  $username, someone has requested the login info of your Duke's Herald account.<br /> <br />
+    Username: $username<br /><br />
     Password: $password</p>
     </div>
     </div>
