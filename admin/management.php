@@ -61,18 +61,20 @@
 			if($frow['moderated'] == 1) {
 				$moderated = 'checked';
 			}
-			$fid   = $frow['fid'];
-			$title = $frow['title'];
-			$desc  = $frow['description'];
-			$pos   = $frow['position'];
+			$fid     = $frow['fid'];
+			$title   = $frow['title'];
+			$desc    = $frow['description'];
+			$pos     = $frow['position'];
+			$posts   = $frow['posts'];
+			$threads = $frow['threads'];
 			echo   "<div class='forum'>
 						<div class='forum-data'>
 							<h3>$title</h3>
 							<p>$desc</p>
 						</div>
 						<div class='forum-activity'>
-							<p>Posts:</p>
-							<p>Topics:</p>
+							<p>Posts: $posts</p>
+							<p>Topics: $threads</p>
 						</div>
 					</div>
 					<form method='post'>
@@ -113,18 +115,20 @@
 				if($sfrow['moderated'] == 1) {
 					$moderated = 'checked';
 				}
-				$fid = $sfrow['fid'];
-				$title = $sfrow['title'];
-				$desc = $sfrow['description'];
-				$pos = $sfrow['position'];
+				$fid     = $sfrow['fid'];
+				$title   = $sfrow['title'];
+				$desc    = $sfrow['description'];
+				$pos     = $sfrow['position'];
+				$posts   = $sfrow['posts'];
+				$threads = $sfrow['threads'];
 				echo   "<div class='forum subforum'>
 							<div class='forum-data'>
 								<h3>$title</h3>
 								<p>$desc</p>
 							</div>
 							<div class='forum-activity'>
-								<p>Posts:</p>
-								<p>Topics:</p>
+								<p>Posts: $posts</p>
+								<p>Topics: $threads</p>
 							</div>
 						</div>
 						<form method='post'>
