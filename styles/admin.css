@@ -1,11 +1,11 @@
 body {
 	padding: 0;
 	margin: 0;
-	background-color: #454545;
 }
 
 html {
 	color: #AAAAAA;
+	background-color: #454545;
 }
 
 #main {
@@ -37,7 +37,7 @@ html {
 }
 
 .buttons {
-	height: 33px;
+	height: 31px;
 }
 .buttons #back {
 	border-top-left-radius: 10px;
@@ -59,9 +59,11 @@ html {
     padding:5px 10px 6px 7px;
 }
 
+/*
 button:focus {
 	outline:0 !important;
 }
+*/
 
 button:hover, .buttons a:hover{
 	background-color: #393939;

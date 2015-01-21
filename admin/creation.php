@@ -1,30 +1,37 @@
 <div class="content" id="creation-form">
 
 	<?php
-		if(isset($_POST['forum-title']) && isset($_POST['forum-desc'])
-		&& isset($_POST['forum-mod'])   && isset($_POST['forum-cat']) 
-		&& isset($_POST['forum-pos'])) {
-			$title = $_POST['forum-title']
-			$desc = $_POST['forum-desc']
-			$mod = $_POST['forum-mod']
-			$cat = $_POST['forum-cat']
-			$pos = $_POST['forum-pos']
+		dbconnect();
+		
+		if(isset($_POST['submit'])) {
+			$title = $_POST['title'];
+			$descr = $_POST['descr'];
+			if($_POST['mod'] == "Yes") {
+				$moderated = 1;
+			} else {
+				$moderated = 0;
+			}
+			$cid = $_POST['cat'];
+			$pos = $_POST['pos'];
+			
+			$res = dbquery("INSERT INTO forums (title, description, moderated, parent_id, main, position)
+							VALUES ($title, $descr, $moderated, $cid, 1, $pos);");
 		}
-	?>
+	 ?>
 	Create a new forum:
 	<br /><br />
 	<form method="post">
 		<div class="form-header">Forum title:</div>
-		<input type="text" name="forum-title" id="forum-title">
+		<input type="text" name="title" id="forum-title">
 		<div class="form-header">Forum description:</div>
-		<textarea name="forum-descr" id="forum-descr" cols="50" rows="10"></textarea>
+		<textarea name="forum-descr" id="descr" cols="50" rows="10"></textarea>
 		<br /><br />
 		<span class="form-header">Forum moderation:</span>
-		<input type="checkbox" name="forum-mod" id="forum-mod" value="1">
-		<div class="form-header">Forum category:</div>
-		<input type="text" name="forum-cat" id="forum-cat">
+		<input type="checkbox" name="mod" id="forum-mod" value="Yes">
+		<div class="form-header">Forum category id:</div>
+		<input type="text" name="cat" id="forum-cat">
 		<div class="form-header">Forum position:</div>
-		<input type="text" name="forum-pos" id="forum-pos">
+		<input type="text" name="pos" id="forum-pos">
 		<div class="buttons">
 			<button type="submit" name="submit" id="submit">Sumbit</button>
 		</div>
