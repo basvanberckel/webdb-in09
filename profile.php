@@ -15,7 +15,7 @@
 
 //print '</table>';
 ?>
-<div id="Account Details">
+<div id="profile">
 	<form method="POST">
 		<fieldset>
 			<legend>Credentials</legend>
