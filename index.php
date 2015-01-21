@@ -2,6 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+  <title>The Duke's Herald</title>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <link rel="stylesheet" type="text/css" href="styles/all.css">
   <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
