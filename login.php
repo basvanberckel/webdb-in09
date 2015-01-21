@@ -6,6 +6,7 @@
 if(array_key_exists('logout', $_GET)){
 
 	session_destroy();
+  $_SESSION['login'] = false;
 	
 }
 
