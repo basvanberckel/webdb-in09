@@ -1,39 +1,48 @@
 <?php
+if(isset($_POST['email'])) {
     dbconnect();
-    /* get username and password connect to entered email 
-    
-    $email = $_POST['email'];
-    
+    $email=$_POST['email']; 
+    $res = dbquery("SELECT username, passwd FROM users 
+                  WHERE email='$email';");
+    while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+        $username = $row['username'];
+        $passwd = $row['passwd'];
+    }
+
+    if($_POST['email']) {
+    echo $username . $passwd;
     $to = $email;
-        $subject = "Duke's Herald - Account Recovery";
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "From: admin@dukesherald.com \r\n";
-        $headers .= "Reply-To: admin@dukesherald.com \r\n";
-        $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";
-        
-        $message = "
-        <html>
-        <head>
-        <title>Account Recovery></title>
-        </head>
-        <body>
-        <div>
-        <h1>Account Recovery</h1>
-        <div>
-        <p>Hello  . $username . , someone has requested the login info of your Duke's Herald account. <br /> <br />
-        Username: . $unsername .
-        Password: . $passwd</p>
-        </div>
-        </div>
-        </body>
-        </html>
-        ";
-        
-        mail($to, $subject, $message, $headers);*/
-?>
+    $subject = "Duke's Herald - Account Recovery";
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "From: admin@dukesherald.com \r\n";
+    $headers .= "Reply-To: admin@dukesherald.com \r\n";
+    $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";
+
+    $message = "
+    <html>
+    <head>
+    <title>Account Recovery></title>
+    </head>
+    <body>
+    <div>
+    <h1>Account Recovery</h1>
+    <div>
+    <p>Hello  $username, someone has requested the login info of your Duke's Herald account. <br /> <br />
+    Username: $username
+    Password: $passwd</p>
+    </div>
+    </div>
+    </body>
+    </html>
+    ";
+
+    mail($to, $subject, $message, $headers);
+    }
+}
+else { ?>
 
 <div id="registration">
-    <form>
+    <form method="POST">
         <fieldset>
             <legend>Account Recovery</legend>
             <p>If you have forgotten your username or password, you can enter the e-mail address you used to sign up with below, and we'll then send you your login info. <br /> <br />
@@ -57,3 +66,4 @@
         </fieldset>
     </form>
 </div>
+<?php } ?>
