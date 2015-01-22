@@ -19,7 +19,7 @@
         if ($_SESSION['user']->uid == $_GET['uid']) {
         
             echo "
-                <div id='profile'>
+                <div class='profile'>
                 <form method='POST'>
                     <fieldset>
                         <legend>Credentials</legend>
@@ -40,30 +40,29 @@
                         </div>
 
                     </fieldset>
-            </div>
+                    </div>
 
-            <div id='profile'>
-                <fieldset>
-                
-                    <legend>Settings</legend>
+                <div class='profile'>
+                    <fieldset>
+                        <legend>Settings</legend>
                     
-                    <div>
-                        <label for='dob'><b>Date of birth:</b></label>
-                        <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value=$dob />
-                    </div>
+                        <div>
+                            <label for='dob'><b>Date of birth:</b></label>
+                            <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value=$dob />
+                        </div>
+
+                        <div>
+                            <label for='sex'><b>Sex:</b></label>
+                            <input type='radio' name='sex' value='man' checked>Male
+                            <input type='radio' name='sex' value='vrouw' >Female
+                        </div> 
+
+                        <div>
+                            <label for='bio'><b>Bio:</b></label>
+                            <textarea type='text' name='bio' id='bio' class='txt' value=$bio></textarea>
+                        </div>
                     
-                    <div>
-                        <label for='sex'><b>Sex:</b></label>
-                        <input type='radio' name='sex' value='man' checked>Male
-                        <input type='radio' name='sex' value='vrouw' >Female
-                    </div> 
-                    
-                    <div>
-                        <label for='bio'><b>Bio:</b></label>
-                        <textarea type='text' name='bio' id='bio' class='txt' value=$bio></textarea>
-                    </div>
-                    
-                </fieldset>
+                    </fieldset>
 
                 <div class='center'>
                     <div class='buttons'>
