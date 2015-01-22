@@ -5,6 +5,7 @@
     
 
     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+        $uid = $_GET['uid'];
         $username = $row['username'];
         $email = $row['email'];
         $dob = $row['dob'];
@@ -13,7 +14,7 @@
         $bio = $row['bio'];
     
     
-        if ($_SESSION['user'] == $_GET['uid']) {
+        if ($_SESSION['user'] == $uid) {
             echo "Dit is een test bericht";
         }
     
