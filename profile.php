@@ -11,11 +11,14 @@
         $password = $row['password'];
         $sex = $row['sex'];
         $bio = $row['bio'];
-        
-    if ($_SESSION['login'] == $_GET['pid'] {
-        echo "Dit is een test bericht";
+    
+        if ($_SESSION['login'] == $_GET['pid'] {
+            echo "Dit is een test bericht";
+        }
     }
-
+        
+        
+    
 ?>
 <div id="profile">
 	<form method="POST">
