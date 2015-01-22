@@ -22,7 +22,7 @@
                 <div class='profile'>
                 <form method='POST'>
                     <fieldset>
-                        <legend>Credentials</legend>
+                        <legend>Settings</legend>
 
                         <div>
                             <label for='username'><b>Username:</b></label>
@@ -38,14 +38,7 @@
                             <label for='password'><b>Password:</b></label>
                             <input type='password' name='password' id='password' class='txt' value=$passwd />
                         </div>
-
-                    </fieldset>
-                    </div>
-
-                <div class='profile'>
-                    <fieldset>
-                        <legend>Settings</legend>
-                    
+                        
                         <div>
                             <label for='dob'><b>Date of birth:</b></label>
                             <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value=$dob />
@@ -69,9 +62,9 @@
                         <button type='submit' class='small' value='Edit'>Edit</button>
                         <button type='reset' class='small' value='Save'>Save</button>
                     </div>
-                </div>
+      
                 </form>
-            </div>
+                </div>
         ";
     }
     }
