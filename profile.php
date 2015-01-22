@@ -24,11 +24,6 @@
                         <legend>Credentials</legend>
 
                         <div>
-                            <label for='avatar'><b>Avatar:</b></label>
-
-                        </div>
-
-                        <div>
                             <label for='username'><b>Username:</b></label>
                             <input type='text' name='username' id='username' class='txt' value=$username/>
                         </div>
