@@ -3,7 +3,8 @@
     dbconnect();
     $uid = $_GET['uid'];
 
-    $res = dbquery("SELECT * FROM users WHERE uid = :uid");
+    $res = dbquery("SELECT * FROM users WHERE uid = :uid",
+                  array('uid'=>$uid));
     
 
     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
