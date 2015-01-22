@@ -18,6 +18,7 @@ if(isset($_POST['username'])) {
     $userLength = strlen($username);
     $pswdLength = strlen($passwd);
     
+    
     if($res) {
         echo "Thank you for registering. A verification e-mail has been sent to " . $email . ". If you haven't received an email within a few seconds, then please check your spam folder. Otherwise contact the admin for further assistance.";
         
@@ -58,7 +59,7 @@ else { ?>
 			<legend>Registration</legend>
 			<div>
 				<label for="username"><b>Username:</b></label>
-				<input type="text" name="username" id="username" class="txt"/>
+				<input type="text" name="username" id="username" class="txt" required/>
                 <span class="error"> * </span> <span class="required">* = required</span>
                 <br>
                 <span class="correct">Must be between 6 <br /> and 24 characters.</span>
@@ -66,19 +67,19 @@ else { ?>
 
 			<div>
 				<label for="email"><b>E-mail address:</b></label>
-				<input type="text" name="email" id="email" class="txt"/>
+				<input type="text" name="email" id="email" class="txt" required/>
                 <span class="error"> * </span>
 			</div>
 
 			<div>
 				<label for="email_confirmation"><b>Confirm your e-mail address:</b></label>
-				<input type="text" name="email_confirmation" id="email_confirmation" class="txt"/>
+				<input type="text" name="email_confirmation" id="email_confirmation" class="txt" required/>
                 <span class="error"> * </span>
 			</div>
 
 			<div>
 				<label for="password"><b>Password:</b></label>
-				<input type="password" name="password" id="password" class="txt"/>
+				<input type="password" name="password" id="password" class="txt" required/>
                 <span class="error"> * </span>
                 <br>
                 <span class="correct">Must be between 6 <br /> and 40 characters.</span>
@@ -86,7 +87,7 @@ else { ?>
 
 			<div>
 				<label for="password_confirmation"><b>Confirm your password:</b></label>
-				<input type="password" name="password_confirmation" id="password_confirmation" class="txt"/>
+				<input type="password" name="password_confirmation" id="password_confirmation" class="txt" required/>
                 <span class="error"> * </span>
 			</div>
                 
@@ -97,7 +98,7 @@ else { ?>
 
             <div>
                 <label for="sex"><b>Sex:</b></label>
-				<input type="radio" name="sex" value="man" checked>Male
+				<input type="radio" name="sex" value="man" >Male
 				<input type="radio" name="sex" value="vrouw" >Female
             </div> 
 		</fieldset>
