@@ -1,4 +1,12 @@
-#profile {
+.profile {
     background-color: #333333;
     padding-bottom: 15px;
+}
+
+textarea.txt {
+    color: #000000;
+    background-color: lightgrey;
+    border: none;
+    width: 400px;
+    height: 300px;
 }

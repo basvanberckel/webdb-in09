@@ -9,8 +9,7 @@ if(isset($_POST['email'])) {
     }
 
     if($_POST['email']) {
-        
-    function newPassword($length) {
+        function newPassword($length) {
         $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%*()_+{}|<>?/.,;[]\=-";
         return substr(str_shuffle($characters), 0, $length);
     }
@@ -41,6 +40,7 @@ if(isset($_POST['email'])) {
     ";
 
     mail($to, $subject, $message, $headers);
+        
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $res = dbquery("UPDATE users SET passwd='$hash' WHERE email='$email'");
     }
@@ -56,7 +56,7 @@ else { ?>
             
             <div>
 				<label for="email"><b>E-mail address:</b></label>
-				<input type="text" name="email" id="email" class="txt"/>
+				<input type="text" name="email" id="email" class="txt" required/>
 			</div>
                 
             <p>To prevent someone's e-mail address being spam this forum requires you to complete this captcha. If you can't read the captcha or if you are visually impaired, please contact the <a href="#">administrator</a>.</p>
