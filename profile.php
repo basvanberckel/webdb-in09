@@ -8,7 +8,7 @@
         $username = $row['username'];
         $email = $row['email'];
         $dob = $row['dob'];
-        $password = $row['password'];
+        $passwd = $row['passwd'];
         $sex = $row['sex'];
         $bio = $row['bio'];
     
