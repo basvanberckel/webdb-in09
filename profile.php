@@ -12,7 +12,7 @@
         $sex = $row['sex'];
         $bio = $row['bio'];
         
-    if ($_SESSION['login'] == $_SESSION['user'] {
+    if ($_SESSION['login'] == $_GET['pid'] {
         echo "Dit is een test bericht";
     }
 
