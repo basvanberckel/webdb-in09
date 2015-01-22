@@ -13,7 +13,7 @@
         $bio = $row['bio'];
     
     
-        if ($_SESSION['login'] == $_GET['uid']) {
+        if ($_SESSION['user'] == $_GET['uid']) {
             echo "Dit is een test bericht";
         }
     
