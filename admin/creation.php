@@ -13,9 +13,14 @@
 			}
 			$cid = $_POST['cat'];
 			$pos = $_POST['pos'];
-			
+			echo "$title, $descr, $moderated, $cid, $pos";
 			$res = dbquery("INSERT INTO forums (title, description, moderated, parent_id, main, position)
-							VALUES ($title, $descr, $moderated, $cid, 1, $pos);");
+							VALUES (:title, :descr, :moderated, :cid, 1, :pos);", 
+							array('title'=>$title,
+								  'descr'=>$descr,
+								  'moderated'=>$moderated,
+								  'cid'=>$cid,
+								  'pos'=>$pos));
 		}
 	 ?>
 	Create a new forum:
@@ -24,7 +29,7 @@
 		<div class="form-header">Forum title:</div>
 		<input type="text" name="title" id="forum-title">
 		<div class="form-header">Forum description:</div>
-		<textarea name="forum-descr" id="descr" cols="50" rows="10"></textarea>
+		<textarea name="descr" id="forum-descr" cols="50" rows="10"></textarea>
 		<br /><br />
 		<span class="form-header">Forum moderation:</span>
 		<input type="checkbox" name="mod" id="forum-mod" value="Yes">
@@ -33,7 +38,7 @@
 		<div class="form-header">Forum position:</div>
 		<input type="text" name="pos" id="forum-pos">
 		<div class="buttons">
-			<button type="submit" name="submit" id="submit">Sumbit</button>
+			<button type="submit" name="submit" id="submit">Submit</button>
 		</div>
 	</form>
 </div>

@@ -26,9 +26,16 @@
 				$moderated = 0;
 			}
 			$pos = $_POST['pos'];
-			$res = dbquery("UPDATE forums
-							SET closed = $closed, locked = $locked, moderated = $moderated, position = $pos
-							WHERE fid = $fid;");
+			if(gettype($pos) != "integer") {
+				echo gettype($pos);
+				echo "You have to enter a valid integer as position.";
+				
+			}
+			else {
+				$res = dbquery("UPDATE forums
+								SET closed = $closed, locked = $locked, moderated = $moderated, position = $pos
+								WHERE fid = $fid;");
+			}
 		}
 		elseif($submit == 'Delete') {
 			$res = dbquery("DELETE FROM forums
