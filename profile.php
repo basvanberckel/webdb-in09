@@ -1,11 +1,12 @@
 <h1>Account Details</h1>
 <?php
     dbconnect();
-    $res = dbquery("SELECT * FROM users WHERE uid = $_GET['uid']");
+    $uid = $_GET['uid'];
+
+    $res = dbquery("SELECT * FROM users WHERE uid = :uid");
     
 
     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
-        $uid = $_GET['uid'];
         $username = $row['username'];
         $email = $row['email'];
         $dob = $row['dob'];
