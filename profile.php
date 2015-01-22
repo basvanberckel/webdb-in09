@@ -33,7 +33,7 @@
             
 			<div>
 				<label for="username"><b>Username:</b></label>
-				<input type="text" name="username" id="username" class="txt" value="<?php echo ?>"/>
+				<input type="text" name="username" id="username" class="txt" value="poep"/>
 			</div>
 
 			<div>
