@@ -3,25 +3,33 @@
     dbconnect();
     $res = dbquery("SELECT * FROM users");
     
-    //print '<table border="1"';
-    //while($row = $res->fetch(PDO::FETCH_ASSOC)) {
-    //    print '<tr>';
-    //    print '<td>'.$row["uid"].'</td>';
-    //    print '<td>'.$row["username"].'</td>';
-    //    print '<td>'.$row["email"].'</td>';
-    //    print '<td>'.$row["dob"].'</td>';
-    //    print '</tr>';
-    //}
 
-//print '</table>';
+    while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+        $username = $row['username'];
+        $email = $row['email'];
+        $dob = $row['dob'];
+        $password = $row['password'];
+        $sex = $row['sex'];
+        $bio = $row['bio'];
+        
+    if ($_SESSION['login'] == $_SESSION['user'] {
+        echo "Dit is een test bericht";
+    }
+
 ?>
 <div id="profile">
 	<form method="POST">
 		<fieldset>
 			<legend>Credentials</legend>
+            
+            <div>
+				<label for="avatar"><b>Avatar:</b></label>
+                
+            </div>
+            
 			<div>
 				<label for="username"><b>Username:</b></label>
-				<input type="text" name="username" id="username" class="txt"/>
+				<input type="text" name="username" id="username" class="txt" value="<?php echo ?>"/>
 			</div>
 
 			<div>
@@ -45,31 +53,22 @@
 				<input type="radio" name="sex" value="vrouw" >Female
             </div> 
 		</fieldset>
-
+</div>
+    
+<div id="profile">
+    <fieldset>
+        <legend>Settings</legend>
+        <div>
+            <label for="bio"><b>Bio:</b></label>
+            <textarea type="text" name="bio" id="bio" class="txt"></textarea>
+        </div>
+    </fieldset>
+    
 	<div class="center">
 		<div class="buttons">
-			<button type="submit" class="small" value="Submit" >Submit</button>
-			<button type="reset" class="small" value="Reset">Reset</button>
+			<button type="submit" class="small" value="Edit">Edit</button>
+			<button type="reset" class="small" value="Save">Save</button>
 		</div>
 	</div>
 	</form>
 </div>
-
-<button onclick="edit()">Edit</button>
-<button onclick="save()">Save</button>
-
-<script>
-	function edit() {
-		document.getElementsByTagName("INPUT")[0].removeAttribute("readonly");
-		document.getElementsByTagName("INPUT")[1].removeAttribute("readonly");
-		document.getElementsByTagName("INPUT")[2].removeAttribute("readonly");
-		document.getElementsByTagName("INPUT")[3].removeAttribute("readonly");
-	}
-
-	function save() {
-		document.getElementsByTagName("INPUT")[0].setAttribute("readonly", "readonly");
-		document.getElementsByTagName("INPUT")[1].setAttribute("readonly", "readonly");
-		document.getElementsByTagName("INPUT")[2].setAttribute("readonly", "readonly");
-		document.getElementsByTagName("INPUT")[3].setAttribute("readonly", "readonly");
-	}
-</script>
