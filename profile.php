@@ -26,39 +26,43 @@
 
                         <div>
                             <label for='username'><b>Username:</b></label>
-                            <input type='text' name='username' id='username' class='txt' value=$username/>
+                            <input type='text' name='username' id='username' class='txt' value=$username />
                         </div>
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            <input type='text' name='email' id='email' class='txt' value=$email/>
+                            <input type='text' name='email' id='email' class='txt' value=$email />
                         </div>
 
                         <div>
                             <label for='password'><b>Password:</b></label>
-                            <input type='password' name='password' id='password' class='txt' value=$passwd/>
+                            <input type='password' name='password' id='password' class='txt' value=$passwd />
                         </div>
 
-                        <div>
-                            <label for='dob'><b>Date of birth:</b></label>
-                            <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value=$dob/>
-                        </div>
-
-                        <div>
-                            <label for='sex'><b>Sex:</b></label>
-                            <input type='radio' name='sex' value='man' checked>Male
-                            <input type='radio' name='sex' value='vrouw' >Female
-                        </div> 
                     </fieldset>
             </div>
 
             <div id='profile'>
                 <fieldset>
+                
                     <legend>Settings</legend>
+                    
+                    <div>
+                        <label for='dob'><b>Date of birth:</b></label>
+                        <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value=$dob />
+                    </div>
+                    
+                    <div>
+                        <label for='sex'><b>Sex:</b></label>
+                        <input type='radio' name='sex' value='man' checked>Male
+                        <input type='radio' name='sex' value='vrouw' >Female
+                    </div> 
+                    
                     <div>
                         <label for='bio'><b>Bio:</b></label>
                         <textarea type='text' name='bio' id='bio' class='txt' value=$bio></textarea>
                     </div>
+                    
                 </fieldset>
 
                 <div class='center'>
