@@ -52,7 +52,7 @@
 
                         <div>
                             <label for='bio'><b>Bio:</b></label>
-                            <textarea type='text' name='bio' id='bio' class='txt' value=$bio></textarea>
+                            <textarea type='text' name='bio' id='bio' class='txt'>$bio</textarea>
                         </div>
                     
                     </fieldset>
