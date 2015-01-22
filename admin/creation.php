@@ -15,7 +15,7 @@
 		$pos = $_POST['pos'];
 		echo "$title, $descr, $moderated, $cid, $pos";
 		if(!(empty($title) || empty($descr) || empty($cid) ||empty($pos))) {
-			if(is_numeric($cid) && is_numeric($pos)) {
+			if(is_numeric($pos)) {
 				$res = dbquery("INSERT INTO forums (title, description, moderated, parent_id, main, position)
 								VALUES (:title, :descr, :moderated, :cid, 1, :pos);", 
 								array('title'=>$title,
@@ -33,8 +33,7 @@
 			echo "You have to fill out the entire form. <br />";
 		}
 	}
-	$res = dbquery("SELECT cid, title
-					FROM categories;");
+	
 	echo "  Create a new forum:
 			<br /><br />
 			<form method='post'>
@@ -46,7 +45,17 @@
 				<span class='form-header'>Forum moderation:</span>
 				<input type='checkbox' name='mod' id='forum-mod' value='Yes'>
 				<div class='form-header'>Forum category:</div>
-				<input type='text' name='cat' id='forum-cat'>
+				<select name='cat' id='forum-cat'>";
+
+	$res = dbquery("SELECT cid, title
+					FROM categories;");
+	while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+		$cid   = $row['cid'];
+		$title = $row['title'];
+		echo "  	<option value=$cid>$title</option>";
+	}
+
+	echo "		</select>
 				<div class='form-header'>Forum position:</div>
 				<input type='text' name='pos' id='forum-pos'>
 				<div class='buttons'>
