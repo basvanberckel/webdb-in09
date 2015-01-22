@@ -67,6 +67,29 @@
                 </div>
         ";
     }
+        else {
+            echo "
+                <div class='profile'>
+                <form method='POST'>
+                    <fieldset>
+                        <legend>Settings</legend>
+
+                        <div>
+                            <label for='username'><b>Username:</b></label>
+                            <input type='text' name='username' id='username' class='txt' value=$username />
+                        </div>
+
+                        <div>
+                            <label for='bio'><b>Bio:</b></label>
+                            <textarea type='text' name='bio' id='bio' class='txt'>$bio</textarea>
+                        </div>
+                    
+                    </fieldset>
+      
+                </form>
+                </div>
+        ";
+        }
     }
     
 ?>
