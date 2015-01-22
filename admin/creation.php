@@ -13,7 +13,6 @@
 		}
 		$cid = $_POST['cat'];
 		$pos = $_POST['pos'];
-		echo "$title, $descr, $moderated, $cid, $pos";
 		if(!(empty($title) || empty($descr) || empty($cid) ||empty($pos))) {
 			if(is_numeric($pos)) {
 				$res = dbquery("INSERT INTO forums (title, description, moderated, parent_id, main, position)
@@ -23,6 +22,9 @@
 									  'moderated'=>$moderated,
 									  'cid'=>$cid,
 									  'pos'=>$pos));
+				if($res) {
+					echo "Forum was succesfully created. <br />";
+				}
 			}
 			else {
 				echo "Position needs to be a number. <br />";
@@ -43,7 +45,8 @@
 				<textarea name='descr' id='forum-descr' cols='50' rows='10'></textarea>
 				<br /><br />
 				<span class='form-header'>Forum moderation:</span>
-				<input type='checkbox' name='mod' id='forum-mod' value='Yes'>
+				<input name='mod' id='forum-mod' class='css-checkbox' type='checkbox' value='Yes' />
+				<label for='forum-mod' name='mod-lbl' class='css-label'></label>
 				<div class='form-header'>Forum category:</div>
 				<select name='cat' id='forum-cat'>";
 

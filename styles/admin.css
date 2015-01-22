@@ -85,19 +85,39 @@ button:hover, .buttons a:hover{
 }
 
 .options {
-	word-spacing: 15px;
+
 	margin-left: 2%;
 }
 .suboptions {
 	margin-left: 5%;
-	word-spacing: 15px;
+
 }
 
-input[type=checkbox]:checked {
-	content: "\2713";
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-	font-size: 15px;
-	color: #f3f3f3;
-	text-align: center;
-    line-height: 15px;
+/* Checkboxes
+ * Images provided by http://www.csscheckbox.com 
+ */
+
+input[type=checkbox].css-checkbox {
+	visibility: hidden;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:20px;
+	height:15px; 
+	display:inline-block;
+	line-height:15px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -15px;
+}
+
+.css-label {
+	width: 100px;
+	background-image:url(http://csscheckbox.com/checkboxes/dark-check-orange.png);
 }
