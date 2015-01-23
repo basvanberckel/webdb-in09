@@ -10,17 +10,17 @@
 		 * filled in
 		 */
 		if($submit == 'Submit') {
-			if($_POST['closed'] == 'Yes') {
+			if(isset($_POST['closed'])) {
 				$closed = 1;
 			} else {
 				$closed = 0;
 			}
-			if($_POST['locked'] == 'Yes') {
+			if(isset($_POST['locked'])) {
 				$locked = 1;
 			} else {
 				$locked = 0;
 			}
-			if($_POST['moderated'] == 'Yes') {
+			if(isset($_POST['moderated'])) {
 				$moderated = 1;
 			} else {
 				$moderated = 0;
