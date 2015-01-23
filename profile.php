@@ -31,19 +31,18 @@
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            <input type='text' name='email' id='email' class='txt' value=$email />
-                            <div class='buttons inline'><button type='button' onclick='editEmail()' readonly='readonly' value='edit'>Edit</button>
+                            <input type='text' name='email' id='email' class='txt' readonly='readonly' value=$email />
+                            <div class='buttons inline'><button type='button' onclick='editEmail()'  value='edit'>Edit</button></div>
                         </div>
 
                         <div>
                             <label for='password'><b>Password:</b></label>
-                            <input type='password' name='password' id='password' class='txt' readonly='readonly' value=$passwd />
                         </div>
                         
                         <div>
                             <label for='dob'><b>Date of birth:</b></label>
                             <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' readonly='readonly' class='txt' value=$dob />
-                            <div class='buttons inline'><button type='button' onclick='editDob()' value='edit'>Edit</button>
+                            <div class='buttons inline'><button type='button' onclick='editDob()' value='edit'>Edit</button></div>
 
                         </div>
 
@@ -51,14 +50,14 @@
                             <label for='sex'><b>Sex:</b></label>
                             <input type='radio' name='sex' value='man' checked>Male
                             <input type='radio' name='sex' value='vrouw' >Female
-                            <div class='buttons inline'><button type='button' onclick='editSex()' value='edit'>Edit</button>
+                            <div class='buttons inline'><button type='button' onclick='editSex()' value='edit'>Edit</button></div>
 
                         </div> 
 
                         <div>
                             <label for='bio'><b>Bio:</b></label>
                             <textarea type='text' name='bio' id='bio' readonly='readonly' class='txt'>$bio</textarea>
-                            <div class='buttons inline'><button type='button' onclick='editBio()' value='edit'>Edit</button>
+                            <div class='buttons inline'><button type='button' onclick='editBio()' value='edit'>Edit</button></div>>
 
                         </div>
                     
@@ -77,12 +76,12 @@
 
                         <div>
                             <label for='username'><b>Username:</b></label>
-                            <input type='text' name='username' id='username' class='txt' value=$username />
+                            <input type='text' name='username' id='username' class='txt' readonly='readonly' value=$username />
                         </div>
 
                         <div>
                             <label for='bio'><b>Bio:</b></label>
-                            <textarea type='text' name='bio' id='bio' class='txt'>$bio</textarea>
+                            <textarea type='text' name='bio' id='bio' readonly='readonly' class='txt'>$bio</textarea>
                         </div>
                     
                     </fieldset>
