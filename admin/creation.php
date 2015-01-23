@@ -6,7 +6,7 @@
 	if(isset($_POST['submit'])) {
 		$title = $_POST['title'];
 		$descr = $_POST['descr'];
-		if($_POST['mod'] == "Yes") {
+		if(isset($_POST['mod'])) {
 			$moderated = 1;
 		} else {
 			$moderated = 0;
