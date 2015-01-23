@@ -49,9 +49,10 @@
 
                         <div>
                             <label for='sex'><b>Sex:</b></label>
-                            if ($sex == m) {echo 'Male'}
-                            else {echo 'Female'}
-
+                            ";
+                            if ($sex == m) {echo 'Male';}
+                            else {echo 'Female';}
+                             echo "
                         </div> 
 
                         <div>
@@ -99,7 +100,7 @@
     function editEmail() {
         var elem = document.getElementById("emailb");
         if (elem.value=="Edit") { 
-            elem.removeAttribute('readonly'); 
+            elem.removeAttribute("readonly", "readonly"); 
             elem.value = "Save";
         }
         else {
@@ -111,7 +112,7 @@
     function editDob() {
         var elem = document.getElementById("dobb");
         if (elem.value=="Edit") { 
-            elem.removeAttribute('readonly'); 
+            elem.removeAttribute("readonly", "readonly"); 
             elem.value = "Save";
         }
         else {
@@ -123,7 +124,7 @@
     function editBio() {
         var elem = document.getElementById("biob");
         if (elem.value=="Edit") { 
-            elem.removeAttribute('readonly'); 
+            elem.removeAttribute("readonly", "readonly"); 
             elem.value = "Save";
         }
         else {
