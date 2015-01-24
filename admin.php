@@ -14,8 +14,8 @@
     } else {
       $page = 'creation';
     }
-    if (!is_file($page.'.php') || !is_readable($page.'.php')) {
-      $page = '404';
+    if (!is_file('admin/'.$page.'.php') || !is_readable('admin/'.$page.'.php')) {
+      $page = '../404';
 	}
 	elseif ($page == 'management') {
 		echo " <link rel='stylesheet' type='text/css' href='../styles/main.css'>";
