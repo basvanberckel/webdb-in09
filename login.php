@@ -19,7 +19,9 @@ if(array_key_exists('login', $_POST) && array_key_exists('username', $_POST) &&
                   WHERE username=:username",
                   array('username'=>$_POST['username']));
   $user = $res->fetchObject();
-  if($user && password_verify($_POST['password'], $user->passwd)) {
+  if($user->verified == 0) {
+    echo "You need to verify your email first";
+  } elseif($user && password_verify($_POST['password'], $user->passwd)) {
     $_SESSION['user'] = $user;
     $_SESSION['login'] = true;
   } else {
