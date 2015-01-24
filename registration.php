@@ -19,6 +19,7 @@ function checkError($error) {
 
 $username = $email = $passwd = $dob = $sex = "";
 $usernameError = $emailError = $passwordError = $dobError = $sexError = "";
+$msg = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     /* TEST USERNAME */
@@ -95,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                    'sex'=>$_POST['sex']));
     
     if($res) {
-        echo "Thank you for registering. A verification e-mail has been sent to " . $email . ". If you haven't received an email within a few seconds, then please check your spam folder. Otherwise contact the admin for further assistance.";
+        $msg = "Thank you for registering, " . $username . ". A verification e-mail has been sent to " . $email . ". If you haven't received an email within a few seconds, then please check your spam folder. Otherwise contact the admin for further assistance.";
         
         $to = $email;
         $subject = "Duke's Herald - E-mail verification";
@@ -113,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div>
         <h1>E-mail Verification</h1>
         <div>
-        <p>Hello $username, thank you for registering! Click <a href='#'>here</a> to verify your Duke's Herald account.</p>
+        <p>Hello $username, thank you for registering! Click <a href='in09.webdb.fnwi.uva.nl/index.php?page=verification&username=".$username."'>here</a> to verify your Duke's Herald account.</p>
         </div>
         </div>
         </body>
@@ -123,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         mail($to, $subject, $message, $headers);
     } 
     else {
-        echo "Registration has failed, please try again.";
+        $msg = "Registration has failed, please try again.";
     }  
     }
 } 
@@ -134,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<form method="POST" action="index.php?page=registration">
 		<fieldset>
 			<legend>Registration</legend>
+            <p><?php echo $msg;?></p>
 			<div>
 				<label for="username"><b>Username:</b></label>
 				<input type="text" name="username" id="username" class="txt"/>
