@@ -30,3 +30,11 @@ function updateStats($tid, $uid, $date, $newThread) {
   }
   dbquery($query, array("fid"=>$fid));
 }
+
+function allow($permission) {
+  $role = $_SESSION['login'] ? $_SESSION['user']->role : 0;
+  $res = dbquery("SELECT role FROM permissions WHERE permission=:permission", 
+                  array("permission"=>$permission));
+  $p = $res->fetch(PDO::FETCH_ASSOC);
+  return ($role >= $p['role']);
+}
