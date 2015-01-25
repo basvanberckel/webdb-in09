@@ -7,5 +7,5 @@
 
 <?php require('login.php') ?>
 
-
+<script src='https://www.google.com/recaptcha/api.js?data-theme=dark'></script>
 </div>
