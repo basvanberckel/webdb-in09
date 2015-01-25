@@ -135,9 +135,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $captchaError = "Please complete the captcha to register.";   
     }
     
-    $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+    $resp=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
     
-    if ($response['success'] == false) {
+    $response = json_decode($response);
+    if ($resp.success == false) {
         $captchaError = "Please complete the captcha to register.";   
     }
     else {
