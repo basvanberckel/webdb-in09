@@ -73,7 +73,7 @@ else {
 
 if (isset($_POST['email']) && $captchaError == "") {
     dbconnect();
-    $email=$_POST['email']; 
+    $email = $_POST['email']; 
     $res = dbquery("SELECT username FROM users 
                   WHERE email='$email';");
     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
@@ -83,7 +83,7 @@ if (isset($_POST['email']) && $captchaError == "") {
     if($_POST['email'] && $captchaError == "") {
         function newPassword($length) {
         $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%*()_+{}|<>?/.,;[]\=-";
-        $msg = "An email has been sent to $email.";
+        $msg = "An email has been sent to your email.";
         return substr(str_shuffle($characters), 0, $length);
     }
 
