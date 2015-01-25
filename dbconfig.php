@@ -18,6 +18,7 @@ function dbconnect() {
 
 function dbquery($query, array $kwargs=array(), $exec=true) {
   global $conn;
+  if(!isset($conn)) {dbconnect();}
   try {
     $stmt = $conn->prepare($query);
     foreach($kwargs as $key => $value) {

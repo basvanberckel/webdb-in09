@@ -1,8 +1,7 @@
 <?php
   dbconnect();
   if(!$_GET['tid']) {
-    echo "<div class='error-box'>This topic does not exist</div>";
-    require('main.php');
+    echo "<script>window.location='/';</script>";
     die();
   }
   $tid = $_GET['tid'];
@@ -10,16 +9,15 @@
                   WHERE tid=:tid", 
                   array('tid'=>$tid));
   if($res->fetchColumn() == 0) {
-    echo "<div class='error-box'>This topic does not exist</div>";
-    require('main.php');
-    die;
+    echo "<script>window.location='/';</script>";
+    die();
   }
   $title = getTopicTitle($tid);
   echo "<div id='thread'>
           <div id='title'>
             <a href='?page=thread&tid=$tid'><h1>$title</h1></a>
           </div>";
-  if (isset($_SESSION['user']) && $_SESSION['user']->role = 10) {
+  if (allow('mod_approve')) {
     $res = dbquery("SELECT * FROM posts
                     WHERE tid=:tid
                     ORDER BY date;",
@@ -35,7 +33,7 @@
     $title = $row['title'];
     $content = $row['content'];
     $uid = $row['uid'];
-    $date = $row['date'];
+    $date = date("D, d M Y H:i", strtotime($row['date']));
     $user = getUsername($uid);
     echo "  
     <div class='post'>

@@ -36,5 +36,5 @@ function allow($permission) {
   $res = dbquery("SELECT role FROM permissions WHERE permission=:permission", 
                   array("permission"=>$permission));
   $p = $res->fetch(PDO::FETCH_ASSOC);
-  return ($role >= $p['role']);
+  return (isset($p['role']) && $role >= $p['role']);
 }

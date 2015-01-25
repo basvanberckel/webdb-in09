@@ -1,19 +1,18 @@
 <?php
-if(!($_SESSION['login'] && $_SESSION['user']->role > 0)) {
-  echo "<div class='error-box'>You need to be registered and logged in to post</div>";
-  require('main.php');
+if(!allow('forum_posting')) {
+  echo '<script>window.location="/";</script>';
   die();
 }
 
 $db = dbconnect();
   
-if ($_POST) {
+if ($_POST && array_key_exists('tid', $_POST)) {
   $newThread = false;
   $tid = $_POST['tid'];
   $uid = $_SESSION['user']->uid;
   $title = strip_tags($_POST['title']);
   $content = strip_tags($_POST['content']);
-  $approved = ($_SESSION['user']->role = 10 ? 1 : 0);
+  $approved = (allow('mod_approve') ? 1 : 0);
   $date = time();
   $res = dbquery("INSERT INTO posts (uid, title, content, date, tid, approved)
                   VALUES (:uid, :title, :content, :date, :tid, :approved)",
@@ -35,27 +34,25 @@ if ($_POST) {
     dbquery("UPDATE posts SET tid=:tid WHERE pid=:pid;", array("tid"=>$tid,"pid"=>$pid));
   }
   if ($res) {
-      echo "Post successful! View your post <a href='?page=thread&tid=$tid#p$pid'>here</a>";
       updateStats($tid, $uid, $date, $newThread);
+      echo "<script>window.location='/?page=thread&tid=$tid#p$pid';</script>";
   } else {
     echo "Something went wrong";
   }
+} elseif(!(array_key_exists('tid', $_GET) || array_key_exists('fid', $_GET))) {
+  echo "Forum or thread not defined";
 } else {
   if(array_key_exists('tid', $_GET)) {
     $tid = $_GET['tid'];
     $title = "Re: " . getTopicTitle($tid);
     $fid = getParent($tid);
     echo "<h2>New post in $title</h2>";
-  } elseif(array_key_exists('fid', $_GET)) {
+  } else {
     $title = "";
     $tid = "";
     $fid = $_GET['fid'];
     echo "<h2>New Thread</h2>";
-  } else {
-    echo "Forum or thread not defined";
-    die();
   }
-  
 ?>
 
 <!-- Temporary link to profile, should link to thread page -->

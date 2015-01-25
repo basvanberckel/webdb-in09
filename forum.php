@@ -1,8 +1,7 @@
 <?php
   dbconnect();
   if(!$_GET['fid']) {
-    echo "<div class='error-box'>This forum does not exist</div>";
-    require('main.php');
+    echo "<script>window.location='/';</script>";
     die();
   }
   $fid = $_GET['fid'];
@@ -10,9 +9,8 @@
                   WHERE fid=:fid", 
                   array('fid'=>$fid));
   if($res->fetchColumn() == 0) {
-    echo "<div class='error-box'>This forum does not exist</div>";
-    require('main.php');
-    die;
+    echo "<script>window.location='/';</script>";
+    die();
   }
   $res = dbquery("SELECT COUNT(*) FROM forums 
                   WHERE parent_id=:fid AND main=0;",
@@ -64,10 +62,10 @@
     $title = $row['title'];
     $tid = $row['tid'];
     $uid = $row['uid'];
-    $date = $row['date'];
+    $date = date("D, d M Y H:i", strtotime($row['date']));
     $posts = $row['posts'];
     $lastpost_uid = $row['lastpost_uid'];
-    $lastpost_date = $row['lastpost_date'];
+    $lastpost_date = date("D, d M Y H:i", strtotime($row['lastpost_date']));
     $user = getUsername($uid);
     $lastpost_user = getUsername($lastpost_uid);
     
