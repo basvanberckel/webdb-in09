@@ -62,14 +62,8 @@ if (isset($_POST["g-recaptcha-response"])) {
         $_SERVER["REMOTE_ADDR"],
         $_POST["g-recaptcha-response"]
     );
-    }
+}
     
-if ($resp != null && $resp->success) {
-    $captchaError = "";   
-}
-else {
-    $captchaError = "Please complete the captcha to register.";   
-}
 
 if (isset($_POST['email']) && $captchaError == "") {
     dbconnect();
@@ -79,11 +73,18 @@ if (isset($_POST['email']) && $captchaError == "") {
     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
         $username = $row['username'];
     }
+    
+    if ($resp != null && $resp->success) {
+    $captchaError = "";   
+    }
+    else {
+    $captchaError = "Please complete the captcha to register.";   
+    }
 
     if($_POST['email'] && $captchaError == "") {
+        $msg = "An email has been sent to your email.";
         function newPassword($length) {
         $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%*()_+{}|<>?/.,;[]\=-";
-        $msg = "An email has been sent to your email.";
         return substr(str_shuffle($characters), 0, $length);
     }
 
@@ -127,7 +128,7 @@ else {
 ?>
 
 <div id="registration">
-    <form method="POST">
+    <form method="POST" action="index.php?page=recovery">
         <fieldset>
             <legend>Account Recovery</legend>
             <p><?php echo $msg;?></p>
