@@ -127,11 +127,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sex = $_POST['sex'];   
     }
     
-    if ($resp != null && $resp->success) {
-        $captchaError = "";
+    if (isset($_POST['g-recaptcha-response'])) {
+        $captcha = $_POST['g-recaptcha-response'];   
+    }
+    
+    if (!$captcha) {
+        $captchaError = "Please complete the captcha to register.";   
+    }
+    
+    $response=file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$captcha."');
+    
+    if($response.success==false) {
+        $captchaError = "Please complete the captcha to register.";   
     }
     else {
-        $captchaError = "Please complete the captcha to register.";   
+        $captchaError = "";   
     }
     
     if (checkError($usernameError, $emailError, $passwordError, $dobError, $sexError)) {
