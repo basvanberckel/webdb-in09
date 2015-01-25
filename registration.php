@@ -187,7 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p><?php echo $msg;?></p>
 			<div>
 				<label for="username"><b>Username:</b></label>
-				<input type="text" name="username" id="username" class="txt"/>
+				<input type="text" name="username" id="username" class="txt" required/>
                 <span class="error"> * <?php echo $usernameError;?></span>
                 <br>
                 <span class="correct">Must be between 6 <br /> and 24 characters.</span>
@@ -195,18 +195,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			<div>
 				<label for="email"><b>E-mail address:</b></label>
-				<input type="text" name="email" id="email" class="txt"/>
+				<input type="text" name="email" id="email" class="txt" required/>
                 <span class="error"> * <?php echo $emailError;?></span>
 			</div>
 
 			<div>
 				<label for="email_confirmation"><b>Confirm your e-mail address:</b></label>
-				<input type="text" name="email_confirmation" id="email_confirmation" class="txt"/>
+				<input type="text" name="email_confirmation" id="email_confirmation" class="txt" required/>
 			</div>
 
 			<div>
 				<label for="password"><b>Password:</b></label>
-				<input type="password" name="password" id="password" class="txt"/>
+				<input type="password" name="password" id="password" class="txt" required/>
                 <span class="error"> * <?php echo $passwordError;?></span>
                 <br>
                 <span class="correct">Must be between 6 <br /> and 40 characters.</span>
@@ -214,19 +214,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			<div>
 				<label for="password_confirmation"><b>Confirm your password:</b></label>
-				<input type="password" name="password_confirmation" id="password_confirmation" class="txt"/>
+				<input type="password" name="password_confirmation" id="password_confirmation" class="txt" required/>
 			</div>
                 
             <div>
                 <label for="dob"><b>Date of birth:</b></label>
-                <input type="date" name="dob" id="dob" max="2015-01-31" min="1900-01-01" class="txt"/>
+                <input type="date" name="dob" id="dob" max="2015-01-31" min="1900-01-01" class="txt" required/>
                 <span class="error"> * <?php echo $dobError;?></span>
             </div>
 
             <div>
                 <label for="sex"><b>Gender:</b></label>
-				<input type="radio" name="sex" value="man" >Male
-				<input type="radio" name="sex" value="vrouw" >Female
+				<input type="radio" name="sex" value="man"  required checked>Male
+				<input type="radio" name="sex" value="vrouw"  required>Female
                 <span class="error"> * <?php echo $sexError;?></span>
             </div> 
 		</fieldset>
