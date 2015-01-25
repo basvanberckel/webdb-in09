@@ -127,11 +127,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     );
     }
     
-    if ($resp.success == false) {
-        $captchaError = "Please complete the captcha to register.";   
+    if ($resp != null && $resp->success) {
+        $captchaError = "";   
     }
     else {
-        $captchaError = "";   
+        $captchaError = "Please complete the captcha to register.";   
     }
     
     if (checkError($usernameError, $emailError, $passwordError, $dobError, $sexError)) {
