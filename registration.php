@@ -61,7 +61,7 @@ function checkError($error) {
 }
 
 $username = $email = $passwd = $dob = $sex = "";
-$usernameError = $emailError = $passwordError = $dobError = $sexError = "";
+$usernameError = $emailError = $passwordError = $dobError = $sexError = $captchaError = "";
 $msg = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -125,6 +125,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else {
         $sex = $_POST['sex'];   
+    }
+    
+    if ($resp != null && $resp->success) {
+        $captchaError = "";
+    }
+    else {
+        $captchaError = "Please complete the captcha to register.";   
     }
     
     if (checkError($usernameError, $emailError, $passwordError, $dobError, $sexError)) {
@@ -228,6 +235,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<legend>Confirmation of registration</legend>
 			<p>To prevent automated registrations this forum requires you to complete this captcha. If the captcha doesn't seem to appear or if you are visually impaired, please contact the <a href="#">administrator</a>.</p>
 			<div class="g-recaptcha" data-sitekey="6LeT8wATAAAAAI1sD5y5FkAyUAkEfyB_CYFZxNnD"></div>
+            <span class="error"><?php echo $captchaError;?></span>
 		</fieldset>
 	<div class="center">
 		<div class="buttons">
