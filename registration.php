@@ -34,13 +34,6 @@ $resp = null;
 // The error code from reCAPTCHA, if any
 $error = null;
 $reCaptcha = new ReCaptcha($secret);
-// Was there a reCAPTCHA response?
-if (isset($_POST["g-recaptcha-response"])) {
-    $resp = $reCaptcha->verifyResponse(
-        $_SERVER["REMOTE_ADDR"],
-        $_POST["g-recaptcha-response"]
-    );
-}
 
 function test_input($data) {
     $data = trim($data, "\t\n\r\0\x0B");
@@ -127,17 +120,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sex = $_POST['sex'];   
     }
     
-    if (isset($_POST['g-recaptcha-response'])) {
-        $captcha = $_POST['g-recaptcha-response'];   
+    if (isset($_POST["g-recaptcha-response"])) {
+    $resp = $reCaptcha->verifyResponse(
+        $_SERVER["REMOTE_ADDR"],
+        $_POST["g-recaptcha-response"]
+    );
     }
     
-    if (!$captcha) {
-        $captchaError = "Please complete the captcha to register.";   
-    }
-    
-    $resp=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
-    
-    $response = json_decode($response);
     if ($resp.success == false) {
         $captchaError = "Please complete the captcha to register.";   
     }
