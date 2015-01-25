@@ -137,7 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
     
-    if($response.success==false) {
+    $obj = json_decode($response);
+    if($obj-&gt;{'success'}==false) {
         $captchaError = "Please complete the captcha to register.";   
     }
     else {
