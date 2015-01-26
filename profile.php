@@ -26,12 +26,12 @@
 
                         <div>
                             <label for='username'><b>Username:</b></label>
-                            <input type='text' name='username' id='username' class='txt' readonly='readonly' value=$username />
+                            <input type='text' name='username' id='username' class='txt' readonly value=$username />
                         </div>
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            <input type='text' name='email' id='email' class='txt' readonly='readonly' value=$email />
+                            <input type='text' name='email' id='email' class='txt' readonly value=$email />
                             <button id='emailb' type='button' onclick='editEmail()'>edit</button>
                         </div>
 
@@ -100,7 +100,8 @@
     function editEmail() {
         var elem = document.getElementById("emailb");
         if (elem.value=='edit') { 
-            elem.parentNode.querySelector("input").removeAttribute("readonly", "readonly"); 
+            console.log(elem);
+            elem.parentNode.querySelector("input").readonly = False; 
             elem.innerHTML = 'save';
         }
         else {
