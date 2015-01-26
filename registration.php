@@ -59,6 +59,8 @@ $msg = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     /* TEST USERNAME */
+    $res = dbquery("SELECT username FROM users WHERE username=$_POST['username']");
+    
     if (empty($_POST['username'])) {
         $usernameError = "A username is required.";   
     }
@@ -70,6 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     elseif ((preg_match("/^[a-zA-Z0-9]+$/", $_POST['username'])) == 0) {
         $usernameError = "The username you entered contains illegal characters.";   
+    }
+    elseif ($res->rowCount() > 0) {
+        $usernameError = "The username you entered has already been taken.";   
     }
     else {
         $username = $_POST['username'];   
