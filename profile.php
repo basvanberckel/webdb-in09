@@ -100,7 +100,7 @@
     function editEmail() {
         var elem = document.getElementById("emailb");
         if (elem.value=='edit') { 
-            elem.parentNode.querySelector("input").removeAttribute("readonly",); 
+            elem.parentNode.querySelector("input").removeAttribute("readonly", "readonly"); 
             elem.innerHTML = 'save';
         }
         else {
