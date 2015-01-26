@@ -9,4 +9,5 @@ textarea.txt {
     border: none;
     width: 400px;
     height: 300px;
+    resize: none;
 }
