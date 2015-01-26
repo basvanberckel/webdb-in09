@@ -134,6 +134,19 @@ else {
 }
 ?>
 
+<script>
+function emailValidation() {
+    id = document.getElementById("email");
+    emailcount = document.getElementById("emailcount");
+    emailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    msg = "";
+    if (!(id.value.match(emailformat))) {
+        msg = "The e-mail address that you have entered isn't valid.";   
+    }
+    emailcount.innerHTML = msg;
+}
+</script>
+
 <div id="registration">
     <form method="POST" action="index.php?page=recovery">
         <fieldset>
@@ -144,8 +157,8 @@ else {
             
             <div>
 				<label for="email"><b>E-mail address:</b></label>
-				<input type="text" name="email" id="email" class="txt" required/><br />
-                <span class="error"><?php echo $emailError;?></span>
+				<input type="text" name="email" id="email" class="txt" onkeyup="emailValidation()" required/><br /><br />
+                <span class="error" id="emailcount"><?php echo $emailError;?></span>
 			</div>
                 
             <p>To prevent someone's e-mail address being spam this forum requires you to complete this captcha. If the captcha isn't appearing for you or if you are visually impaired, please contact the <a href="#">administrator</a>.</p>
