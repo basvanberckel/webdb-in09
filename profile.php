@@ -26,12 +26,12 @@
 
                         <div>
                             <label for='username'><b>Username:</b></label>
-                            <input type='text' name='username' id='username' class='txt' readonly value=$username />
+                            $username
                         </div>
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            <input type='text' name='email' id='email' class='txt' disabled value=$email />
+                            $email
                             <button id='emailb' type='button' onclick='editEmail()'>edit</button>
                         </div>
 
