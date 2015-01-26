@@ -13,6 +13,12 @@ function getTopicTitle($tid) {
   return $t['title'];
 }
 
+function getForumTitle($fid) {
+  $res = dbquery("SELECT title FROM forums WHERE fid=:fid", array("fid"=>$fid));
+  $t = $res->fetch(PDO::FETCH_ASSOC);
+  return $t['title'];
+}
+
 function getParent($tid) { 
   $res = dbquery("SELECT fid FROM threads WHERE tid=:tid", array("tid"=>$tid));
   $t = $res->fetch(PDO::FETCH_ASSOC);
@@ -44,4 +50,37 @@ function isModerated($fid) {
                   array("fid",$fid));
   $m = $res->fetch(PDO::FETCH_ASSOC);
   return $m['moderated'];
+}
+
+function breadcrumbs($fid, $tid=null) {
+  $title = getForumTitle($fid);
+  $temp_fid = $fid;
+  $breadcrumbs = [];
+  while(true) {
+    $res = dbquery("SELECT parent_id, main FROM forums
+                    WHERE fid=:fid", array("fid"=>$temp_fid));
+    $pid = $res->fetch(PDO::FETCH_ASSOC);
+    if($pid['main'] == 1) {
+      /*$cid = $pid['parent_id'];
+      $res = dbquery("SELECT title FROM categories
+                      WHERE cid=:cid", array("cid"=>$cid));
+      $title = $res->fetch(PDO::FETCH_ASSOC);
+      $breadcrumbs[$cid] = $title;*/
+      break;
+    } else {
+      $temp_fid = $pid['parent_id'];
+      $breadcrumbs[$temp_fid] = getForumTitle($temp_fid);
+    }
+  }
+  echo "<div id='breadcrumbs'><a href='/'>Board index </a>";
+  foreach(array_reverse($breadcrumbs, true) as $temp_fid => $temp_title) {
+    echo "&gt&gt <a href='/?page=forum&fid=$temp_fid'>$temp_title </a>";
+  }
+  echo "&gt&gt <a href='/?page=forum&fid=$fid'>$title </a>";
+  if ($tid != null) {
+    $title = getTopicTitle($tid);
+    echo "&gt&gt <a href='/?page=thread&tid=$tid'>$title</a></div>";  
+  } else {
+    echo "</div>";
+  }
 }

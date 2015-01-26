@@ -13,6 +13,8 @@
     die();
   }
   $title = getTopicTitle($tid);
+  breadcrumbs(getParent($tid), $tid);
+  
   echo "<div id='thread'>
           <div id='titlebar'>
             <div id='title'>

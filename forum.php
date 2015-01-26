@@ -12,6 +12,7 @@
     echo "<script>window.location='/';</script>";
     die();
   }
+  echo breadcrumbs($fid);         
   $res = dbquery("SELECT COUNT(*) FROM forums 
                   WHERE parent_id=:fid AND main=0;",
                   array('fid'=>$fid));
