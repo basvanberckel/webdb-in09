@@ -10,4 +10,5 @@ textarea.txt {
     width: 400px;
     height: 300px;
     resize: none;
+    overflow: scroll;
 }
