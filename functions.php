@@ -33,8 +33,15 @@ function updateStats($tid, $uid, $date, $newThread) {
 
 function allow($permission) {
   $role = $_SESSION['login'] ? $_SESSION['user']->role : 0;
-  $res = dbquery("SELECT role FROM permissions WHERE permission=:permission", 
+  $res = dbquery("SELECT role FROM permissions WHERE permission=:permission;", 
                   array("permission"=>$permission));
   $p = $res->fetch(PDO::FETCH_ASSOC);
   return (isset($p['role']) && $role >= $p['role']);
+}
+
+function isModerated($fid) {
+  $res = dbquery("SELECT moderated FROM forums WHERE fid=:fid;",
+                  array("fid",$fid));
+  $m = $res->fetch(PDO::FETCH_ASSOC);
+  return $m['moderated'];
 }

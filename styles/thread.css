@@ -9,8 +9,17 @@
   background-color: #111111;
 }
 
+#titlebar {
+  overflow:hidden;
+}
+
 #title {
+  float:left;
 	color: #FFAA00;
+}
+
+#post-button {
+  float:right;
 }
 
 .post {
