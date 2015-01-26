@@ -96,9 +96,6 @@
 
 
     echo "
-    $uid = $_GET['uid'];
-
-
 
 <script>
     function editEmail() {
