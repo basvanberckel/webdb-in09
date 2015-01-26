@@ -42,8 +42,8 @@
                         
                         <div>
                             <label for='dob'><b>Date of birth:</b></label>
-                            <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value='$dob' disabled/>
-                            <button id='dobb' type='button' onclick='editDob()' value='edit'>edit</button>
+                            <input type='date' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value='$dob' disabled/>
+                            <button id='dobb' type='button' onclick='editDob()' >edit</button>
 
                         </div>
 
@@ -57,8 +57,8 @@
 
                         <div>
                             <label for='bio'><b>Bio:</b></label>
-                            <textarea type='text' name='bio' id='bio' readonly='readonly' class='txt' disabled>$bio</textarea>
-                            <button id='biob' type='button' onclick='editBio()' value='edit'>edit</button>
+                            <textarea type='text' id='bio' readonly='readonly' class='txt' disabled>$bio</textarea>
+                            <button id='biob' type='button' onclick='editBio()' >edit</button>
 
                         </div>
                     
@@ -77,12 +77,12 @@
 
                         <div>
                             <label for='username'><b>Username:</b></label>
-                            <input type='text' name='username' id='username' class='txt' readonly='readonly' value=$username />
+                            <input type='text' id='username' class='txt' disabled value=$username />
                         </div>
 
                         <div>
                             <label for='bio'><b>Bio:</b></label>
-                            <textarea type='text' name='bio' id='bio' readonly='readonly' class='txt'>$bio</textarea>
+                            <textarea type='text' id='bio' class='txt' disabled>$bio</textarea>
                         </div>
                     
                     </fieldset>
@@ -96,7 +96,6 @@
 ?>
 
 <script>
-
     function editEmail() {
         var elem = document.getElementById("emailb");
         if (elem.innerHTML == "edit") { 
@@ -108,10 +107,8 @@
             elem.innerHTML = "edit";
         }
     }
-
     function editDob() {
         var elem = document.getElementById("dobb");
-        var elem = document.getElementById("emailb");
         if (elem.innerHTML == "edit") { 
             document.getElementById("dob").disabled = false; 
             elem.innerHTML = "save";
