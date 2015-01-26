@@ -3,20 +3,16 @@
         <fieldset>
             <legend>Registration</legend>
             <p>
-                The standard Lorem Ipsum passage, used since the 1500s
-
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-                Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
-
-                "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                By accessing The Duke's Herald forums, you agree to be legally bound by the following terms. If you do not agree to be legally bound by all the following terms, then please do not access or use The Duke's Herald forums. Our terms can be changed at any time, and we will do our best in keeping our users up to date on these changes. If you continue accessing or using The Duke's Herald forums after certain changes, that means you agree to be legally bound by these new terms included in the changes.
+                <br /><br />
+            You agree to not post any abusive, obscene, vulgar, slanderous, hateful, threatening, sexually-orientated, or any other material that may violate any laws be it of your country, the country where The Duke's Heralds forums are hosted or International Law. If you ignore this and do any of the above things, then you may be permanently banned. We also reserve the right to remove, edit, move or close any topic at any given time should we see fit. As a user you agree that any information you entered will be stored in a database. We will not use this information for anything, but we will not held responsible for any hacking attempt that may lead to the data being compromised.
+            <!-- The above terms are basically from phpBB, source: www.try-phpbb.com -->
             </p>
         </fieldset>
-
         <div class="center">
             <div class="buttons">
-                <button type="button" class="agreement" onclick="location.href='index.php?page=registration'">I agree to these terms</button>
-                <button type="button" class="agreement" onclick="location.href='index.php'">I do not agree to these terms</button>
+                <button type="button" class="agreement" onclick="location.href='index.php?page=registration'">I agree</button>
+                <button type="button" class="agreement" onclick="location.href='index.php'">I do not agree</button>
             </div> 
         </div>
     </form>

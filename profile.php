@@ -14,7 +14,7 @@
         $passwd = $row['passwd'];
         $sex = $row['sex'];
         $bio = $row['bio'];
-    
+
     
         if ($_SESSION['user']->uid == $_GET['uid']) {
         
@@ -106,8 +106,10 @@
         else {
             document.getElementById("email").disabled = true;
             elem.innerHTML = "edit";
-            <?php $res = dbquery("UPDATE users SET email='elem.value' WHERE uid = :uid",
-                array('uid'=>$uid)); ?>
+            <?php $res = dbquery("UPDATE users SET email = :elemValue WHERE uid = :uid",
+                array('uid'=>$uid,
+                      'elemValue'=>$elemValue));
+                $elemValue = elem.value; ?>
         }
     }
     function editDob() {
@@ -119,8 +121,10 @@
         else {
             document.getElementById("dob").disabled = true;
             elem.innerHTML = "edit";
-            <?php $res = dbquery("UPDATE users SET dob='elem.value' WHERE uid = :uid",
-                  array('uid'=>$uid)); ?>
+            <?php $res = dbquery("UPDATE users SET dob = :elemValue WHERE uid = :uid",
+                  array('uid'=>$uid,
+                        'elemValue'=>$elemValue));
+                $elemValue = elem.value ?>
         }
     }
     function editBio() {
@@ -132,9 +136,10 @@
         else {
             document.getElementById("bio").disabled = true;
             elem.innerHTML = "edit";
-            <?php $res = dbquery("UPDATE users SET bio='elem.innerHTML' WHERE uid = :uid",
-                  array('uid'=>$uid)); ?>
+            <?php $res = dbquery("UPDATE users SET bio= :elemInnerHTML WHERE uid = :uid",
+                  array('uid'=>$uid,
+                        'elemInnerHTML'=>$eleminnerHTML));
+                $elemInnerHTML = elem.innerHTML ?>
         }
     }
 </script>
-?>

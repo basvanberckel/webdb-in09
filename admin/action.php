@@ -3,7 +3,6 @@
 	dbconnect();
 	$fid = $_GET['fid'];
 	$action = $_GET['action'];
-	echo "<html><body>";
 	echo "$fid, $action, ";
 
 	$res = dbquery("SELECT $action
@@ -17,13 +16,10 @@
 		} else {
 			$update = 0;
 		}
-		echo ", $update";
 		$res = dbquery("UPDATE forums
 					SET $action = :update
 					WHERE fid = :fid;",
 				   array('update'=>$update,
 						 'fid'=>$fid));
 	}
-	
-	echo "</body></html>";
  ?>
