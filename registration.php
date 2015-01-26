@@ -191,6 +191,78 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } 
 ?>
 
+<script>
+function passwordValidation() {
+    password1 = document.getElementById("password");
+    pwcount = document.getElementById("pwcount");
+    msg = "";
+    if (password1.value.length < 6) {
+        msg = "The password is too short.";   
+    }
+    if (password1.value.length > 40) {
+        msg = "The password is too long.";   
+    }
+    pwcount.innerHTML = msg;
+}
+
+function passwordMatch() {
+    password1 = document.getElementById("password");
+    password2 = document.getElementById("password_confirmation");
+    pwmatch = document.getElementById("pwmatch");
+    msg = "";
+    
+    if (password1 != password2) {
+        msg = "The passwords you entered do not match each other.";
+    }
+    else {
+        msg = "The passwords match.";   
+    }
+    pwmatch.innerHTML = msg;
+}
+    
+function emailMatch() {
+    email1 = document.getElementById("email");
+    email2 = document.getElementById("email_confirmation");
+    emailmatch = document.getElementById("emailmatch");
+    
+    if (email1 != email2) {
+        msg = "The e-mail addresses you entered do not match each other.";
+    }
+    else {
+        msg = "The e-mail addresses match.";   
+    }
+    emailmatch.innerHTML = msg;
+}
+    
+function usernameValidation() {
+    id = document.getElementById("username");
+    usercount = document.getElementById("usercount");
+    msg = "";
+    letters = /^[0-9a-zA-Z]+$/;
+    if (id.value.length < 6) {
+        msg = "The username is too short.";   
+    }
+    if (id.value.length > 24) {
+        msg = "The username is too long.";   
+    }
+    if (!(id.value.match(letters))) {
+        msg = "The username contains illegal characters.";   
+    }
+    usercount.innerHTML = msg;
+}
+   
+function emailValidation() {
+    id = document.getElementById("email");
+    emailcount = document.getElementById("emailcount");
+    emailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    msg = "";
+    if (!(id.value.match(emailformat))) {
+        msg = "The e-mail address that you have entered isn't valid.";   
+    }
+    emailcount.innerHTML = msg;
+}
+</script>
+
 <div id="registration">
 	<form method="POST" action="index.php?page=registration">
 		<fieldset>
@@ -198,47 +270,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p><?php echo $msg;?></p>
 			<div>
 				<label for="username"><b>Username:</b></label>
-				<input type="text" name="username" id="username" class="txt" required/>
-                <span class="error"> * <?php echo $usernameError;?></span>
+				<input type="text" name="username" id="username" class="txt" onkeyup="usernameValidation()" required/>
+                <span class="error" id="usercount"><?php echo $usernameError;?></span>
                 <br>
                 <span class="correct">Must be between 6 <br /> and 24 characters.</span>
 			</div>
 
 			<div>
 				<label for="email"><b>E-mail address:</b></label>
-				<input type="text" name="email" id="email" class="txt" required/>
-                <span class="error"> * <?php echo $emailError;?></span>
+				<input type="text" name="email" id="email" class="txt" onkeyup="emailValidation()" required/>
+                <span class="error" id="emailcount"><?php echo $emailError;?></span>
 			</div>
 
 			<div>
 				<label for="email_confirmation"><b>Confirm your e-mail address:</b></label>
-				<input type="text" name="email_confirmation" id="email_confirmation" class="txt" required/>
+				<input type="text" name="email_confirmation" id="email_confirmation" class="txt" onkeydown="emailMatch()" required/><span class="error" id="emailmatch"></span>
 			</div>
 
 			<div>
 				<label for="password"><b>Password:</b></label>
-				<input type="password" name="password" id="password" class="txt" required/>
-                <span class="error"> * <?php echo $passwordError;?></span>
+				<input type="password" name="password" id="password" class="txt" onkeyup="passwordValidation()" required/>
+                <span class="error" id="pwcount"><?php echo $passwordError;?></span>
                 <br>
                 <span class="correct">Must be between 6 <br /> and 40 characters.</span>
 			</div>
 
 			<div>
 				<label for="password_confirmation"><b>Confirm your password:</b></label>
-				<input type="password" name="password_confirmation" id="password_confirmation" class="txt" required/>
+                <input type="password" name="password_confirmation" id="password_confirmation" class="txt" onkeyup="passwordMatch()" required/>
+                <span class="error" id="pwmatch"></span>
 			</div>
                 
             <div>
                 <label for="dob"><b>Date of birth:</b></label>
                 <input type="date" name="dob" id="dob" max="2015-01-31" min="1900-01-01" class="txt" required/>
-                <span class="error"> * <?php echo $dobError;?></span>
+                <span class="error"><?php echo $dobError;?></span>
             </div>
 
             <div>
                 <label for="sex"><b>Gender:</b></label>
 				<input type="radio" name="sex" value="man"  required checked>Male
 				<input type="radio" name="sex" value="vrouw"  required>Female
-                <span class="error"> * <?php echo $sexError;?></span>
+                <span class="error"><?php echo $sexError;?></span>
             </div> 
 		</fieldset>
 
