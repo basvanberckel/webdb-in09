@@ -45,7 +45,11 @@
     }
     echo "</div><hr />";
   }
-  echo "<div class='threads'><h2>Threads</h2>";
+  echo "<div class='threads'>
+            <div class='titlebar'>
+              <div class='title'><h2>Threads</h2></div>
+              <div class='post-button'><a href='/?page=discussion&fid=$fid'>Post Thread</a></div>
+            </div>";
   $res = dbquery("SELECT COUNT(*) FROM threads 
                   WHERE fid=:fid 
                   ORDER BY lastpost_date;",

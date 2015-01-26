@@ -64,6 +64,18 @@
   margin-bottom: 25px;
 }
 
+#titlebar {
+  overflow:hidden;
+}
+
+#title {
+  float:left;
+}
+
+#post-button {
+  float:right;
+}
+
 .threads h2 {
   color: #AAAAAA;
   font-size: 15px;

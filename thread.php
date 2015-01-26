@@ -14,8 +14,13 @@
   }
   $title = getTopicTitle($tid);
   echo "<div id='thread'>
-          <div id='title'>
-            <a href='?page=thread&tid=$tid'><h1>$title</h1></a>
+          <div id='titlebar'>
+            <div id='title'>
+              <a href='?page=thread&tid=$tid'><h1>$title</h1></a>
+            </div>
+            <div id='post-button'>
+              <a href='?page=discussion&tid=$tid'>Post reply</a>
+            </div>
           </div>";
   if (allow('mod_approve')) {
     $res = dbquery("SELECT * FROM posts

@@ -6,13 +6,13 @@ if(!allow('forum_posting')) {
 
 $db = dbconnect();
   
-if ($_POST && array_key_exists('tid', $_POST)) {
+if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)) {
   $newThread = false;
   $tid = $_POST['tid'];
   $uid = $_SESSION['user']->uid;
   $title = strip_tags($_POST['title']);
   $content = strip_tags($_POST['content']);
-  $approved = (allow('mod_approve') ? 1 : 0);
+  $approved = !isModerated($_POST['fid']) || allow('mod_approve') ? 1 : 0;
   $date = time();
   $res = dbquery("INSERT INTO posts (uid, title, content, date, tid, approved)
                   VALUES (:uid, :title, :content, :date, :tid, :approved)",
@@ -21,7 +21,7 @@ if ($_POST && array_key_exists('tid', $_POST)) {
                         "tid"=>$tid, "approved"=>$approved));
   $pid = $db->lastInsertId();
   
-  if ($res && $tid == "" && array_key_exists('fid', $_POST)) {
+  if ($res && $tid == "") {
     $newThread = true;
     $fid = $_POST['fid'];
     $res = dbquery("INSERT INTO threads 
