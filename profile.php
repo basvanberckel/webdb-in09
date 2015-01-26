@@ -100,11 +100,11 @@
     function editEmail() {
         var elem = document.getElementById("emailb");
         if (elem.innerHTML == "edit") { 
-            document.getElementById("email").disabled = False; 
+            document.getElementById("email").disabled = false; 
             elem.innerHTML = "save";
         }
         else {
-            document.getElementById("email").disabled = True;
+            document.getElementById("email").disabled = true;
             elem.innerHTML = "edit";
         }
     }
