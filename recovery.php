@@ -66,7 +66,7 @@ if (isset($_POST["g-recaptcha-response"])) {
 if (isset($_POST['email']) && checkError($captchaError, $emailError)) {
     dbconnect();
     $email = $_POST['email'];
-    $res = dbquery("SELECT email from USERS where email='$email'");
+    $res = dbquery("SELECT email FROM users WHERE email='$email'");
     
     if ($res->rowCount() < 1) {
         $emailError = "The entered e-mail address does not have an account attached to it.";  
@@ -144,7 +144,8 @@ else {
             
             <div>
 				<label for="email"><b>E-mail address:</b></label>
-				<input type="text" name="email" id="email" class="txt" required/><span class="error"><?php echo $emailError;?></span>
+				<input type="text" name="email" id="email" class="txt" required/><br />
+                <span class="error"><?php echo $emailError;?></span>
 			</div>
                 
             <p>To prevent someone's e-mail address being spam this forum requires you to complete this captcha. If the captcha isn't appearing for you or if you are visually impaired, please contact the <a href="#">administrator</a>.</p>
