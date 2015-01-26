@@ -93,7 +93,12 @@
         }
     }
     
-?>
+
+
+    echo "
+    $uid = $_GET['uid'];
+
+
 
 <script>
     function editEmail() {
@@ -105,6 +110,8 @@
         else {
             document.getElementById("email").disabled = true;
             elem.innerHTML = "edit";
+            $res = dbquery("UPDATE users SET email='elem.value' WHERE uid = :uid",
+                array('uid'=>$uid));
         }
     }
     function editDob() {
@@ -116,6 +123,8 @@
         else {
             document.getElementById("dob").disabled = true;
             elem.innerHTML = "edit";
+            $res = dbquery("UPDATE users SET dob='elem.value' WHERE uid = :uid",
+                  array('uid'=>$uid));
         }
     }
     function editBio() {
@@ -127,6 +136,10 @@
         else {
             document.getElementById("bio").disabled = true;
             elem.innerHTML = "edit";
+            $res = dbquery("UPDATE users SET bio='elem.innerHTML' WHERE uid = :uid",
+                  array('uid'=>$uid));
         }
     }
 </script>
+";
+?>
