@@ -31,18 +31,18 @@
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            $email
+                            <input type='text' id='email' class='txt' value='$email' disabled/>
                             <button id='emailb' type='button' onclick='editEmail()'>edit</button>
                         </div>
 
                         <div>
                             <label for='password'><b>Password:</b></label>
-                            <a href='thing'>Change password</a>
+                            <a href='passwordchange'>Change password</a>
                         </div>
                         
                         <div>
                             <label for='dob'><b>Date of birth:</b></label>
-                            <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' readonly='readonly' class='txt' value=$dob />
+                            <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value=$dob />
                             <button id='dobb' type='button' onclick='editDob()' value='edit'>edit</button>
 
                         </div>
@@ -99,14 +99,13 @@
 
     function editEmail() {
         var elem = document.getElementById("emailb");
-        if (elem.innerHTML == 'edit') { 
-            console.log(elem);
+        if (elem.innerHTML == "edit") { 
             document.getElementById("email").disabled = False; 
-            elem.innerHTML = 'save';
+            elem.innerHTML = "save";
         }
         else {
-            elem.setAttribute("readonly", "readonly")
-            elem.value = 'edit';
+            document.getElementById("email").disabled = True;
+            elem.innerHTML = "edit";
         }
     }
 
