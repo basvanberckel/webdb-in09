@@ -77,8 +77,6 @@
 			$title   = $frow['title'];
 			$desc    = $frow['description'];
 			$pos     = $frow['position'];
-			$posts   = $frow['posts'];
-			$threads = $frow['threads'];
 			echo   "<div class='forum'>
 						<div class='forum-data'>
 							<h3>$title</h3>
@@ -92,11 +90,11 @@
 					<form method='post'>
 						<div class='options'>
 							<input type='hidden' name='fid' value=$fid />
-							<input name='closed' id=$fid-closed class='css-checkbox' type='checkbox' value='Yes' $closed />
+							<input onclick='updateDB(\"$fid-closed\", $fid, \"closed\")' name='closed' id=$fid-closed class='css-checkbox' type='checkbox' value='Yes' $closed />
 							<label for=$fid-closed class='css-label'>Closed</label>
-							<input name='locked' id=$fid-locked class='css-checkbox' type='checkbox' value='Yes' $locked />
+							<input onclick='updateDB(\"$fid-locked\", $fid, \"locked\")' name='locked' id=$fid-locked class='css-checkbox' type='checkbox' value='Yes' $locked />
 							<label for=$fid-locked class='css-label'>Locked</label>
-							<input name='moderated' id=$fid-moderated class='css-checkbox' type='checkbox' value='Yes' $moderated />
+							<input onclick='updateDB(\"$fid-moderated\", $fid, \"moderated\")' name='moderated' id=$fid-moderated class='css-checkbox' type='checkbox' value='Yes' $moderated />
 							<label for=$fid-moderated class='css-label'>Moderated</label>
 							<br />
 							Position: <input type='text' name='pos' id=$fid-position value=$pos />
@@ -137,8 +135,6 @@
 				$title   = $sfrow['title'];
 				$desc    = $sfrow['description'];
 				$pos     = $sfrow['position'];
-				$posts   = $sfrow['posts'];
-				$threads = $sfrow['threads'];
 				echo   "<div class='forum subforum'>
 							<div class='forum-data'>
 								<h3>$title</h3>
