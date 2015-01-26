@@ -59,7 +59,8 @@ $msg = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     /* TEST USERNAME */
-    $res = dbquery("SELECT username FROM users WHERE username=$_POST['username']");
+    $username = $_POST['username'];
+    $res = dbquery("SELECT username FROM users WHERE username='$username'");
     
     if (empty($_POST['username'])) {
         $usernameError = "A username is required.";   
