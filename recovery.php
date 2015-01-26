@@ -35,9 +35,7 @@ $resp = null;
 $error = null;
 $reCaptcha = new ReCaptcha($secret);
 
-
-$msg = "";
-$captchaError = "";
+$msg = $captchaError = $emailError = "";
 
 function test_input($data) {
     $data = trim($data, "\t\n\r\0\x0B");
@@ -65,11 +63,20 @@ if (isset($_POST["g-recaptcha-response"])) {
 }
     
 
-if (isset($_POST['email']) && $captchaError == "") {
+if (isset($_POST['email']) && checkError($captchaError, $emailError)) {
     dbconnect();
-    $email = $_POST['email']; 
+    $email = $_POST['email'];
+    $res = dbquery("SELECT email from USERS where email='$email'");
+    
+    if ($res->rowCount() < 1) {
+        $emailError = "The entered e-mail address does not have an account attached to it.";  
+    }
+    else {
+        $emailError = "";   
+    }
+    
     $res = dbquery("SELECT username FROM users 
-                  WHERE email='$email';");
+                  WHERE email='$email'");
     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
         $username = $row['username'];
     }
@@ -81,7 +88,7 @@ if (isset($_POST['email']) && $captchaError == "") {
     $captchaError = "Please complete the captcha to register.";   
     }
 
-    if($_POST['email'] && $captchaError == "") {
+    if($_POST['email'] && checkError($captchaError, $emailError)) {
         $msg = "An email has been sent to your email.";
         function newPassword($length) {
         $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%*()_+{}|<>?/.,;[]\=-";
@@ -137,7 +144,7 @@ else {
             
             <div>
 				<label for="email"><b>E-mail address:</b></label>
-				<input type="text" name="email" id="email" class="txt" required/>
+				<input type="text" name="email" id="email" class="txt" required/><span class="error"><?php echo $emailError;?></span>
 			</div>
                 
             <p>To prevent someone's e-mail address being spam this forum requires you to complete this captcha. If the captcha isn't appearing for you or if you are visually impaired, please contact the <a href="#">administrator</a>.</p>

@@ -80,14 +80,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else {
         $username = $_POST['username'];   
     }
-    /* ^NEED TO ADD CHECK FOR DATABASE*/
     
     /* TEST E-MAIL ADDRESS */
+    $email = $_POST['email'];
+    $res = dbquery("SELECT email FROM users WHERE email='$email'");
+    
     if (empty($_POST['email'])) {
         $emailError = "An e-mail address is required.";   
     } 
     elseif ($_POST['email'] != $_POST['email_confirmation']) {
-        $passwordError = "The e-mails you entered do not match each other.";   
+        $emailError = "The e-mail addresses you entered do not match each other.";   
+    }
+    elseif ($res->rowCount() > 0) {
+        $emailError = "An account has already been registered with the e-mail address you entered.";
     }
     else {
         $email = $_POST['email'];   
