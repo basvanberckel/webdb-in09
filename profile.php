@@ -99,9 +99,9 @@
 
     function editEmail() {
         var elem = document.getElementById("emailb");
-        if (elem.value=='edit') { 
+        if (elem.innerHTML == 'edit') { 
             console.log(elem);
-            elem.parentNode.querySelector("input").disabled = False; 
+            document.getElementById("email").disabled = False; 
             elem.innerHTML = 'save';
         }
         else {
