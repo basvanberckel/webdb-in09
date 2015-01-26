@@ -31,7 +31,7 @@
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            <input type='text' name='email' id='email' class='txt' readonly value=$email />
+                            <input type='text' name='email' id='email' class='txt' disabled value=$email />
                             <button id='emailb' type='button' onclick='editEmail()'>edit</button>
                         </div>
 
@@ -101,7 +101,7 @@
         var elem = document.getElementById("emailb");
         if (elem.value=='edit') { 
             console.log(elem);
-            elem.parentNode.querySelector("input").readonly = False; 
+            elem.parentNode.querySelector("input").disabled = False; 
             elem.innerHTML = 'save';
         }
         else {
