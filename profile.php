@@ -57,7 +57,7 @@
 
                         <div>
                             <label for='bio'><b>Bio:</b></label>
-                            <textarea type='text' id='bio' readonly='readonly' class='txt' disabled>$bio</textarea>
+                            <textarea type='text' id='bio' class='txt' disabled>$bio</textarea>
                             <button id='biob' type='button' onclick='editBio()' >edit</button>
 
                         </div>
