@@ -1,4 +1,3 @@
-<h1>Account Details</h1>
 <?php
     dbconnect();
     $uid = $_GET['uid'];
@@ -19,6 +18,8 @@
         if ($_SESSION['user']->uid == $_GET['uid']) {
         
             echo "
+            <h1>Account Details</h1>
+
                 <div class='profile'>
                 <form method='POST'>
                     <fieldset>
@@ -31,7 +32,7 @@
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            <input type='text' id='email' class='txt' value='$email' disabled/>
+                            <input type='text' id='email' class='txt' value=$email disabled/>
                             <button name='update' id='emailb' type='button' onclick='editEmail()'>edit</button>
                         </div>
 
@@ -42,7 +43,7 @@
                         
                         <div>
                             <label for='dob'><b>Date of birth:</b></label>
-                            <input type='date' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value='$dob' disabled/>
+                            <input type='date' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value=$dob disabled/>
                             <button name='update' id='dobb' type='button' onclick='editDob()' >edit</button>
 
                         </div>
@@ -70,7 +71,7 @@
                 <div class='profile'>
                 <form method='POST'>
                     <fieldset>
-                        <legend>Settings</legend>
+                        <legend>$username</legend>
 
                         <div>
                             <label for='username'><b>Username:</b></label>
@@ -90,9 +91,7 @@
     }
 ?> 
 
-<?php
 
-?>
 <script>
     function editEmail() {
         var elem = document.getElementById("emailb");
@@ -133,6 +132,3 @@
         }
     }
 </script>
-<?php
-    
-?>
