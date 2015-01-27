@@ -35,7 +35,7 @@
             <h1>Account Details</h1>
 
                 <div class='profile'>
-                <form action='htmlspecialchars($_SERVER['PHP_SELF']' method='POST'>
+                <form action='htmlspecialchars($_SERVER['PHP_SELF'])' method='POST'>
                     <fieldset>
                         <legend>Settings</legend>
 
