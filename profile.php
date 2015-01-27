@@ -17,6 +17,20 @@
     
         if ($_SESSION['user']->uid == $_GET['uid']) {
         
+            
+                $email2 = $_POST['email'];
+                $dob2 = $_POST['dob'];
+                $bio2 = $_POST['bio'];
+                $res2 = dbquery("UPDATE users
+                                 SET email = :email,
+                                     dob = :dob,
+                                     bio = :bio
+                                 WHERE uid = :uid",
+                        array('uid' => $uid,
+                              'email' => $email2,
+                              'dob' => $dob2,
+                              'bio' => $bio2));
+            
             echo "
             <h1>Account Details</h1>
 
@@ -43,7 +57,7 @@
                         
                         <div>
                             <label for='dob'><b>Date of birth:</b></label>
-                            <input type='date' id='dob' max='2015-01-31' min='1900-01-01' class='txt' disabled value=$dob />
+                            <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' disabled value=$dob />
                             <button name='update' id='dobb' type='button' onclick='editDob()' >edit</button>
 
                         </div>
@@ -58,10 +72,11 @@
 
                         <div>
                             <label for='bio'><b>Bio:</b></label>
-                            <textarea type='text' id='bio' class='txt' disabled>$bio</textarea>
+                            <textarea type='text' name='bio' id='bio' class='txt' disabled>$bio</textarea>
                             <button name='update' id='biob' type='button' onclick='editBio()' >edit</button>
                         </div>  
                     </fieldset>
+                    <button name='submit' type='submit'>Apply all changes</button>
                 </form>
                 </div>
             ";
@@ -103,13 +118,6 @@
         else {
             document.getElementById("email").disabled = true;
             elem.innerHTML = "edit";
-            <?php
-                $uid = $_GET['uid'];
-                $email2 = $_POST['email'];
-                $res2 = dbquery("UPDATE users SET email = :email WHERE uid = :uid",
-                array('uid' => $uid,
-                      'email' => $email2));
-            ?>
         }
     }
     function editDob() {
