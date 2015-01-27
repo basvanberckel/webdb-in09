@@ -24,7 +24,7 @@
             <h1>Account Details</h1>
 
                 <div class='profile'>
-                <form action='databasesave' method='POST'>
+                <form action='databasesave.php' method='POST'>
                     <fieldset>
                         <legend>Settings</legend>
 
