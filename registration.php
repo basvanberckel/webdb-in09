@@ -221,7 +221,7 @@ function passwordMatch() {
     var incorrect = "#ff6666";
     var correct = "#66cc66";
     
-    if (password1 === password2) {
+    if (password1.value === password2.value) {
         password2.style.backgroundColor = correct;
         passwordMatch.style.color = correct;
         passwordMatch.innerHTML = "Passwords match.";
@@ -240,7 +240,7 @@ function emailMatch() {
     var incorrect = "#ff6666";
     var correct = "#66cc66";
     
-    if (email1 == email2) {
+    if (email1.value == email2.value) {
         email2.style.backgroundColor = correct;
         emailMatch.style.color = correct;
         emailMatch.innerHTML = "The e-mail addresses match.";  
