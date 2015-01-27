@@ -36,7 +36,7 @@
             <h1>Account Details</h1>
 
                 <div class='profile'>
-                <form method="post" action="profile.php">
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <fieldset>
                         <legend>Settings</legend>
 
@@ -77,7 +77,7 @@
                             <button name='update' id='biob' type='button' onclick='editBio()' >edit</button>
                         </div>  
                     </fieldset>
-                    <button name='submit' type='submit'>Apply all changes</button>
+                    <input type='submit' value='Apply all changes'>
                 </form>
                 </div>
         <?php
