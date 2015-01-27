@@ -32,7 +32,7 @@
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            <input type='text' id='email' class='txt' disabled value=$email />
+                            <input name='email' type='text' id='email' class='txt' disabled value=$email />
                             <button name='update' id='emailb' type='button' onclick='editEmail()'>edit</button>
                         </div>
 
@@ -98,10 +98,10 @@
         if (elem.innerHTML == "edit") { 
             document.getElementById("email").disabled = false; 
             elem.innerHTML = "save";
-            <?php
+            <?php $email2 = $_POST['email'];
             $res2 = dbquery("UPDATE users SET email = :email WHERE uid = :uid",
                     array('uid' => $uid,
-                          'email' => $email));
+                          'email' => $email2));
             ?>
         }
         else {
