@@ -17,7 +17,7 @@
     
         if ($_SESSION['user']->uid == $_GET['uid']) {
         
-            if (isset['submit']) {
+            if (isset($_POST['submit'])) {
                 $email2 = $_POST['email'];
                 $dob2 = $_POST['dob'];
                 $bio2 = $_POST['bio'];
