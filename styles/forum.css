@@ -103,6 +103,14 @@
   color: #D8D8D8;
 }
 
+.thread.newthread {
+  background-color: #444444; /* TODO andere kleur */   
+}
+
+.thread.newthread .thread-data {
+   height: 50px;
+}
+
 .thread-data h3 {
   color: #FFAA00;
   margin-bottom:0;
