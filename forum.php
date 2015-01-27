@@ -54,7 +54,7 @@
                   ORDER BY lastpost_date;",
                   array('fid'=>$fid));
   if($res->fetchColumn() == 0) {
-    echo "<h3>No topics in this forum yet</h3>";
+    echo "<div class='error'><h3>No threads in this forum yet!</h3></div>";
     die();
   }
   $res = dbquery("SELECT * FROM threads 
