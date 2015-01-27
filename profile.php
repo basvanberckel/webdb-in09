@@ -18,9 +18,9 @@
         if ($_SESSION['user']->uid == $_GET['uid']) {
         
             
-                $email2 = $_POST['email'];
-                $dob2 = $_POST['dob'];
-                $bio2 = $_POST['bio'];
+                $email2 = echo $_POST['email'];
+                $dob2 = echo $_POST['dob'];
+                $bio2 = echo $_POST['bio'];
                 $res2 = dbquery("UPDATE users
                                  SET email = :email,
                                      dob = :dob,
