@@ -46,8 +46,8 @@ $_SESSION['login'] = false;
 
 <br />
 <form method="post">
-<input type="text" name="username" /> <br />
-<input type="password" name="password" /> <br />
+<input type="text" name="username" placeholder="Username" /> <br />
+<input type="password" name="password" placeholder="Password" /> <br />
 <a href="index.php?page=recovery">Forgot password or username?</a><br />
 <a href="index.php?page=agreement">Register</a>
 <input type="hidden" name="login" value="1" />
