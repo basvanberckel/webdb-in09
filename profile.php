@@ -31,22 +31,22 @@
                               'dob' => $dob2,
                               'bio' => $bio2));
             
-            echo "
+            ?>
             <h1>Account Details</h1>
 
                 <div class='profile'>
-                <form action= echo htmlspecialchars($_SERVER['PHP_SELF']) method='POST'>
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <fieldset>
                         <legend>Settings</legend>
 
                         <div>
                             <label for='username'><b>Username:</b></label>
-                            $username
+                            <?php echo $username ?>
                         </div>
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            <input name='email' type='text' id='email' class='txt' disabled value=$email />
+                            <input name='email' type='text' id='email' class='txt' disabled value=<?php echo $email ?> />
                             <button name='update' id='emailb' type='button' onclick='editEmail()'>edit</button>
                         </div>
 
@@ -57,36 +57,36 @@
                         
                         <div>
                             <label for='dob'><b>Date of birth:</b></label>
-                            <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' disabled value=$dob />
+                            <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' disabled value=<?php echo $dob ?> />
                             <button name='update' id='dobb' type='button' onclick='editDob()' >edit</button>
 
                         </div>
 
                         <div>
                             <label for='sex'><b>Sex:</b></label>
-                            ";
+                            <?php
                             if ($sex == 'm') {echo 'Male';}
                             else {echo 'Female';}
-                             echo "
+                            ?>
                         </div> 
 
                         <div>
                             <label for='bio'><b>Bio:</b></label>
-                            <textarea type='text' name='bio' id='bio' class='txt' disabled>$bio</textarea>
+                            <textarea type='text' name='bio' id='bio' class='txt' disabled><?php echo $bio ?></textarea>
                             <button name='update' id='biob' type='button' onclick='editBio()' >edit</button>
                         </div>  
                     </fieldset>
                     <button name='submit' type='submit'>Apply all changes</button>
                 </form>
                 </div>
-            ";
+        <?php
         }
         else {
-            echo "
+            ?>
                 <div class='profile'>
                 <form method='POST'>
                     <fieldset>
-                        <legend>$username</legend>
+                        <legend><?php echo $username ?></legend>
 
                         <div>
                             <label for='username'><b>Username:</b></label>
@@ -95,16 +95,17 @@
 
                         <div>
                             <label for='bio'><b>Bio:</b></label>
-                            <textarea type='text' id='bio' class='txt' disabled>$bio</textarea>
+                            <textarea type='text' id='bio' class='txt' disabled><?php echo $bio ?></textarea>
                         </div>
                     
                     </fieldset>
                 </form>
                 </div>
-            ";
+        <?php
         }
+        ?>
     }
-?> 
+
 
 
 <script>
