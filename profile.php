@@ -32,7 +32,7 @@
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
                             <input type='text' id='email' class='txt' value='$email' disabled/>
-                            <button id='emailb' type='button' onclick='editEmail()'>edit</button>
+                            <button name='update' id='emailb' type='button' onclick='editEmail()'>edit</button>
                         </div>
 
                         <div>
@@ -43,7 +43,7 @@
                         <div>
                             <label for='dob'><b>Date of birth:</b></label>
                             <input type='date' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value='$dob' disabled/>
-                            <button id='dobb' type='button' onclick='editDob()' >edit</button>
+                            <button name='update' id='dobb' type='button' onclick='editDob()' >edit</button>
 
                         </div>
 
@@ -58,16 +58,13 @@
                         <div>
                             <label for='bio'><b>Bio:</b></label>
                             <textarea type='text' id='bio' class='txt' disabled>$bio</textarea>
-                            <button id='biob' type='button' onclick='editBio()' >edit</button>
-
-                        </div>
-                    
+                            <button name='update' id='biob' type='button' onclick='editBio()' >edit</button>
+                        </div>  
                     </fieldset>
-      
                 </form>
                 </div>
-        ";
-    }
+            ";
+        }
         else {
             echo "
                 <div class='profile'>
@@ -86,29 +83,31 @@
                         </div>
                     
                     </fieldset>
-      
                 </form>
                 </div>
-        ";
+            ";
         }
     }
 ?> 
 
+<?php
 
-
+?>
 <script>
     function editEmail() {
         var elem = document.getElementById("emailb");
         if (elem.innerHTML == "edit") { 
             document.getElementById("email").disabled = false; 
             elem.innerHTML = "save";
+            <?php $email = $_POST['email']
+            $res = dbquery("UPDATE users SET email = :email WHERE uid = :uid",
+                    array('uid' => $uid,
+                          'email' => $email));
+            ?>
         }
         else {
             document.getElementById("email").disabled = true;
             elem.innerHTML = "edit";
-            <?php $res = dbquery("UPDATE users SET email = :elemValue WHERE uid = :uid",
-                array('uid'=>$uid,
-                      'elemValue'=>$_POST['email'])); ?>
         }
     }
     function editDob() {
@@ -120,10 +119,6 @@
         else {
             document.getElementById("dob").disabled = true;
             elem.innerHTML = "edit";
-            <?php $res = dbquery("UPDATE users SET dob = :elemValue WHERE uid = :uid",
-                  array('uid'=>$uid,
-                        'elemValue'=>$elemValue));
-                $elemValue = elem.value ?>
         }
     }
     function editBio() {
@@ -135,10 +130,9 @@
         else {
             document.getElementById("bio").disabled = true;
             elem.innerHTML = "edit";
-            <?php $res = dbquery("UPDATE users SET bio= :elemInnerHTML WHERE uid = :uid",
-                  array('uid'=>$uid,
-                        'elemInnerHTML'=>$eleminnerHTML));
-                $elemInnerHTML = elem.innerHTML ?>
         }
     }
 </script>
+<?php
+    
+?>
