@@ -38,7 +38,7 @@
 
                         <div>
                             <label for='password'><b>Password:</b></label>
-                            <a href='passwordchange'>Change password</a>
+                            <a href='changepassword.php'>Change password</a>
                         </div>
                         
                         <div>
@@ -105,9 +105,6 @@
             elem.innerHTML = "edit";
             <?php
                 $uid = $_GET['uid'];
-                $email2 = ?> document.getElementById("email").value; <?php;
-
-
                 $res2 = dbquery("UPDATE users SET email = :email WHERE uid = :uid",
                 array('uid' => $uid,
                       'email' => $email2));
