@@ -79,19 +79,32 @@ button:hover, .buttons a:hover{
 	margin-left: 3%;
 }
 
-.mngbtns {
-	margin-top: -10px;
-	margin-bottom: 5px;
+.forum-options {
+	float:right;
+	width:20%;
+	line-height: 170%;
+}
+.forum-buttons {
+	float: right;
+	width:10%;
+}
+.forum-manage {
+  float:left;
+  width:60%;
+  height:75px;
+  padding-left:15px;
+  padding-bottom:10px;
+  color: #D8D8D8;
 }
 
-.options {
+.forum-manage h3 {
+  color: #FFAA00;
+ }
+ 
+.forum-manage h3:hover {
+  color: #FFCC00;
+ }
 
-	margin-left: 2%;
-}
-.suboptions {
-	margin-left: 5%;
-
-}
 
 /* Checkboxes
  * Images provided by http://www.csscheckbox.com 

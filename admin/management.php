@@ -77,42 +77,29 @@
 			$title   = $frow['title'];
 			$desc    = $frow['description'];
 			$pos     = $frow['position'];
-			echo   "<div class='forum'>
-						<div class='forum-data'>
+			echo   "<div class='forum' id=$fid-forum>
+						<div class='forum-manage'>
 							<h3>$title</h3>
 							<p>$desc</p>
+							
 						</div>
-						<div class='forum-activity'>
-							<p>Posts: $posts</p>
-							<p>Topics: $threads</p>
-						</div>
-					</div>
-					<form method='post'>
-						<div class='options'>
-							<input type='hidden' name='fid' value=$fid />
+						
+						<div class='forum-options'>
 							<input onclick='updateDB(\"$fid-closed\", $fid, \"closed\")' name='closed' id=$fid-closed class='css-checkbox' type='checkbox' value='Yes' $closed />
 							<label for=$fid-closed class='css-label'>Closed</label>
 							<input onclick='updateDB(\"$fid-locked\", $fid, \"locked\")' name='locked' id=$fid-locked class='css-checkbox' type='checkbox' value='Yes' $locked />
 							<label for=$fid-locked class='css-label'>Locked</label>
 							<input onclick='updateDB(\"$fid-moderated\", $fid, \"moderated\")' name='moderated' id=$fid-moderated class='css-checkbox' type='checkbox' value='Yes' $moderated />
 							<label for=$fid-moderated class='css-label'>Moderated</label>
-							<br />
-							Position: <input type='text' name='pos' id=$fid-position value=$pos />
-							
-
-							<div class='buttons mngbtns'>
-
-								<button type='submit' name='submit' id='submit' value='Submit'>
-									Submit
-								</button>
-
-								<button type='submit' name='submit' id='delete' value='Delete'>
-									Delete
-								</button>
-
-							</div>
 						</div>
-					</form>
+
+						<div class='forum-buttons buttons'>
+							<button onclick='updateDB(\"$fid-forum\", $fid, \"delete\")' name='submit' id=$fid-delete value='Delete'>
+								Delete
+							</button>
+						</div>
+
+					</div>
 				   ";
 			$sfres = dbquery("SELECT * FROM forums
 							  WHERE parent_id=:fid AND main=0
