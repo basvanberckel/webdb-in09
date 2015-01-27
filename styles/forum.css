@@ -16,6 +16,11 @@
   margin-left: 15px;
 }
 
+.threads h2 {
+  color: #AAAAAA;
+  font-size: 15px;
+  margin-left: 15px;
+}
 
 .forum-activity {
   float:right;
@@ -104,7 +109,11 @@
 }
 
 .thread.newthread {
-  background-color: #444444; /* TODO andere kleur */   
+  background-color: #444444;   
+}
+
+.thread.newthread:hover {
+  background-color: #555555;   
 }
 
 .thread.newthread .thread-data {
@@ -119,6 +128,10 @@
 .thread-data h3:hover {
   color: #FFCC00;
  }
+
+.thread-data h3:active {
+  color: #FFFFFF;
+}
 
 .thread-data a {
   float:top;
