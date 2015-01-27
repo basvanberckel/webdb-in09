@@ -39,6 +39,10 @@
   color: #FFCC00;
  }
 
+.forum-data h3:active {
+  color: #FFFFFF;
+ }
+
 .forum-data a {
   float:top;
 }
