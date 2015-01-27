@@ -105,6 +105,7 @@
             elem.innerHTML = "edit";
             <?php
                 $uid = $_GET['uid'];
+                $email2 = $_POST['email']
                 $res2 = dbquery("UPDATE users SET email = :email WHERE uid = :uid",
                 array('uid' => $uid,
                       'email' => $email2));
