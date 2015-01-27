@@ -136,14 +136,23 @@ else {
 
 <script>
 function emailValidation() {
-    id = document.getElementById("email");
-    emailcount = document.getElementById("emailcount");
-    emailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    msg = "";
-    if (!(id.value.match(emailformat))) {
-        msg = "The e-mail address that you have entered isn't valid.";   
+    var email = document.getElementById("email");
+    var emailValidation = document.getElementById("emailValidation");
+    var emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var letters = /^[0-9a-zA-Z]+$/;
+    var incorrect = "#ff6666";
+    var correct = "#66cc66";
+    
+    if (!(email.value.match(emailFormat))) {
+        email.style.backgroundColor = incorrect;
+        emailValidation.style.color = incorrect;
+        emailValidation.innerHTML = "This e-mail address isn't valid.";  
     }
-    emailcount.innerHTML = msg;
+    else {
+        email.style.backgroundColor = correct;
+        emailValidation.style.color = correct;
+        emailValidation.innerHTML = "";     
+    }
 }
 </script>
 
@@ -157,8 +166,8 @@ function emailValidation() {
             
             <div>
 				<label for="email"><b>E-mail address:</b></label>
-				<input type="text" name="email" id="email" class="txt" onkeyup="emailValidation()" required/><br /><br />
-                <span class="error" id="emailcount"><?php echo $emailError;?></span>
+				<input type="text" name="email" id="email" class="txt" onkeyup="emailValidation()" required/>
+                <span class="error" id="emailValidation"><?php echo $emailError;?></span>
 			</div>
                 
             <p>To prevent someone's e-mail address being spam this forum requires you to complete this captcha. If the captcha isn't appearing for you or if you are visually impaired, please contact the <a href="#">administrator</a>.</p>

@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST['email'])) {
         $emailError = "An e-mail address is required.";   
     } 
-    elseif ($_POST['email'] != $_POST['email_confirmation']) {
+    elseif ($_POST['email'] != $_POST['email2']) {
         $emailError = "The e-mail addresses you entered do not match each other.";   
     }
     elseif ($res->rowCount() > 0) {
@@ -100,20 +100,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     /* ^NEED TO ADD CHECK FOR DATABASE*/
     
     /* TEST PASSWORD */
-    if (empty($_POST['password'])) {
+    if (empty($_POST['password1'])) {
         $passwordError = "A password is required.";
     }
-    elseif (strlen($_POST['password']) < 6) {
+    elseif (strlen($_POST['password1']) < 6) {
         $passwordError = "The password you entered is too short.";   
     }
-    elseif (strlen($_POST['password']) > 40) {
+    elseif (strlen($_POST['password1']) > 40) {
         $passwordError = "The password you entered is too long.";   
     }
-    elseif ($_POST['password'] != $_POST['password_confirmation']) {
+    elseif ($_POST['password1'] != $_POST['password2']) {
         $passwordError = "The passwords you entered do not match each other.";   
     }
     else {
-        $passwd = $_POST['password'];   
+        $passwd = $_POST['password1'];   
     }
     
     /* TEST DATE OF BIRTH */
@@ -193,73 +193,112 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <script>
 function passwordValidation() {
-    password1 = document.getElementById("password");
-    pwcount = document.getElementById("pwcount");
-    msg = "";
+    var password1 = document.getElementById("password1");
+    var passwordValidation = document.getElementById("passwordValidation");
+    var incorrect = "#ff6666";
+    var correct = "#66cc66";
+    
     if (password1.value.length < 6) {
-        msg = "The password is too short.";   
+        password1.style.backgroundColor = incorrect;
+        passwordValidation.style.color = incorrect;
+        passwordValidation.innerHTML = "The password is too short.";   
     }
-    if (password1.value.length > 40) {
-        msg = "The password is too long.";   
+    else if (password1.value.length > 40) {
+        password1.style.backgroundColor = incorrect;
+        passwordValidation.style.color = incorrect;
+        passwordValidation.innerHTML = "The password is too long.";   
     }
-    pwcount.innerHTML = msg;
+    else {
+        password1.style.backgroundColor = correct;
+        passwordValidation.innerHTML = "";
+    }
 }
 
 function passwordMatch() {
-    password1 = document.getElementById("password");
-    password2 = document.getElementById("password_confirmation");
-    pwmatch = document.getElementById("pwmatch");
-    msg = "";
+    var password1 = document.getElementById("password1");
+    var password2 = document.getElementById("password2");
+    var passwordMatch = document.getElementById("passwordMatch");
+    var incorrect = "#ff6666";
+    var correct = "#66cc66";
     
-    if (password1 != password2) {
-        msg = "The passwords you entered do not match each other.";
+    if (password1.value === password2.value) {
+        password2.style.backgroundColor = correct;
+        passwordMatch.style.color = correct;
+        passwordMatch.innerHTML = "Passwords match.";
     }
     else {
-        msg = "The passwords match.";   
+        password2.style.backgroundColor = incorrect;
+        passwordMatch.style.color = incorrect;
+        passwordMatch.innerHTML = "Passwords do not match.";
     }
-    pwmatch.innerHTML = msg;
 }
     
 function emailMatch() {
-    email1 = document.getElementById("email");
-    email2 = document.getElementById("email_confirmation");
-    emailmatch = document.getElementById("emailmatch");
+    var email1 = document.getElementById("email");
+    var email2 = document.getElementById("email2");
+    var emailMatch = document.getElementById("emailMatch");
+    var incorrect = "#ff6666";
+    var correct = "#66cc66";
     
-    if (email1 != email2) {
-        msg = "The e-mail addresses you entered do not match each other.";
+    if (email1.value == email2.value) {
+        email2.style.backgroundColor = correct;
+        emailMatch.style.color = correct;
+        emailMatch.innerHTML = "The e-mail addresses match.";  
     }
-    else {
-        msg = "The e-mail addresses match.";   
+    else { 
+        email2.style.backgroundColor = incorrect;
+        emailMatch.style.color = incorrect;
+        emailMatch.innerHTML = "The e-mail addresses do not match.";
     }
-    emailmatch.innerHTML = msg;
 }
     
 function usernameValidation() {
-    id = document.getElementById("username");
-    usercount = document.getElementById("usercount");
-    msg = "";
-    letters = /^[0-9a-zA-Z]+$/;
-    if (id.value.length < 6) {
-        msg = "The username is too short.";   
+    var username = document.getElementById("username");
+    var userValidation = document.getElementById("userValidation");
+    var letters = /^[0-9a-zA-Z]+$/;
+    var incorrect = "#ff6666";
+    var correct = "#66cc66";
+    
+    if (username.value.length < 6) {
+        username.style.backgroundColor = incorrect;
+        userValidation.style.color = incorrect;
+        userValidation.innerHTML = "This username is too short.";   
     }
-    if (id.value.length > 24) {
-        msg = "The username is too long.";   
+    else if (username.value.length > 24) {
+        username.style.backgroundColor = incorrect;
+        userValidation.style.color = incorrect;
+        userValidation.innerHTML = "This username is too long.";   
     }
-    if (!(id.value.match(letters))) {
-        msg = "The username contains illegal characters.";   
+    else if (!(username.value.match(letters))) {
+        username.style.backgroundColor = incorrect;
+        userValidation.style.color = incorrect;
+        userValidation.innerHTML = "This username contains illegal characters.";   
     }
-    usercount.innerHTML = msg;
+    else {
+        username.style.backgroundColor = correct;
+        userValidation.style.color = correct;
+        userValidation.innerHTML = "";   
+    }
 }
    
 function emailValidation() {
-    id = document.getElementById("email");
-    emailcount = document.getElementById("emailcount");
-    emailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    msg = "";
-    if (!(id.value.match(emailformat))) {
-        msg = "The e-mail address that you have entered isn't valid.";   
+    var email = document.getElementById("email");
+    var emailValidation = document.getElementById("emailValidation");
+    var emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var letters = /^[0-9a-zA-Z]+$/;
+    var incorrect = "#ff6666";
+    var correct = "#66cc66";
+    
+    if (!(email.value.match(emailFormat))) {
+        email.style.backgroundColor = incorrect;
+        emailValidation.style.color = incorrect;
+        emailValidation.innerHTML = "This e-mail address isn't valid.";  
     }
-    emailcount.innerHTML = msg;
+    else {
+        email.style.backgroundColor = correct;
+        emailValidation.style.color = correct;
+        emailValidation.innerHTML = "";     
+    }
 }
 </script>
 
@@ -271,7 +310,7 @@ function emailValidation() {
 			<div>
 				<label for="username"><b>Username:</b></label>
 				<input type="text" name="username" id="username" class="txt" onkeyup="usernameValidation()" required/>
-                <span class="error" id="usercount"><?php echo $usernameError;?></span>
+                <span class="error" id="userValidation"><?php echo $usernameError;?></span>
                 <br>
                 <span class="correct">Must be between 6 <br /> and 24 characters.</span>
 			</div>
@@ -279,26 +318,27 @@ function emailValidation() {
 			<div>
 				<label for="email"><b>E-mail address:</b></label>
 				<input type="text" name="email" id="email" class="txt" onkeyup="emailValidation()" required/>
-                <span class="error" id="emailcount"><?php echo $emailError;?></span>
+                <span class="error" id="emailValidation"><?php echo $emailError;?></span>
 			</div>
 
 			<div>
-				<label for="email_confirmation"><b>Confirm your e-mail address:</b></label>
-				<input type="text" name="email_confirmation" id="email_confirmation" class="txt" onkeydown="emailMatch()" required/><span class="error" id="emailmatch"></span>
+				<label for="email2"><b>Confirm your e-mail address:</b></label>
+				<input type="text" name="email2" id="email2" class="txt" onkeydown="emailMatch();" required/>
+                <span class="emailMatch" id="emailMatch"></span>
 			</div>
 
 			<div>
-				<label for="password"><b>Password:</b></label>
-				<input type="password" name="password" id="password" class="txt" onkeyup="passwordValidation()" required/>
-                <span class="error" id="pwcount"><?php echo $passwordError;?></span>
+				<label for="password1"><b>Password:</b></label>
+				<input type="password" name="password1" id="password1" class="txt" onkeyup="passwordValidation()" required/>
+                <span class="error" id="passwordValidation"><?php echo $passwordError;?></span>
                 <br>
                 <span class="correct">Must be between 6 <br /> and 40 characters.</span>
 			</div>
 
 			<div>
-				<label for="password_confirmation"><b>Confirm your password:</b></label>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="txt" onkeyup="passwordMatch()" required/>
-                <span class="error" id="pwmatch"></span>
+				<label for="password2"><b>Confirm your password:</b></label>
+                <input type="password" name="password2" id="password2" class="txt" onkeyup="passwordMatch(); return false;" required/>
+                <span id="passwordMatch" class="passwordMatch"></span>
 			</div>
                 
             <div>
