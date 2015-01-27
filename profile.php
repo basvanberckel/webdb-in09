@@ -104,9 +104,12 @@
             document.getElementById("email").disabled = true;
             elem.innerHTML = "edit";
             <?php
-                    $res2 = dbquery("UPDATE users SET email = :email WHERE uid = :uid",
-                    array('uid' => $uid,
-                          'email' => $email));
+                $uid = $_GET['uid'];
+                $email2 = $_GET['email'];
+
+                $res2 = dbquery("UPDATE users SET email = :email WHERE uid = :uid",
+                array('uid' => $uid,
+                      'email' => $email2));
             ?>
         }
     }
