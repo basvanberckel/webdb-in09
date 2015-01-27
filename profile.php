@@ -32,7 +32,7 @@
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            <input type='text' id='email' class='txt' value=$email disabled/>
+                            <input type='text' id='email' class='txt' disabled value=$email />
                             <button name='update' id='emailb' type='button' onclick='editEmail()'>edit</button>
                         </div>
 
@@ -43,7 +43,7 @@
                         
                         <div>
                             <label for='dob'><b>Date of birth:</b></label>
-                            <input type='date' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value=$dob disabled/>
+                            <input type='date' id='dob' max='2015-01-31' min='1900-01-01' class='txt' disabled value=$dob />
                             <button name='update' id='dobb' type='button' onclick='editDob()' >edit</button>
 
                         </div>
