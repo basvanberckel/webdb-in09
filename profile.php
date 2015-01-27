@@ -108,8 +108,7 @@
             elem.innerHTML = "edit";
             <?php $res = dbquery("UPDATE users SET email = :elemValue WHERE uid = :uid",
                 array('uid'=>$uid,
-                      'elemValue'=>$elemValue));
-                $elemValue = elem.value; ?>
+                      'elemValue'=>$_POST['email'])); ?>
         }
     }
     function editDob() {
