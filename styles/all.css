@@ -68,6 +68,13 @@ hr {
   padding:15px;
 }
 
+/* breadcrumbs */
+#breadcrumbs {
+    font-size: 12px;
+    padding-bottom: 15px;
+}
+
+
 /* footer */
 #footer {
 	background-color: #111111;
