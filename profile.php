@@ -98,7 +98,7 @@
         if (elem.innerHTML == "edit") { 
             document.getElementById("email").disabled = false; 
             elem.innerHTML = "save";
-            <?php $email = $_POST['email'];
+            <?php
             $res2 = dbquery("UPDATE users SET email = :email WHERE uid = :uid",
                     array('uid' => $uid,
                           'email' => $email));
