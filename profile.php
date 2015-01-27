@@ -98,15 +98,16 @@
         if (elem.innerHTML == "edit") { 
             document.getElementById("email").disabled = false; 
             elem.innerHTML = "save";
-            <?php
-            $res2 = dbquery("UPDATE users SET email = :email WHERE uid = :uid",
-                    array('uid' => $uid,
-                          'email' => $email));
-            ?>
+
         }
         else {
             document.getElementById("email").disabled = true;
             elem.innerHTML = "edit";
+            <?php
+                    $res2 = dbquery("UPDATE users SET email = :email WHERE uid = :uid",
+                    array('uid' => $uid,
+                          'email' => $email));
+            ?>
         }
     }
     function editDob() {
