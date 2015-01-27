@@ -44,7 +44,7 @@
       </a>
       ";
     }
-    echo "</div><hr />";
+    echo "</div>";
   }
   echo "<div class='threads'>
             <div class='titlebar'>
