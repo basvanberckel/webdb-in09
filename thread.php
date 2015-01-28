@@ -41,7 +41,7 @@
   while($row = $res->fetch(PDO::FETCH_ASSOC)) {
     $pid = $row['pid'];
     $title = $row['title'];
-    $content = $row['content'];
+    $content = nl2br($row['content']);
     $uid = $row['uid'];
     $date = date("D, d M Y H:i", strtotime($row['date']));
     $user = getUsername($uid);
@@ -53,7 +53,7 @@
       </div>
       <div class='post-content'>
         <a name='p$pid' href='?page=thread&tid=$tid#p$pid'><h2>$title</h2></a>
-        <p>$content</p>
+        <span>$content</span>
       </div>
       
     </div>";

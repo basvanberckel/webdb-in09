@@ -10,7 +10,8 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
   $tid = $_POST['tid'];
   $uid = $_SESSION['user']->uid;
   $title = strip_tags($_POST['title']);
-  $content = strip_tags($_POST['content']);
+  require_once("bbcode.php");
+  $content = parse_bbcode_html(strip_tags($_POST['content'],'<br>'));
   $approved = !isModerated($_POST['fid']) || allow('mod_approve') ? 1 : 0;
   $date = time();
   $res = dbquery("INSERT INTO posts (uid, title, content, date, tid, approved)
