@@ -46,19 +46,20 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
     $tid = $_GET['tid'];
     $title = "Re: " . getTopicTitle($tid);
     $fid = getParent($tid);
-    echo "<h2>New post in $title</h2>";
+    $legend = "<h2>New post in $title</h2>";
   } else {
     $title = "";
     $tid = "";
     $fid = $_GET['fid'];
-    echo "<h2>New Thread</h2>";
+    $legend = "<h2>New Thread</h2>";
   }
 ?>
 
 <!-- Temporary link to profile, should link to thread page -->
+<div id="registration">
 <form method="POST">
 <fieldset>
-             
+    <legend><?php echo $legend ?></legend>
     <div>Discussion Title:</div> <input type="text" name="title" value="<?php echo $title?>"><br>
     <div>Comment:</div> <textarea type="text" name="content" cols=50 rows=10></textarea>
     <input type='hidden' name='tid' value="<?php echo $tid ?>" />
@@ -67,4 +68,5 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
 	  			
 </fieldset>
 </form>
+</div>
 <?php } ?>
