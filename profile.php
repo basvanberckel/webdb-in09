@@ -16,8 +16,9 @@
 
     
         if (array_key_exists('user', $_SESSION) && $_SESSION['user']->uid == $_GET['uid']) {
-        
+
             if (isset($_POST['submit'])) {
+                echo "testing post";
                 $email2 = $_POST['email'];
                 $dob2 = $_POST['dob'];
                 $bio2 = $_POST['bio'];
@@ -36,7 +37,7 @@
             <h1>Account Details</h1>
 
                 <div class='profile'>
-                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                <form method="post">
                     <fieldset>
                         <legend>Settings</legend>
 
@@ -47,7 +48,7 @@
 
                         <div>
                             <label for='email'><b>E-mail address:</b></label>
-                            <input name='email' type='text' id='email' class='txt' disabled value=<?php echo $email; ?> />
+                            <input name='email' type='text' id='email' class='txt' value=<?php echo $email; ?> />
                             <button name='update' id='emailb' type='button' onclick='editEmail()'>edit</button>
                         </div>
 
@@ -58,7 +59,7 @@
                         
                         <div>
                             <label for='dob'><b>Date of birth:</b></label>
-                            <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' disabled value=<?php echo $dob; ?> />
+                            <input type='date' name='dob' id='dob' max='2015-01-31' min='1900-01-01' class='txt' value=<?php echo $dob; ?> />
                             <button name='update' id='dobb' type='button' onclick='editDob()' >edit</button>
 
                         </div>
@@ -73,11 +74,11 @@
 
                         <div>
                             <label for='bio'><b>Bio:</b></label>
-                            <textarea type='text' name='bio' id='bio' class='txt' disabled><?php echo $bio; ?></textarea>
+                            <textarea type='text' name='bio' id='bio' class='txt'><?php echo $bio; ?></textarea>
                             <button name='update' id='biob' type='button' onclick='editBio()' >edit</button>
                         </div>  
                     </fieldset>
-                    <input type='submit' value='Apply all changes'>
+                    <input name="submit" type='submit' value='Apply all changes'>
                 </form>
                 </div>
         <?php
