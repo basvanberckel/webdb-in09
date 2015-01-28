@@ -15,7 +15,7 @@
         $bio = $row['bio'];
 
     
-        if ($_SESSION['user']->uid == $_GET['uid']) {
+        if (array_key_exists('user', $_SESSION) && $_SESSION['user']->uid == $_GET['uid']) {
         
             if (isset($_POST['submit'])) {
                 $email2 = $_POST['email'];
