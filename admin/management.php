@@ -4,46 +4,16 @@
 	dbconnect();
 
 	if(isset($_POST['submit'])) {
-		$submit = $_POST['submit'];
-		$fid    = $_POST['fid'];
-		/* This sets the closed, locked, and moderated values to the ones that were
-		 * filled in
-		 */
-		if($submit == 'Submit') {
-			if(isset($_POST['closed'])) {
-				$closed = 1;
-			} else {
-				$closed = 0;
-			}
-			if(isset($_POST['locked'])) {
-				$locked = 1;
-			} else {
-				$locked = 0;
-			}
-			if(isset($_POST['moderated'])) {
-				$moderated = 1;
-			} else {
-				$moderated = 0;
-			}
-			$pos = $_POST['pos'];
-			if(is_numeric($pos)) {
-				$res = dbquery("UPDATE forums
-								SET closed = :closed, locked = :locked, moderated = :moderated, position = :pos
-								WHERE fid = :fid;",
-							   array('closed'=>$closed,
-									 'locked'=>$locked,
-									 'moderated'=>$moderated,
-									 'pos'=>$pos,
-									 'fid'=>$fid));
-			}
-			else {
-				echo "Position needs to be a number. <br />";
-			}
-		}
-		elseif($submit == 'Delete') {
-			$res = dbquery("DELETE FROM forums
+		$fid = $_POST['submit'];
+		$pos = $_POST['pos'];
+		if(is_numeric($pos) && !empty($pos)) {
+			$res = dbquery("UPDATE forums
+							SET position = :pos
 							WHERE fid = :fid;",
-						   array('fid'=>$fid));
+						   array('pos'=>$pos,
+								 'fid'=>$fid));
+		} else {
+			echo "Position needs to be a number. <br />";
 		}
 	}
 
@@ -77,7 +47,7 @@
 			$title   = $frow['title'];
 			$desc    = $frow['description'];
 			$pos     = $frow['position'];
-			echo   "<div class='forum draggable' id=$fid-forum>
+			echo   "<div class='forum' id=$fid-forum>
 						<div class='forum-manage'>
 							<div class='title' id=$fid-title><h3>$title</h3></div>
 							<div class='desc' id=$fid-desc><p>$desc</p></div>
@@ -99,9 +69,13 @@
 							</ul>
 						</div>
 						<div class='forum-buttons buttons'>
-							<button onclick='updateDB(\"$fid-forum\", $fid, \"delete\")' name='submit' id=$fid-delete value='Delete'>
+							<button onclick='updateDB(\"$fid-forum\", $fid, \"delete\")' name='submit' id=$fid-delete>
 								Delete
 							</button>
+							<form method='post'>
+								<input type='text' name='pos' id='pos' maxlength='6' size='6' value=$pos />
+								<input class='hidden' name='submit' type='submit' value=$fid />
+							</form>
 						</div>
 
 					</div>
@@ -127,10 +101,10 @@
 				$title   = $sfrow['title'];
 				$desc    = $sfrow['description'];
 				$pos     = $sfrow['position'];
-				echo   "<div class='forum subforum draggable' id=$fid-forum>
+				echo   "<div class='forum subforum' id=$fid-forum>
 						<div class='forum-manage'>
-							<h3>$title</h3>
-							<p>$desc</p>
+							<div class='title' id=$fid-title><h3>$title</h3></div>
+							<div class='desc' id=$fid-desc><p>$desc</p></div>
 						</div>
 						<div class='forum-options'>
 							<ul>
@@ -152,6 +126,10 @@
 							<button onclick='updateDB(\"$fid-forum\", $fid, \"delete\")' name='submit' id=$fid-delete>
 								Delete
 							</button>
+							<form method='post'>
+								<input type='text' name='pos' id='pos' maxlength='6' size='6' value=$pos />
+								<input class='hidden' name='submit' type='submit' value=$fid />
+							</form>
 						</div>
 
 					</div>
@@ -179,7 +157,7 @@ function updateDB(divid, forum, act) {
 			document.getElementById(divid).innerHTML=xmlhttp.responseText;
 		}
 	  }
-	xmlhttp.open('GET','action.php?fid='+forum+'&action='+act,true);
+	xmlhttp.open('GET','admin/action.php?fid='+forum+'&action='+act,true);
 	xmlhttp.send();
 }
 </script>

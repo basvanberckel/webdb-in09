@@ -20,8 +20,6 @@ html {
 	background-color: #222222;
 	border:0px solid #000000;
 /*	border-top: 1px solid #454545;*/
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
 	padding-left: 4%;
 	padding-right: 4%;
 	padding-bottom: 2%;
@@ -30,18 +28,15 @@ html {
 }
 
 #admin-header {
+	margin-top: 10px;
 	background-color: #222222;
 	height: 31px;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
 }
 
 .buttons {
 	height: 31px;
 }
-.buttons #back {
-	border-top-left-radius: 10px;
-}
+
 .buttons a, .buttons button {
 	display:block;
     float:left;
@@ -58,12 +53,6 @@ html {
     cursor:pointer;
     padding:5px 10px 6px 7px;
 }
-
-/*
-button:focus {
-	outline:0 !important;
-}
-*/
 
 button:hover, .buttons a:hover{
 	background-color: #393939;
@@ -91,7 +80,7 @@ button:hover, .buttons a:hover{
 }
 .forum-buttons {
 	float: right;
-	width: 30px;
+	width: 50px;
 }
 .forum-manage {
   float:left;
@@ -110,9 +99,12 @@ button:hover, .buttons a:hover{
   color: #FFCC00;
  }
 
-ul
-{
+ul {
     list-style-type: none;
+}
+
+.hidden {
+	visibility: hidden;
 }
 
 /* Checkboxes

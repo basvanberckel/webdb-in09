@@ -12,3 +12,8 @@ textarea.txt {
     resize: none;
     overflow: scroll;
 }
+
+.bio {
+	width: 400px;
+	display: inline-block;
+}
