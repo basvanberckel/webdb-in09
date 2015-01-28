@@ -64,11 +64,6 @@ button:hover, .buttons a:hover{
 
 /* Management */
 
-.draggable {
-	cursor: move;
-	position: relative;
-}
-
 .subforum {
 	margin-left: 3%;
 }
@@ -107,6 +102,18 @@ ul {
 	visibility: hidden;
 }
 
+/* User management */
+
+.user {
+	width: 50%;	
+	overflow: hidden;
+}
+.username {
+	float: left;
+}
+.user-options {
+	float: right;
+}
 /* Checkboxes
  * Images provided by http://www.csscheckbox.com 
  */
