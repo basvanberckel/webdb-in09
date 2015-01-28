@@ -64,7 +64,9 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
     <div>Comment:</div> <textarea type="text" name="content" cols=50 rows=10></textarea>
     <input type='hidden' name='tid' value="<?php echo $tid ?>" />
     <input type='hidden' name='fid' value="<?php echo $fid ?>" /> 
-    <div><input type="submit" value="Post Discussion"></div>
+    <div class="buttons">
+	<button type="submit" value="submit">Post discussion</button>
+    </div>
 	  			
 </fieldset>
 </form>
