@@ -3,7 +3,7 @@
 <?php
 
 /* er is net uitgelogd */
-if(array_key_exists('logout', $_GET)){
+if(array_key_exists('logout', $_POST)){
 
 	session_destroy();
   $_SESSION['login'] = false;
@@ -35,7 +35,9 @@ if(array_key_exists('login', $_POST) && array_key_exists('username', $_POST) &&
 if(array_key_exists('user', $_SESSION) && $_SESSION['login']){
 
 	echo '<br /><br />Welcome <b><a href="?page=profile&uid=' . $_SESSION['user']->uid .'">' . $_SESSION['user']->username . '</a></b>!<br /><br />'; 
-	echo '<a href="?page=' . $page . '&logout=0">Log out</a>';
+	//echo '<a href="?page=' . $page . '&logout=0">Log out</a>';
+    echo '<form method="post"><input type="hidden" name="logout" value="1" />';
+    echo '<button type="submit" value="submit">Log out</button></form>';
 
 }
 /* er is niet ingelogd */
