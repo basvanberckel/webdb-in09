@@ -25,17 +25,25 @@
 .post {
   overflow:hidden;
   margin:10px 0px;
+  box-sizing: border-box;
 }
 
 .post-content {
-  width:75%;
+  width:85%;
   padding:10px 25px;
   background-color: #333333;
-  float:left;
+  float:right;
+  box-sizing: border-box;
 }
 
 .post-data {
   width:15%;
-  float:right;
+  float:left;
   color: #FFAA00;
+  background: #222;
+  box-sizing: border-box;
+  padding: 15px;
+  /* CSS is stom.. */
+  padding-bottom: 1000px;
+  margin-bottom: -1000px;
 }
