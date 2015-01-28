@@ -5,7 +5,6 @@ if(!allow('forum_posting')) {
 }
 
 $db = dbconnect();
-  
 if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)) {
   $newThread = false;
   $tid = $_POST['tid'];
