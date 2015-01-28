@@ -14,7 +14,7 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
   $approved = !isModerated($_POST['fid']) || allow('mod_approve') ? 1 : 0;
   $date = time();
   $res = dbquery("INSERT INTO posts (uid, title, content, date, tid, approved)
-                  VALUES (:uid, :title, :content, :date, :tid, :approved)",
+                  VALUES (:uid, :title, :content, FROM_UNIXTIME(:date), :tid, :approved)",
                   array("uid"=>$uid, "title"=>$title,
                         "content"=>$content, "date"=>$date, 
                         "tid"=>$tid, "approved"=>$approved));
@@ -25,7 +25,8 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
     $fid = $_POST['fid'];
     $res = dbquery("INSERT INTO threads 
                     (uid, title, pid, date, fid, lastpost_uid, lastpost_date, approved, posts)
-                    VALUES (:uid, :title, :pid, :date, :fid, :uid, :date, :approved, 0);",
+                    VALUES (:uid, :title, :pid, FROM_UNIXTIME(:date), :fid, :uid, 
+                            FROM_UNIXTIME(:date), :approved, 0);",
                     array("uid"=>$uid, "title"=>$title,
                           "pid"=>$pid, "date"=>$date,
                           "fid"=>$fid, "approved"=>$approved));
