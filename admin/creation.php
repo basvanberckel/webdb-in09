@@ -12,9 +12,11 @@
 			$moderated = 0;
 		}
 		$cid = $_POST['cat'];
-		$pos = $_POST['pos'];
-		if(!(empty($title) || empty($descr) || empty($cid) ||empty($pos))) {
-			if(is_numeric($pos)) {
+		if(!(empty($title) || empty($descr) || empty($cid))) {
+			$res = dbquery("SELECT MAX(position) 
+							FROM forums;");
+			if($row = $res->fetch(PDO::FETCH_ASSOC)) {
+				$pos = $row['MAX(position)'] + 1;
 				$res = dbquery("INSERT INTO forums (title, description, moderated, parent_id, main, position)
 								VALUES (:title, :descr, :moderated, :cid, 1, :pos);", 
 								array('title'=>$title,
@@ -25,9 +27,6 @@
 				if($res) {
 					echo "Forum was succesfully created. <br />";
 				}
-			}
-			else {
-				echo "Position needs to be a number. <br />";
 			}
 
 		}
@@ -59,12 +58,10 @@
 	}
 
 	echo "		</select>
-				<div class='form-header'>Forum position:</div>
-				<input type='text' name='pos' id='forum-pos'>
 				<div class='buttons'>
 					<button type='submit' name='submit' id='submit'>Submit</button>
 				</div>
 			</form>";
 
  ?>
-	
+</div>

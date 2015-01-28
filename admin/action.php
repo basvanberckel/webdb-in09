@@ -8,7 +8,6 @@
 		$res = dbquery("DELETE FROM forums
 						WHERE fid = :fid;",
 					   array('fid'=>$fid));
-		echo "<script> window.location.reload(); </script>";
 	}
 	elseif($action == 'moderated' || $action == 'locked'
 		|| $action == 'closed') {
