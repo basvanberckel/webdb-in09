@@ -33,6 +33,10 @@ hr {
 	height: 0px;
 }
 
+textarea {
+   resize: none;
+}
+
 /* header */
 #header {
 	width: 100%;
