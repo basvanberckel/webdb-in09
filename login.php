@@ -42,7 +42,7 @@ if(array_key_exists('user', $_SESSION) && $_SESSION['login']){
       $page = 'main';
     }
     
-	echo '<a href="?page=' . $page . '&logout=0">Log uit</a>';
+	echo '<a href="?page=' . $page . '&logout=0">Log out</a>';
 
 }
 /* er is niet ingelogd */

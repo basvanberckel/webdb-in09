@@ -21,8 +21,11 @@
               <a href='?page=thread&tid=$tid'><h1>$title</h1></a>
             </div>
             <div id='post-button'>
-              <a href='?page=discussion&tid=$tid'>Post reply</a>
+            <div class='buttons'>
+              <a href='?page=discussion&tid=$tid'><button>Post Reply</button></a>
             </div>
+            </div>
+            
           </div>";
   if (allow('mod_approve')) {
     $res = dbquery("SELECT * FROM posts
@@ -44,14 +47,15 @@
     $user = getUsername($uid);
     echo "  
     <div class='post'>
-      <div class='post-content'>
-        <a name='p$pid' href='?page=thread&tid=$tid#p$pid'><h2>$title</h2></a>
-        <p>$content</p>
-      </div>
       <div class='post-data'>
         <span>Username: <a href='?page=profile&uid=$uid'>$user</a></span>
         <p>Date: $date</p>
       </div>
+      <div class='post-content'>
+        <a name='p$pid' href='?page=thread&tid=$tid#p$pid'><h2>$title</h2></a>
+        <p>$content</p>
+      </div>
+      
     </div>";
   }
   echo "</div>";
