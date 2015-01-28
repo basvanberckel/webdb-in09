@@ -47,11 +47,13 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
     $title = "Re: " . getTopicTitle($tid);
     $fid = getParent($tid);
     $legend = "New post in $title";
+    $button = "Post";
   } else {
     $title = "";
     $tid = "";
     $fid = $_GET['fid'];
     $legend = "New Thread";
+    $button = "Create Thread";
   }
 ?>
 
@@ -65,7 +67,7 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
     <input type='hidden' name='tid' value="<?php echo $tid ?>" />
     <input type='hidden' name='fid' value="<?php echo $fid ?>" /> 
     <div class="buttons">
-	<button type="submit" value="submit">Post discussion</button>
+	<button type="submit" value="submit"><?php echo $button ?></button>
     </div>
 	  			
 </fieldset>
