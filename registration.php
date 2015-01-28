@@ -299,6 +299,29 @@ function emailValidation() {
         emailValidation.style.color = correct;
         emailValidation.innerHTML = "";     
     }
+    
+function usernameAvailability(string) {
+    if (string == "") {
+        document.getElementById("userValidation").innerHTML = "";
+        return;
+    }
+    else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();   
+        }
+        else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");   
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+            {
+                document.getElementById("userValidation").innerHTML = xmlhttp.responseText;
+            }
+        }
+    }
+    xmlhttp.open("GET", "checkuser.php?username="+string, true);
+    xmlhttp.send();
+}
 }
 </script>
 
@@ -309,7 +332,7 @@ function emailValidation() {
             <p><?php echo $msg;?></p>
 			<div>
 				<label for="username"><b>Username:</b></label>
-				<input type="text" name="username" id="username" class="txt" onkeyup="usernameValidation()" required/>
+				<input type="text" name="username" id="username" class="txt" onkeyup="usernameValidation(); usernameAvailability(this.value)" required/>
                 <span class="error" id="userValidation"><?php echo $usernameError;?></span>
                 <br>
                 <span class="correct">Must be between 6 <br /> and 24 characters.</span>
