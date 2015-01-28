@@ -9,7 +9,7 @@ html {
 }
 
 #main {
-	width: 60%;
+	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
@@ -75,22 +75,27 @@ button:hover, .buttons a:hover{
 
 /* Management */
 
+.draggable {
+	cursor: move;
+	position: relative;
+}
+
 .subforum {
 	margin-left: 3%;
 }
 
 .forum-options {
 	float:right;
-	width:20%;
-	line-height: 170%;
+	width:190px;
+	line-height: 150%;
 }
 .forum-buttons {
 	float: right;
-	width:10%;
+	width: 30px;
 }
 .forum-manage {
   float:left;
-  width:60%;
+  width:auto;
   height:75px;
   padding-left:15px;
   padding-bottom:10px;
@@ -105,6 +110,10 @@ button:hover, .buttons a:hover{
   color: #FFCC00;
  }
 
+ul
+{
+    list-style-type: none;
+}
 
 /* Checkboxes
  * Images provided by http://www.csscheckbox.com 
