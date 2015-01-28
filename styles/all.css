@@ -34,7 +34,11 @@ hr {
 }
 
 textarea {
-   resize: none;
+    resize: none;
+    background-color: lightgrey;
+    border: none;
+    outline: none;
+    overflow: auto;
 }
 
 /* header */
