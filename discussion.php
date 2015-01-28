@@ -46,12 +46,12 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
     $tid = $_GET['tid'];
     $title = "Re: " . getTopicTitle($tid);
     $fid = getParent($tid);
-    $legend = "<h2>New post in $title</h2>";
+    $legend = "New post in $title";
   } else {
     $title = "";
     $tid = "";
     $fid = $_GET['fid'];
-    $legend = "<h2>New Thread</h2>";
+    $legend = "New Thread";
   }
 ?>
 
