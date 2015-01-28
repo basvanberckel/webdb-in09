@@ -27,7 +27,8 @@ function getParent($tid) {
 
 function updateStats($tid, $uid, $date, $newThread) {
   $fid = getParent($tid);
-  dbquery("UPDATE threads SET posts=posts+1, lastpost_uid=:uid, lastpost_date=:date WHERE tid=:tid;",
+  dbquery("UPDATE threads SET posts=posts+1, lastpost_uid=:uid, 
+          lastpost_date=FROM_UNIXTIME(:date) WHERE tid=:tid;",
           array("uid"=>$uid, "date"=>$date, "tid"=>$tid));
   if ($newThread) {
     $query = "UPDATE forums SET posts=posts+1, threads=threads+1 WHERE fid=:fid;";
