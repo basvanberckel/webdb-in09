@@ -77,22 +77,27 @@
 			$title   = $frow['title'];
 			$desc    = $frow['description'];
 			$pos     = $frow['position'];
-			echo   "<div class='forum' id=$fid-forum>
+			echo   "<div class='forum draggable' id=$fid-forum>
 						<div class='forum-manage'>
-							<h3>$title</h3>
-							<p>$desc</p>
-							
+							<div class='title' id=$fid-title><h3>$title</h3></div>
+							<div class='desc' id=$fid-desc><p>$desc</p></div>
 						</div>
-						
 						<div class='forum-options'>
-							<input onclick='updateDB(\"$fid-closed\", $fid, \"closed\")' name='closed' id=$fid-closed class='css-checkbox' type='checkbox' value='Yes' $closed />
-							<label for=$fid-closed class='css-label'>Closed</label>
-							<input onclick='updateDB(\"$fid-locked\", $fid, \"locked\")' name='locked' id=$fid-locked class='css-checkbox' type='checkbox' value='Yes' $locked />
-							<label for=$fid-locked class='css-label'>Locked</label>
-							<input onclick='updateDB(\"$fid-moderated\", $fid, \"moderated\")' name='moderated' id=$fid-moderated class='css-checkbox' type='checkbox' value='Yes' $moderated />
-							<label for=$fid-moderated class='css-label'>Moderated</label>
+							<ul>
+							<li>
+								<input onclick='updateDB(\"$fid-closed\", $fid, \"closed\")' name='closed' id=$fid-closed class='css-checkbox' type='checkbox' value='Yes' $closed />
+								<label for=$fid-closed class='css-label'>Closed</label>
+							</li>
+							<li>
+								<input onclick='updateDB(\"$fid-locked\", $fid, \"locked\")' name='locked' id=$fid-locked class='css-checkbox' type='checkbox' value='Yes' $locked />
+								<label for=$fid-locked class='css-label'>Locked</label>
+							</li>
+							<li>
+								<input onclick='updateDB(\"$fid-moderated\", $fid, \"moderated\")' name='moderated' id=$fid-moderated class='css-checkbox' type='checkbox' value='Yes' $moderated />
+								<label for=$fid-moderated class='css-label'>Moderated</label>
+							</li>
+							</ul>
 						</div>
-
 						<div class='forum-buttons buttons'>
 							<button onclick='updateDB(\"$fid-forum\", $fid, \"delete\")' name='submit' id=$fid-delete value='Delete'>
 								Delete
@@ -122,42 +127,60 @@
 				$title   = $sfrow['title'];
 				$desc    = $sfrow['description'];
 				$pos     = $sfrow['position'];
-				echo   "<div class='forum subforum'>
-							<div class='forum-data'>
-								<h3>$title</h3>
-								<p>$desc</p>
-							</div>
-							<div class='forum-activity'>
-								<p>Posts: $posts</p>
-								<p>Topics: $threads</p>
-							</div>
+				echo   "<div class='forum subforum draggable' id=$fid-forum>
+						<div class='forum-manage'>
+							<h3>$title</h3>
+							<p>$desc</p>
 						</div>
-						<form method='post'>
-							<div class='suboptions'>
-								<input type='hidden' name='fid' value=$fid />
-								Closed:<input type='checkbox' name='closed' value='Yes' $closed />
-								Locked:<input type='checkbox' name='locked' value='Yes' $locked />
-								Moderated:<input type='checkbox' name='moderated' value='Yes' $moderated />
-								Position: <input type='text' name='pos' id='pos' value=$pos />
+						<div class='forum-options'>
+							<ul>
+							<li>
+								<input onclick='updateDB(\"$fid-closed\", $fid, \"closed\")' name='closed' id=$fid-closed class='css-checkbox' type='checkbox' value='Yes' $closed />
+								<label for=$fid-closed class='css-label'>Closed</label>
+							</li>
+							<li>
+								<input onclick='updateDB(\"$fid-locked\", $fid, \"locked\")' name='locked' id=$fid-locked class='css-checkbox' type='checkbox' value='Yes' $locked />
+								<label for=$fid-locked class='css-label'>Locked</label>
+							</li>
+							<li>
+								<input onclick='updateDB(\"$fid-moderated\", $fid, \"moderated\")' name='moderated' id=$fid-moderated class='css-checkbox' type='checkbox' value='Yes' $moderated />
+								<label for=$fid-moderated class='css-label'>Moderated</label>
+							</li>
+							</ul>
+						</div>
+						<div class='forum-buttons buttons'>
+							<button onclick='updateDB(\"$fid-forum\", $fid, \"delete\")' name='submit' id=$fid-delete>
+								Delete
+							</button>
+						</div>
 
-								<div class='buttons mngbtns'>
-
-									<button type='submit' name='submit' id='submit' value='Submit'>
-										Submit
-									</button>
-
-									<button type='submit' name='submit' id='delete' value='Delete'>
-										Delete
-									</button>
-
-								</div>
-							</div>
-						</form>
-					   ";
+					</div>
+				   ";
 			}
 		}
 		echo "</div>";
 	}
+	
 ?> 
 
+<script>
+function updateDB(divid, forum, act) {
+	console.log(divid);
+	console.log(forum);
+	console.log(act);
+	var xmlhttp;
+	if (window.XMLHttpRequest) {
+		xmlhttp=new XMLHttpRequest();
+	} else {
+		xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');
+	}
+	xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById(divid).innerHTML=xmlhttp.responseText;
+		}
+	  }
+	xmlhttp.open('GET','action.php?fid='+forum+'&action='+act,true);
+	xmlhttp.send();
+}
+</script>
 </div>

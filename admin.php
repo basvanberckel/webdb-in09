@@ -21,27 +21,7 @@
 		echo " <link rel='stylesheet' type='text/css' href='../styles/main.css'>";
 	}
 	elseif ($page == 'moderation') {
-		echo "  <link rel='stylesheet' type='text/css' href='../styles/thread.css'>
-				<script>
-				function updateDB(divid, forum, act) {
-					console.log(divid);
-					console.log(forum);
-					console.log(act);
-					var xmlhttp;
-					if (window.XMLHttpRequest) {
-						xmlhttp=new XMLHttpRequest();
-					} else {
-						xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');
-					}
-					xmlhttp.onreadystatechange=function() {
-						if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-							document.getElementById(divid).innerHTML=xmlhttp.responseText;
-						}
-					  }
-					xmlhttp.open('GET','action.php?fid='+forum+'&action='+act,true);
-        			xmlhttp.send();
-				}
-				</script>";";
+		echo "  <link rel='stylesheet' type='text/css' href='../styles/thread.css'>";     
 	}
    ?>
 </head>
