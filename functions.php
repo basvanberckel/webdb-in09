@@ -47,7 +47,7 @@ function allow($permission) {
 
 function isModerated($fid) {
   $res = dbquery("SELECT moderated FROM forums WHERE fid=:fid;",
-                  array("fid",$fid));
+                  array("fid"=>$fid));
   $m = $res->fetch(PDO::FETCH_ASSOC);
   return $m['moderated'];
 }
