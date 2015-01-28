@@ -21,8 +21,11 @@
               <a href='?page=thread&tid=$tid'><h1>$title</h1></a>
             </div>
             <div id='post-button'>
-              <a href='?page=discussion&tid=$tid'>Post reply</a>
+            <div class='buttons'>
+              <a href='?page=discussion&tid=$tid'><button>Post Reply</button></a>
             </div>
+            </div>
+            
           </div>";
   if (allow('mod_approve')) {
     $res = dbquery("SELECT * FROM posts
