@@ -143,9 +143,6 @@
 
 <script>
 function updateDB(divid, forum, act) {
-	console.log(divid);
-	console.log(forum);
-	console.log(act);
 	var xmlhttp;
 	if (window.XMLHttpRequest) {
 		xmlhttp=new XMLHttpRequest();

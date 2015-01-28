@@ -195,8 +195,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 function passwordValidation() {
     var password1 = document.getElementById("password1");
     var passwordValidation = document.getElementById("passwordValidation");
-    var incorrect = "#ff6666";
-    var correct = "#66cc66";
+    var incorrect = "#df3030";
+    var correct = "#56bc56";
     
     if (password1.value.length < 6) {
         password1.style.backgroundColor = incorrect;
@@ -218,8 +218,8 @@ function passwordMatch() {
     var password1 = document.getElementById("password1");
     var password2 = document.getElementById("password2");
     var passwordMatch = document.getElementById("passwordMatch");
-    var incorrect = "#ff6666";
-    var correct = "#66cc66";
+    var incorrect = "#df3030";
+    var correct = "#56bc56";
     
     if (password1.value === password2.value) {
         password2.style.backgroundColor = correct;
@@ -237,8 +237,8 @@ function emailMatch() {
     var email1 = document.getElementById("email");
     var email2 = document.getElementById("email2");
     var emailMatch = document.getElementById("emailMatch");
-    var incorrect = "#ff6666";
-    var correct = "#66cc66";
+    var incorrect = "#df3030";
+    var correct = "#56bc56";
     
     if (email1.value == email2.value) {
         email2.style.backgroundColor = correct;
@@ -256,8 +256,8 @@ function usernameValidation() {
     var username = document.getElementById("username");
     var userValidation = document.getElementById("userValidation");
     var letters = /^[0-9a-zA-Z]+$/;
-    var incorrect = "#ff6666";
-    var correct = "#66cc66";
+    var incorrect = "#df3030";
+    var correct = "#56bc56";
     
     if (username.value.length < 6) {
         username.style.backgroundColor = incorrect;
@@ -286,8 +286,8 @@ function emailValidation() {
     var emailValidation = document.getElementById("emailValidation");
     var emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var letters = /^[0-9a-zA-Z]+$/;
-    var incorrect = "#ff6666";
-    var correct = "#66cc66";
+    var incorrect = "#df3030";
+    var correct = "#56bc56";
     
     if (!(email.value.match(emailFormat))) {
         email.style.backgroundColor = incorrect;
@@ -299,6 +299,29 @@ function emailValidation() {
         emailValidation.style.color = correct;
         emailValidation.innerHTML = "";     
     }
+    
+function usernameAvailability(string) {
+    if (string == "") {
+        document.getElementById("userValidation").innerHTML = "";
+        return;
+    }
+    else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();   
+        }
+        else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");   
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+            {
+                document.getElementById("userValidation").innerHTML = xmlhttp.responseText;
+            }
+        }
+    }
+    xmlhttp.open("GET", "checkuser.php?username="+string, true);
+    xmlhttp.send();
+}
 }
 </script>
 
@@ -309,7 +332,7 @@ function emailValidation() {
             <p><?php echo $msg;?></p>
 			<div>
 				<label for="username"><b>Username:</b></label>
-				<input type="text" name="username" id="username" class="txt" onkeyup="usernameValidation()" required/>
+				<input type="text" name="username" id="username" class="txt" onkeyup="usernameValidation(); usernameAvailability(this.value)" required/>
                 <span class="error" id="userValidation"><?php echo $usernameError;?></span>
                 <br>
                 <span class="correct">Must be between 6 <br /> and 24 characters.</span>
@@ -323,7 +346,7 @@ function emailValidation() {
 
 			<div>
 				<label for="email2"><b>Confirm your e-mail address:</b></label>
-				<input type="text" name="email2" id="email2" class="txt" onkeydown="emailMatch();" required/>
+				<input type="text" name="email2" id="email2" class="txt" onkeyup="emailMatch();" required/>
                 <span class="emailMatch" id="emailMatch"></span>
 			</div>
 

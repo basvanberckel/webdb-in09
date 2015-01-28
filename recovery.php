@@ -82,13 +82,13 @@ if (isset($_POST['email']) && checkError($captchaError, $emailError)) {
     }
     
     if ($resp != null && $resp->success) {
-    $captchaError = "";   
+        $captchaError = "";   
     }
     else {
-    $captchaError = "Please complete the captcha to register.";   
+        $captchaError = "Please complete the captcha to register.";   
     }
 
-    if($_POST['email'] && checkError($captchaError, $emailError)) {
+    if ($_POST['email'] && checkError($captchaError, $emailError)) {
         $msg = "An email has been sent to your email.";
         function newPassword($length) {
         $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%*()_+{}|<>?/.,;[]\=-";
@@ -140,8 +140,8 @@ function emailValidation() {
     var emailValidation = document.getElementById("emailValidation");
     var emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var letters = /^[0-9a-zA-Z]+$/;
-    var incorrect = "#ff6666";
-    var correct = "#66cc66";
+    var incorrect = "#df3030";
+    var correct = "#56bc56";
     
     if (!(email.value.match(emailFormat))) {
         email.style.backgroundColor = incorrect;
