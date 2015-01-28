@@ -82,13 +82,13 @@ if (isset($_POST['email']) && checkError($captchaError, $emailError)) {
     }
     
     if ($resp != null && $resp->success) {
-    $captchaError = "";   
+        $captchaError = "";   
     }
     else {
-    $captchaError = "Please complete the captcha to register.";   
+        $captchaError = "Please complete the captcha to register.";   
     }
 
-    if($_POST['email'] && checkError($captchaError, $emailError)) {
+    if ($_POST['email'] && checkError($captchaError, $emailError)) {
         $msg = "An email has been sent to your email.";
         function newPassword($length) {
         $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%*()_+{}|<>?/.,;[]\=-";

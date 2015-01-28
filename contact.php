@@ -62,7 +62,7 @@ if (isset($_POST['email'])) {
     
     if ($resp != null && $resp->success) {
         $captchaError = "";   
-        }
+    }
     else {
         $captchaError = "Please complete the captcha to register.";   
     }
@@ -72,10 +72,10 @@ if (isset($_POST['email'])) {
     }
     
     $to = "amos.bastian@student.uva.nl";
-    $subject = "Duke's Herald - Message from '.$name.'";
+    $subject = "Duke's Herald - Message from '$name'";
     $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers = "From: '.$email.'";
-    $headers .= "Reply-To: admin@dukesherald.com \r\n";
+    $headers = "From: '$email'\r\n";
+    $headers .= "Reply-To: '$email' \r\n";
     $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";
 
     mail($to, $subject, $message, $headers);
