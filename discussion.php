@@ -36,7 +36,7 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
   }
   if ($res) {
       updateStats($tid, $uid, $date, $newThread, $approved);
-      //echo "<script>window.location='/?page=thread&tid=$tid#p$pid';</script>";
+      echo "<script>window.location='/?page=thread&tid=$tid#p$pid';</script>";
   } else {
     echo "Something went wrong";
   }
