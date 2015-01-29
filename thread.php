@@ -45,14 +45,15 @@
     $uid = $row['uid'];
     $date = date("D, d M Y H:i", strtotime($row['date']));
     $user = getUsername($uid);
-    echo "  
+    echo "
+    <a name='p$pid'></a>
     <div class='post'>
       <div class='post-data'>
         <span>Username: <a href='?page=profile&uid=$uid'>$user</a></span>
         <p>Date: $date</p>
       </div>
       <div class='post-content'>
-        <a name='p$pid' href='?page=thread&tid=$tid#p$pid'><h2>$title</h2></a>
+        <a href='?page=thread&tid=$tid#p$pid'><h2>$title</h2></a>
         <span>$content</span>
       </div>
       
