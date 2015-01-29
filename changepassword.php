@@ -17,11 +17,13 @@
         if($_POST['newpass']==$_POST['repass'] && password_verify($_POST['oldpass'], $passwd)) {
             
             $password = $_POST['newpass'];
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+
             $res2 = dbquery("UPDATE users
                              SET passwd = :password
                              WHERE uid = :uid",
                     array('uid' => $uid,
-                          'password' => $password));
+                          'password' => $hash));
         } 
     else {
     echo "Wrong password.";
