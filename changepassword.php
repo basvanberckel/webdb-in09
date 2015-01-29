@@ -6,9 +6,6 @@
                     WHERE uid=:uid",
                     array('uid'=>$uid));
 
-
-    
-
     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
         $passwd = $row['passwd'];
 
@@ -33,26 +30,28 @@
     
     
 ?>
-<form method="POST">
-    <fieldset>
-    <legend>Change password</legend>
-    <div>
-    	<label for='oldpass'><b>Old password:</b></label>
-        <input name='oldpass' type='password' id='oldpass' class='txt'/>
-    </div>
+<div id="registration">
+    <form method="POST">
+        <fieldset>
+        <legend>Change Password</legend>
+        <div>
+            <label for='oldpass'><b>Old password:</b></label>
+            <input name='oldpass' type='password' id='oldpass' class='txt'/>
+        </div>
 
-    <div>
-        <label for='newpass'><b>New password:</b></label>
-        <input name='newpass' type='password' id='newpass' class='txt'/>
-    </div>
+        <div>
+            <label for='newpass'><b>New password:</b></label>
+            <input name='newpass' type='password' id='newpass' class='txt'/>
+        </div>
 
-    <div>
-        <label for='repass'><b>Retype new password:</b></label>
-        <input name='repass' type='password' id='repass' class='txt'/>
-    </div>
+        <div>
+            <label for='repass'><b>Retype new password:</b></label>
+            <input name='repass' type='password' id='repass' class='txt'/>
+        </div>
 
-    <div class="buttons">
-    <button name="submit" type='submit'>Apply all changes</button>
-    </div>  
-    </fieldset>
-</form>
+        <div class="buttons">
+        <button name="submit" type='submit'>Apply all changes</button>
+        </div>  
+        </fieldset>
+    </form>
+</div>
