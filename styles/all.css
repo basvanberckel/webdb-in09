@@ -114,6 +114,17 @@ textarea {
     padding: 5px;   
 }
 
+/* Quotes */
+blockquote.style {
+/*  margin-bottom: 10px;*/
+  margin-left: 50px;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-left: 5px solid #888;
+  color: #ccc;
+} 
+
 /* registration */
 input.txt {
     color: #000000;

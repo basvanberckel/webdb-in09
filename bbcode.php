@@ -15,7 +15,8 @@ function parse_bbcode_html($string) {
                   "[h4]"=>"<h4>","[/h4]"=>"</h4>",
                   "[h5]"=>"<h5>","[/h5]"=>"</h5>",
                   "[h6]"=>"<h6>","[/h6]"=>"</h6>",
-                  "[code]"=>"<code>","[/code]"=>"</code>");   
+                  "[code]"=>"<code>","[/code]"=>"</code>",
+				  "[q]"=>"<blockquote class='style'>", "[/q]"=>"</blockquote>");   
   $bbtags = array_keys($bbcode);
   $htmltags = array_values($bbcode);
   $parsed = str_replace($bbtags, $htmltags, $string);
