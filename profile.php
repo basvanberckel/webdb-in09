@@ -35,7 +35,7 @@
             if (isset($_POST['edit'])) {
             
 ?>
-
+                <!-- This shows if the user is logged in and pressed Edit -->
                 <div class='profile'>
                 <form method="post">
                     <fieldset>
@@ -53,7 +53,7 @@
 
                         <div>
                             <label for='password'><b>Password:</b></label>
-                            <a href='changepassword.php'>Change password</a>
+                            <?php echo '<a href="?page=changepassword&uid=' . $_SESSION['user']->uid .'">' . 'Change password' . '</a>' ;?>
                         </div>
                         
                         <div>
@@ -85,6 +85,7 @@
             else {
                 ?>
 
+                <!-- This shows if the user is logged in-->
                 <div class='profile'>
                 <form method="post">
                     <fieldset>
@@ -102,7 +103,7 @@
 
                         <div>
                             <label for='password'><b>Password:</b></label>
-                            <a href='changepassword.php'>Change password</a>
+                            <?php echo '<a href="?page=changepassword&uid=' . $_SESSION['user']->uid .'">' . 'Change password' . '</a>' ;?>
                         </div>
                         
                         <div>
@@ -135,6 +136,7 @@
         }
         else {
             ?>
+                <!-- This shows if the user is viewing another profile-->
                 <div class='profile'>
                 <form method='POST'>
                     <fieldset>
