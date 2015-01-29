@@ -45,7 +45,7 @@
         </div>
 
         <div>
-            <label for='repass'><b>Retype new password:</b></label>
+            <label for='repass'><b>Confirm new password:</b></label>
             <input name='repass' type='password' id='repass' class='txt'/>
         </div>
 
