@@ -12,6 +12,21 @@
     echo "<script>window.location='/';</script>";
     die();
   }
+  if(array_key_exists('delete', $_GET)) {
+    if(allow("mod_delete") /*|| (allow("forum_posting") && $_SESSION['user']->uid == $uid)*/) {
+      echo "<script>var r = confirm('Are you sure you want to delete this post?');
+      if (r == false) {
+        window.location('/?page=thread&tid=$tid');
+      }
+      </script>";
+      $res = dbquery("DELETE FROM posts WHERE pid=:pid", array('pid'=>$_GET['delete']));
+      $res = dbquery("SELECT COUNT(*) FROM posts WHERE tid=:tid", array('tid'=>$tid));
+      if($res->fetchColumn() == 0) {
+        $res = dbquery("DELETE FROM threads WHERE tid=:tid", array('tid'=>$tid));
+        echo "<script>window.location='/';</script>";
+      }
+    }
+  }
   $title = getTopicTitle($tid);
   breadcrumbs(getParent($tid), $tid);
   
@@ -50,7 +65,11 @@
     <div class='post'>
       <div class='post-data'>
         <span>Username: <a href='?page=profile&uid=$uid'>$user</a></span>
-        <p>Date: $date</p>
+        <p>Date: $date</p>";
+      if (allow("mod_delete") /*|| (allow("forum_posting") && $_SESSION['user']->uid == $uid)*/) {
+        echo "<button class='buttons' onclick=\"deletePost($pid, $tid)\">Delete Post</button>";
+      }
+      echo "
       </div>
       <div class='post-content'>
         <a href='?page=thread&tid=$tid#p$pid'><h2>$title</h2></a>
@@ -61,3 +80,8 @@
   }
   echo "</div>";
 ?>
+<script>
+function deletePost(pid, tid) {
+  window.location='/?page=thread&tid='+tid+'&delete='+pid;
+}
+</script>
