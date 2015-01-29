@@ -19,7 +19,7 @@
   if($res->fetchColumn() != 0) {
     $res = dbquery("SELECT * FROM forums 
                     WHERE parent_id=:fid AND main=0
-                    ORDER BY position;",
+                    ORDER BY lastpost_date;",
                     array('fid'=>$fid));
                     
     echo "<div class='subforums'><h2>Subforums</h2>";

@@ -31,9 +31,9 @@ function updateStats($tid, $uid, $date, $newThread) {
           lastpost_date=FROM_UNIXTIME(:date) WHERE tid=:tid;",
           array("uid"=>$uid, "date"=>$date, "tid"=>$tid));
   if ($newThread) {
-    $query = "UPDATE forums SET posts=posts+1, threads=threads+1 WHERE fid=:fid;";
+    $query = "UPDATE forums SET posts=posts+1, threads=threads+1, date=FROM_UNIXTIME(:date) WHERE fid=:fid;";
   } else {
-    $query = "UPDATE forums SET posts=posts+1 WHERE fid=:fid;";
+    $query = "UPDATE forums SET posts=posts+1, date=FROM_UNIXTIME(:date) WHERE fid=:fid;";
   }
   dbquery($query, array("fid"=>$fid));
 }
