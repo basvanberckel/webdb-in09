@@ -215,7 +215,7 @@ button:hover, .buttons a:hover{
 #registration .required { 
     float: right;
     font-size: 12px;
-    color: #FFAA00;
+    color: #df3030;
 }
 
 #registration .correct {
@@ -224,5 +224,5 @@ button:hover, .buttons a:hover{
 }
 
 #registration .error {
-    color: #FFAA00;   
+    color: #df3030;   
 }

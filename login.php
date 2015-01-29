@@ -37,7 +37,7 @@ if(array_key_exists('user', $_SESSION) && $_SESSION['login']){
 	echo '<br /><br />Welcome <b><a href="?page=profile&uid=' . $_SESSION['user']->uid .'">' . $_SESSION['user']->username . '</a></b>!<br /><br />'; 
 	//echo '<a href="?page=' . $page . '&logout=0">Log out</a>';
     echo '<form method="post"><input type="hidden" name="logout" value="1" />';
-    echo '<div class="buttons"><button type="submit" value="submit">Log out</button></div></form>';
+    echo '<div class="buttons"><button type="submit" value="submit">Log Out</button></div></form>';
 
 }
 /* er is niet ingelogd */
@@ -54,7 +54,7 @@ $_SESSION['login'] = false;
 <a href="index.php?page=agreement">Register</a>
 <input type="hidden" name="login" value="1" />
 <div class="buttons">
-	<button type="submit" value="submit">Submit</button>
+	<button type="submit" value="submit">Log In</button>
 </div>
 </form>
 
