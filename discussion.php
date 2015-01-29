@@ -36,7 +36,7 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
   }
   if ($res) {
       updateStats($tid, $uid, $date, $newThread, $approved);
-      echo "<script>window.location='/?page=thread&tid=$tid#p$pid';</script>";
+      //echo "<script>window.location='/?page=thread&tid=$tid#p$pid';</script>";
   } else {
     echo "Something went wrong";
   }
@@ -65,9 +65,9 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
     <div id='error'></div>
     <legend><?php echo $legend ?></legend>
     <div>Discussion Title:</div> 
-    <input type="text" onsubmit="return verify('title')" name="title" id="title" value="<?php echo $title?>" required><br>
+    <input type="text" onchange="verify('title')" name="title" id="title" value="<?php echo $title?>" required><br>
     <div>Comment:</div> 
-    <textarea type="text" onsubmit="return verify('content')" name="content" id="content" cols=50 rows=10 required></textarea>
+    <textarea type="text" onchange="verify('content')" name="content" id="content" cols=50 rows=10 required></textarea>
     <input type='hidden' name='tid' id="tid" value="<?php echo $tid ?>" />
     <input type='hidden' name='fid' id="fid" value="<?php echo $fid ?>" /> 
     <div class="buttons">
@@ -79,14 +79,13 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
 <script>
 function verify(id) {
   var elem = document.getElementById(id);
-  var fid = <?=$fid;?>;
-  var tid = <?=$tid;?>;
-  if !(elem.length > 6) {
+  if (elem.length < 6) {
     document.getElementById("error").innerHTML="Title and content need to be at least 6 characters";
     return false;
   } else {
     return true;
   }
 }
+</script>
     </div>
 <?php } ?>

@@ -27,15 +27,15 @@ function getParent($tid) {
 
 function updateStats($tid, $uid, $date, $newThread, $approved) {
   $fid = getParent($tid);
-  dbquery("UPDATE threads SET posts=posts+$approved, lastpost_uid=:uid, 
-          lastpost_date=FROM_UNIXTIME(:date) WHERE tid=:tid;",
-          array("uid"=>$uid, "date"=>$date, "tid"=>$tid));
+  dbquery("UPDATE threads SET posts=posts+$approved, ". ($approved==1 ? "lastpost_uid=:uid, " : "") .
+          "lastpost_date=FROM_UNIXTIME(:date) WHERE tid=:tid;",
+          ($approved==1 ? array("uid"=>$uid, "date"=>$date, "tid"=>$tid) : array("date"=>$date, "tid"=>$tid)));
   if ($newThread) {
-    $query = "UPDATE forums SET posts=posts+$approved, threads=threads+$approved, date=FROM_UNIXTIME(:date) WHERE fid=:fid;";
+    $query = "UPDATE forums SET posts=posts+$approved, threads=threads+$approved,". ($approved==1 ? " lastpost_date=FROM_UNIXTIME(:date)":"")." WHERE fid=:fid;";
   } else {
-    $query = "UPDATE forums SET posts=posts+$approved, date=FROM_UNIXTIME(:date) WHERE fid=:fid;";
+    $query = "UPDATE forums SET posts=posts+$approved,". ($approved==1 ? " lastpost_date=FROM_UNIXTIME(:date)":"")." WHERE fid=:fid;";
   }
-  dbquery($query, array("fid"=>$fid));
+  dbquery($query, ($approved==1 ? array("date"=>$date, "fid"=>$fid) : array("fid"=>$date)));
 }
 
 function allow($permission) {
