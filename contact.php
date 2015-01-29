@@ -34,9 +34,13 @@ $resp = null;
 // The error code from reCAPTCHA, if any
 $error = null;
 $reCaptcha = new ReCaptcha($secret);
-
+// Variables
 $msg = $captchaError = "";
 
+/**
+ * Function that checks if strings are empty, if all the entered strings are empty 
+ * it returns true, and otherwise false.
+ */
 function checkError($error) {
     foreach (func_get_args() as $error) {
         if (empty($error))
@@ -48,6 +52,7 @@ function checkError($error) {
     return true;
 }
 
+// Gets Google's response
 if (isset($_POST["g-recaptcha-response"])) {
     $resp = $reCaptcha->verifyResponse(
         $_SERVER["REMOTE_ADDR"],
@@ -55,11 +60,16 @@ if (isset($_POST["g-recaptcha-response"])) {
     );
 }
 
+/**
+ * Checks if the captcha was completed, and if it was it
+ * sends the message the user entered to an e-mail address.
+ */
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $message = $_POST['message'];
     $name = $_POST['name'];
     
+    // Checks for the reCAPTCHA
     if ($resp != null && $resp->success) {
         $captchaError = "";   
     }
@@ -83,6 +93,10 @@ if (isset($_POST['email'])) {
 ?>
 
 <script>
+/**
+ * Function that shows the user if the e-mail address they entered
+ * has a valid format.
+ */
 function emailValidation() {
     var email = document.getElementById("email");
     var emailValidation = document.getElementById("emailValidation");
@@ -104,6 +118,9 @@ function emailValidation() {
 }
 </script>
 
+<!-- General information and a standard contact form where the user can send a message
+     to us. Shows the user if they haven't entered a valid e-mail address and also
+     if they didn't complete the reCAPTCHA. -->
 <div id="registration">
     <form method="POST" action="index.php?page=contact">
     <fieldset>

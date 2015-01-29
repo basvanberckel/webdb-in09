@@ -34,16 +34,13 @@ $resp = null;
 // The error code from reCAPTCHA, if any
 $error = null;
 $reCaptcha = new ReCaptcha($secret);
-
+// Variables
 $msg = $captchaError = $emailError = "";
 
-function test_input($data) {
-    $data = trim($data, "\t\n\r\0\x0B");
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
+/**
+ * Function that checks if strings are empty, if all the entered strings are empty 
+ * it returns true, and otherwise false.
+ */
 function checkError($error) {
     foreach (func_get_args() as $error) {
         if (empty($error))
@@ -55,6 +52,7 @@ function checkError($error) {
     return true;
 }
 
+// Gets Google's response
 if (isset($_POST["g-recaptcha-response"])) {
     $resp = $reCaptcha->verifyResponse(
         $_SERVER["REMOTE_ADDR"],
@@ -62,12 +60,17 @@ if (isset($_POST["g-recaptcha-response"])) {
     );
 }
     
-
+/**
+ * Checks if the entered e-mail address is actually attached to an account,
+ * and if so, it generates a new password and sends this, including the
+ * username attached to the e-mail address, to the entered e-mail address.
+ */
 if (isset($_POST['email']) && checkError($captchaError, $emailError)) {
     dbconnect();
     $email = $_POST['email'];
     $res = dbquery("SELECT email FROM users WHERE email='$email'");
     
+    // Checks if entered e-mail address is attached to an account.
     if ($res->rowCount() < 1) {
         $emailError = "The entered e-mail address does not have an account attached to it.";  
     }
@@ -75,12 +78,14 @@ if (isset($_POST['email']) && checkError($captchaError, $emailError)) {
         $emailError = "";   
     }
     
+    // Gets the username that is attached to the entered e-mail address.
     $res = dbquery("SELECT username FROM users 
                   WHERE email='$email'");
     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
         $username = $row['username'];
     }
     
+    // Checks for the reCAPTCHA
     if ($resp != null && $resp->success) {
         $captchaError = "";   
     }
@@ -88,6 +93,10 @@ if (isset($_POST['email']) && checkError($captchaError, $emailError)) {
         $captchaError = "Please complete the captcha to register.";   
     }
 
+    /**
+     * If there are no errors, then send email to user, and confirm
+     * that an e-mail has been sent.
+     */
     if ($_POST['email'] && checkError($captchaError, $emailError)) {
         $msg = "An email has been sent to your email.";
         function newPassword($length) {
@@ -122,7 +131,8 @@ if (isset($_POST['email']) && checkError($captchaError, $emailError)) {
     ";
 
     mail($to, $subject, $message, $headers);
-        
+    
+    // Hash the newly generated password and update the user's password.
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $res = dbquery("UPDATE users SET passwd='$hash' WHERE email='$email'");
     }
@@ -135,6 +145,10 @@ else {
 ?>
 
 <script>
+/**
+ * Function that shows the user if the e-mail address they entered
+ * has a valid format.
+ */
 function emailValidation() {
     var email = document.getElementById("email");
     var emailValidation = document.getElementById("emailValidation");
@@ -156,6 +170,8 @@ function emailValidation() {
 }
 </script>
 
+<!-- Basic recovery form where the user can enter the e-mail address they registered with.
+     Implemented reCAPTCHA to prevent someone's e-mail address being spammed. -->
 <div id="registration">
     <form method="POST" action="index.php?page=recovery">
         <fieldset>

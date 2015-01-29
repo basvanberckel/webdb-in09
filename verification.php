@@ -1,5 +1,8 @@
 <?php
     dbconnect();
+    /**
+     * Gets the username and sets verified to 1 so the user can log in.
+     */
     if (isset($_GET['username'])) {
         $username = $_GET['username'];
         $res = dbquery("UPDATE users SET verified='1' WHERE username='$username'");
@@ -13,6 +16,8 @@
     }   
 ?>
 
+<!-- Prints a message depending on if the verification succeeded or not, and provides
+     a link back to the homepage. -->
 <div id="registration">
     <fieldset>
         <legend>Verification</legend>

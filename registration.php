@@ -34,6 +34,10 @@ $resp = null;
 // The error code from reCAPTCHA, if any
 $error = null;
 $reCaptcha = new ReCaptcha($secret);
+// Variables
+$username = $email = $passwd = $dob = $sex = "";
+$usernameError = $emailError = $passwordError = $dobError = $sexError = $captchaError = "";
+$msg = "";
 
 /**
  * Function that checks if strings are empty, if all the entered strings are empty 
@@ -49,11 +53,6 @@ function checkError($error) {
     }
     return true;
 }
-
-// Variables
-$username = $email = $passwd = $dob = $sex = "";
-$usernameError = $emailError = $passwordError = $dobError = $sexError = $captchaError = "";
-$msg = "";
 
 // All the checks for when a form is submitted.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
