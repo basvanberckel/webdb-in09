@@ -62,16 +62,31 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
 <div id="registration">
 <form method="POST">
 <fieldset>
+    <div id='error'></div>
     <legend><?php echo $legend ?></legend>
-    <div><b>Discussion Title:</b></div> <input class="txt" type="text" name="title" value="<?php echo $title?>"><br>
-    <div><b>Comment:</b></div> <textarea type="text" name="content" cols=50 rows=10></textarea>
-    <input type='hidden' name='tid' value="<?php echo $tid ?>" />
-    <input type='hidden' name='fid' value="<?php echo $fid ?>" /> 
+    <div>Discussion Title:</div> 
+    <input type="text" onsubmit="return verify('title')" name="title" id="title" value="<?php echo $title?>" required><br>
+    <div>Comment:</div> 
+    <textarea type="text" onsubmit="return verify('content')" name="content" id="content" cols=50 rows=10 required></textarea>
+    <input type='hidden' name='tid' id="tid" value="<?php echo $tid ?>" />
+    <input type='hidden' name='fid' id="fid" value="<?php echo $fid ?>" /> 
     <div class="buttons">
 	<button type="submit" value="submit"><?php echo $button ?></button>
     </div>
 	  			
 </fieldset>
 </form>
-</div>
+<script>
+function verify(id) {
+  var elem = document.getElementById(id);
+  var fid = <?=$fid;?>;
+  var tid = <?=$tid;?>;
+  if !(elem.length > 6) {
+    document.getElementById("error").innerHTML="Title and content need to be at least 6 characters";
+    return false;
+  } else {
+    return true;
+  }
+}
+    </div>
 <?php } ?>

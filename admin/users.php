@@ -46,3 +46,4 @@ function updateUsers(divid, user, act) {
 	xmlhttp.send();
 }
 </script>
+
