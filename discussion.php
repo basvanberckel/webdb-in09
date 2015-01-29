@@ -65,7 +65,7 @@ if ($_POST && array_key_exists('tid', $_POST) && array_key_exists('fid', $_POST)
     <div id='error'></div>
     <legend><?php echo $legend ?></legend>
     <div>Discussion Title:</div> 
-    <input type="text" onchange="verify('title')" name="title" id="title" value="<?php echo $title?>" required><br>
+    <input type="text" class="txt" onchange="verify('title')" name="title" id="title" value="<?php echo $title?>" required><br>
     <div>Comment:</div> 
     <textarea type="text" onchange="verify('content')" name="content" id="content" cols=50 rows=10 required></textarea>
     <input type='hidden' name='tid' id="tid" value="<?php echo $tid ?>" />
