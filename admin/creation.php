@@ -2,7 +2,7 @@
 
 <?php
 	dbconnect();
-
+	
 	if(isset($_POST['submit'])) {
 		$submit = $_POST['submit'];
 		if($submit == 'category') {

@@ -7,14 +7,14 @@ $res = dbquery("SELECT *
 while ($user = $res->fetchObject()) {
 	$uid      = $user->uid;
 	$verified = '';
-	$admin = '';
+	$admin    = '';
 	if($user->verified == 1) {
 		$verified = 'checked';
 	}
 	if($user->role == 10) {
 		$admin = 'checked';
 	}
-	echo "	<div class='user'>
+	echo "	<div class='user' id=$uid-user>
 				<div class='username'>
 					<a href='index.php?page=profile&uid=$uid'>{$user->username}</a>
 				</div>
@@ -23,6 +23,11 @@ while ($user = $res->fetchObject()) {
 					<label for=$uid-verified class='css-label'>Verified</label>
 					<input onclick='updateUsers(\"$uid-admin\", $uid, \"admin\")' name='admin' id=$uid-admin class='css-checkbox' type='checkbox' value='Yes' $admin />
 					<label for=$uid-admin class='css-label'>Admin</label>
+					<div class='forum-buttons buttons'>
+						<button onclick='updateUsers(\"$uid-user\", $uid, \"delete\")' name='submit' id=$uid-delete>
+							Delete
+						</button>
+					</div>
 				</div>
 			</div>
 			<br />";

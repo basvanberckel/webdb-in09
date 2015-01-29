@@ -2,7 +2,7 @@
 
 <?php
 	dbconnect();
-
+	/* Changing the position of a forum */
 	if(isset($_POST['submit'])) {
 		$fid = $_POST['submit'];
 		$pos = $_POST['pos'];
@@ -13,10 +13,10 @@
 						   array('pos'=>$pos,
 								 'fid'=>$fid));
 		} else {
-			echo "Position needs to be a number. <br />";
+			echo "Position needs to be filled in and a number. <br />";
 		}
 	}
-
+	/* Fetching all categories */
 	$res = dbquery("SELECT * FROM categories 
 					ORDER BY position;");
 	while($row = $res->fetch(PDO::FETCH_ASSOC)) {
@@ -26,11 +26,14 @@
 			<div class='category'>
 			<h2>$title</h2>
 			 ";
+		/* Fetching all forums in a category */
 		$fres = dbquery("SELECT * FROM forums 
 						 WHERE parent_id=:cid AND main=1
 						 ORDER BY position;",
 					    array('cid'=>$cid));
 		while($frow = $fres->fetch(PDO::FETCH_ASSOC)) {
+			/* This makes sure the checkboxes are checked according to their
+			 * database status */
 			$closed    = '';
 			$locked    = '';
 			$moderated = '';
@@ -80,11 +83,14 @@
 
 					</div>
 				   ";
+			/* Fetching all subforums in a forum */
 			$sfres = dbquery("SELECT * FROM forums
 							  WHERE parent_id=:fid AND main=0
 							  ORDER BY position;",
 							 array('fid'=>$fid));
 			while($sfrow = $sfres->fetch(PDO::FETCH_ASSOC)) {
+				/* This makes sure the checkboxes are checked according to their
+			 	 * database status */
 				$closed = '';
 				$locked = '';
 				$moderated = '';
@@ -141,21 +147,24 @@
 	
 ?> 
 
+
 <script>
-function updateDB(divid, forum, act) {
-	var xmlhttp;
-	if (window.XMLHttpRequest) {
-		xmlhttp=new XMLHttpRequest();
-	} else {
-		xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');
-	}
-	xmlhttp.onreadystatechange=function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			document.getElementById(divid).innerHTML=xmlhttp.responseText;
+	/* This function creates a new XMLHttpRequest object, and then calls
+	 * the action.php file, which then processes the specified action */
+	function updateDB(divid, forum, act) {
+		var xmlhttp;
+		if (window.XMLHttpRequest) {
+			xmlhttp=new XMLHttpRequest();
+		} else {
+			xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');
 		}
-	  }
-	xmlhttp.open('GET','admin/action.php?fid='+forum+'&action='+act,true);
-	xmlhttp.send();
-}
+		xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById(divid).innerHTML=xmlhttp.responseText;
+			}
+		  }
+		xmlhttp.open('GET','admin/action.php?fid='+forum+'&action='+act,true);
+		xmlhttp.send();
+	}
 </script>
 </div>

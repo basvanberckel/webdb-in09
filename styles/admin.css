@@ -9,7 +9,7 @@ html {
 }
 
 #main {
-	width: 90%;
+	width: 95%;
 	margin-left: auto;
 	margin-right: auto;
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
@@ -75,7 +75,7 @@ button:hover, .buttons a:hover{
 }
 .forum-buttons {
 	float: right;
-	width: 50px;
+	width: 80px;
 }
 .forum-manage {
   float:left;
@@ -114,8 +114,9 @@ ul {
 .user-options {
 	float: right;
 }
+
 /* Checkboxes
- * Images provided by http://www.csscheckbox.com 
+ * Images and code inspiration provided by http://www.csscheckbox.com 
  */
 
 input[type=checkbox].css-checkbox {
