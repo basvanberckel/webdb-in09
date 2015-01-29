@@ -59,7 +59,7 @@
   }
   $res = dbquery("SELECT * FROM threads 
                   WHERE fid=:fid 
-                  ORDER BY lastpost_date;",
+                  ORDER BY lastpost_date DESC;",
                   array('fid'=>$fid));
   while($row = $res->fetch(PDO::FETCH_ASSOC)) {
     $title = $row['title'];
