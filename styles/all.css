@@ -194,8 +194,16 @@ select {
     cursor:pointer;
     padding: 5px;
 }
+
 .delete button, .delete button:hover {
 	background-color: #444;
+	float:left;
+}
+
+.edit button, .edit button:hover {
+	background-color: #444;
+	display:flexbox;
+	float:right;
 }
 
 #login .buttons button {

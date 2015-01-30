@@ -68,7 +68,7 @@
         echo "<div class='buttons delete'><button onclick=\"deletePost($pid, $tid)\">Delete Post</button></div>";
       }
       if (allow("mod_edit") || (allow("forum_posting") && $_SESSION['user']->uid == $uid)) {
-        echo "<div class='buttons delete'>
+        echo "<div class='buttons edit'>
                 <button onclick=\"window.location='/?page=discussion&pid=$pid';\">Edit Post</button>
               </div>";
       }
