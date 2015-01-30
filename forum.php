@@ -12,6 +12,13 @@
     echo "<script>window.location='/';</script>";
     die();
   }
+  $res = dbquery("SELECT locked FROM forums 
+                  WHERE fid=:fid", 
+                  array('fid'=>$fid));
+  $locked = 0;
+  if($row = $res->fetch(PDO::FETCH_ASSOC)) {
+    $locked = $row['locked'];
+  }
   echo breadcrumbs($fid);         
   $res = dbquery("SELECT COUNT(*) FROM forums 
                   WHERE parent_id=:fid AND main=0;",
@@ -47,7 +54,7 @@
     echo "</div>";
   }
   echo "<div class='threads'><h2>Threads</h2>";
-  if(allow('forum_posting')) {
+  if(allow('forum_posting') && $locked == 0) {
     echo "<a href='/?page=discussion&fid=$fid'><div class='thread newthread'><div class='thread-data'><h3>+ New Thread</h3></div></div></a>";
   }
   $res = dbquery("SELECT COUNT(*) FROM threads 
