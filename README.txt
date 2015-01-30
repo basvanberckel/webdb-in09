@@ -5,7 +5,7 @@ IN09
 Samenstelling projectgroep:
 
 Amos Bastian     - 10676481
-Bas van Berckel  -
+Bas van Berckel  - 10735917
 Casimir Geelhoed -
 Jason Compier    - 10766820
 Rosco Kalis      - 10771603
