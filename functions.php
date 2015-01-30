@@ -21,8 +21,20 @@ function getForumTitle($fid) {
 
 function getParent($tid) { 
   $res = dbquery("SELECT fid FROM threads WHERE tid=:tid", array("tid"=>$tid));
-  $t = $res->fetch(PDO::FETCH_ASSOC);
-  return $t['fid'];
+  $t = $res->fetchColumn();
+  return $t;
+}
+
+function getThread($pid) {
+  $res = dbquery("SELECT tid FROM posts WHERE pid=:pid", array("pid"=>$pid));
+  $p = $res->fetchColumn();
+  return $p;
+}
+
+function getPost($pid) {
+  $res = dbquery("SELECT * FROM posts WHERE pid=:pid", array("pid"=>$pid));
+  $p = $res->fetchObject();
+  return $p;
 }
 
 function updateStats($tid, $uid, $date, $newThread, $approved) { 
