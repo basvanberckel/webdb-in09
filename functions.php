@@ -25,7 +25,7 @@ function getParent($tid) {
   return $t['fid'];
 }
 
-function updateStats($tid, $uid, $date, $newThread, $approved) {
+function updateStats($tid, $uid, $date, $newThread, $approved) { 
   $fid = getParent($tid);
   dbquery("UPDATE threads SET posts=posts+$approved, ". ($approved==1 ? "lastpost_uid=:uid, " : "") .
           "lastpost_date=FROM_UNIXTIME(:date) WHERE tid=:tid;",

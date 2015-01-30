@@ -67,7 +67,7 @@
         <span>Username: <a href='?page=profile&uid=$uid'>$user</a></span>
         <p>Date: $date</p>";
       if (allow("mod_delete") /*|| (allow("forum_posting") && $_SESSION['user']->uid == $uid)*/) {
-        echo "<button class='buttons' onclick=\"deletePost($pid, $tid)\">Delete Post</button>";
+        echo "<div class='buttons delete'><button onclick=\"deletePost($pid, $tid)\">Delete Post</button></div>";
       }
       echo "
       </div>

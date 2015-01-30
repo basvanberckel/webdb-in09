@@ -194,6 +194,9 @@ select {
     cursor:pointer;
     padding: 5px;
 }
+.delete button, .delete button:hover {
+	background-color: #444;
+}
 
 #login .buttons button {
 	font-size: 80%;
