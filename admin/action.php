@@ -77,11 +77,11 @@
 									 'uid'=>$uid));
 			}
 		}
+		/* Delete a user */
 		elseif($action == 'delete') {
 			$res = dbquery("DELETE FROM users
 							WHERE uid = :uid;",
 						   array('uid'=>$uid));
 		}
-			
 	}
  ?>

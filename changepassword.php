@@ -22,9 +22,9 @@
                     array('uid' => $uid,
                           'password' => $hash));
         } 
-    else {
-    echo "Wrong password.";
-    }
+		else {
+		echo "Wrong password.";
+		}
     }
     }
     

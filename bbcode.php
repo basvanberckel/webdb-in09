@@ -1,7 +1,4 @@
-<?php
-
-                
-                
+<?php          
 function parse_bbcode_html($string) {
   $bbcode = array("[b]"=>"<strong>", "[/b]"=>"</strong>",
                   "[i]"=>"<em>", "[/i]"=>"</em>",
@@ -22,3 +19,4 @@ function parse_bbcode_html($string) {
   $parsed = str_replace($bbtags, $htmltags, $string);
   return $parsed;
 }
+ ?>

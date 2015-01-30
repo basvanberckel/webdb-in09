@@ -85,3 +85,4 @@ function breadcrumbs($fid, $tid=null) {
     echo "</div>";
   }
 }
+ ?>
