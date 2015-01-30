@@ -38,6 +38,15 @@ function updateStats($tid, $uid, $date, $newThread, $approved) {
   dbquery($query, ($approved==1 ? array("date"=>$date, "fid"=>$fid) : array("fid"=>$date)));
 }
 
+function deletePost($pid, $tid) {
+  $res = dbquery("DELETE FROM posts WHERE pid=:pid", array('pid'=>$pid));
+  $res = dbquery("SELECT COUNT(*) FROM posts WHERE tid=:tid", array('tid'=>$tid));
+  if($res->fetchColumn() == 0) {
+    $res = dbquery("DELETE FROM threads WHERE tid=:tid", array('tid'=>$tid));
+  echo "<script>window.location='/';</script>";
+  }
+}
+
 function allow($permission) {
   $role = $_SESSION['login'] ? $_SESSION['user']->role : 0;
   $res = dbquery("SELECT role FROM permissions WHERE permission=:permission;", 

@@ -57,10 +57,18 @@
   if($res->fetchColumn() == 0) {
     echo "<div class='error'><h3>No threads in this forum yet!</h3></div>";
   }
-  $res = dbquery("SELECT * FROM threads 
+  if (allow('mod_approve')) {
+    $res = dbquery("SELECT * FROM threads 
                   WHERE fid=:fid 
                   ORDER BY lastpost_date DESC;",
                   array('fid'=>$fid));
+  } else {
+    $res = dbquery("SELECT * FROM threads 
+                  WHERE fid=:fid AND approved=1
+                  ORDER BY lastpost_date DESC;",
+                  array('fid'=>$fid));
+  }
+  
   while($row = $res->fetch(PDO::FETCH_ASSOC)) {
     $title = $row['title'];
     $tid = $row['tid'];

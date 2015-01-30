@@ -12,13 +12,13 @@
 		if($submit == 'Approve') {
 			$res = dbquery("UPDATE posts
 							SET approved = 1
-							WHERE pid = $pid;");
+							WHERE pid=:pid;", array('pid'=>$pid));
 			$date = time();
 			updateStats($tid, $uid, $date, false, 1);
+			$res = dbquery("UPDATE threads SET approved = 1 WHERE tid=:tid;", array('tid'=>$tid));
 		}
 		elseif($submit == 'Decline') {
-			$res = dbquery("DELETE FROM posts
-					 		WHERE pid = $pid;");
+			deletePost($pid, $tid);
 		}
 	}
 	

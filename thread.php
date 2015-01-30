@@ -13,18 +13,16 @@
     die();
   }
   if(array_key_exists('delete', $_GET)) {
-    if(allow("mod_delete") /*|| (allow("forum_posting") && $_SESSION['user']->uid == $uid)*/) {
+    $pid = $_GET['delete'];
+    $res = dbquery("SELECT uid FROM posts WHERE pid=:pid", array('pid'=>$pid));
+    $uid = $res->fetchColumn();
+    if(allow("mod_delete") || (allow("forum_posting") && $_SESSION['user']->uid == $uid)) {
       echo "<script>var r = confirm('Are you sure you want to delete this post?');
       if (r == false) {
         window.location('/?page=thread&tid=$tid');
       }
       </script>";
-      $res = dbquery("DELETE FROM posts WHERE pid=:pid", array('pid'=>$_GET['delete']));
-      $res = dbquery("SELECT COUNT(*) FROM posts WHERE tid=:tid", array('tid'=>$tid));
-      if($res->fetchColumn() == 0) {
-        $res = dbquery("DELETE FROM threads WHERE tid=:tid", array('tid'=>$tid));
-        echo "<script>window.location='/';</script>";
-      }
+      deletePost($pid, $tid);
     }
   }
   $title = getTopicTitle($tid);
@@ -66,7 +64,7 @@
       <div class='post-data'>
         <span>Username: <a href='?page=profile&uid=$uid'>$user</a></span>
         <p>Date: $date</p>";
-      if (allow("mod_delete") /*|| (allow("forum_posting") && $_SESSION['user']->uid == $uid)*/) {
+      if (allow("mod_delete") || (allow("forum_posting") && $_SESSION['user']->uid == $uid)) {
         echo "<div class='buttons delete'><button onclick=\"deletePost($pid, $tid)\">Delete Post</button></div>";
       }
       echo "
