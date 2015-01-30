@@ -56,7 +56,6 @@
                   array('fid'=>$fid));
   if($res->fetchColumn() == 0) {
     echo "<div class='error'><h3>No threads in this forum yet!</h3></div>";
-    die();
   }
   $res = dbquery("SELECT * FROM threads 
                   WHERE fid=:fid 
