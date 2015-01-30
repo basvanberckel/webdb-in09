@@ -11,7 +11,7 @@
     ";
     $fres = dbquery("SELECT * FROM forums 
                      WHERE parent_id=$cid AND main=1
-                     ORDER BY lastpost_date;");
+                     ORDER BY lastpost_date DESC;");
     if ($res) {
       while($frow = $fres->fetch(PDO::FETCH_ASSOC)) {
         $fid = $frow['fid'];
