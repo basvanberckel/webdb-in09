@@ -6,7 +6,7 @@ Samenstelling projectgroep:
 
 Amos Bastian     - 10676481
 Bas van Berckel  - 10735917
-Casimir Geelhoed -
+Casimir Geelhoed - 10688382
 Jason Compier    - 10766820
 Rosco Kalis      - 10771603
 
